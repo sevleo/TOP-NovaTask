@@ -128,6 +128,11 @@ const DOMModule = (function () {
             const leftThirdDiv = document.createElement('div');
             leftThirdDiv.classList.add('left-third-section');
             leftDiv.append(leftThirdDiv);
+
+            const createProjectButton = document.createElement('button');
+            createProjectButton.classList.add('create-project');
+            createProjectButton.textContent = 'Create Project';
+            leftThirdDiv.append(createProjectButton);
         }
 
         // Render projects
@@ -163,12 +168,17 @@ const DOMModule = (function () {
         mainDiv.append(rightDiv);
 
         const rightFirstDiv = document.createElement('div');
-        rightFirstDiv.classList.add('left-first-section');
+        rightFirstDiv.classList.add('right-first-section');
         rightDiv.append(rightFirstDiv);
 
         const rightSecondDiv = document.createElement('div');
-        rightSecondDiv.classList.add('left-second-section');
+        rightSecondDiv.classList.add('right-second-section');
         rightDiv.append(rightSecondDiv);
+
+        const createTaskButton = document.createElement('button');
+        createTaskButton.classList.add('create-task');
+        createTaskButton.textContent = 'Create Task';
+        rightSecondDiv.append(createTaskButton);
     }
 
     // function updateContainerDiv() {

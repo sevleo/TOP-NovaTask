@@ -2,11 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: white;
+    color: black;
 }
 
 body {
-    background-color: rgb(20, 20, 20);
+    background-color: rgb(255, 255, 255);
     height: 100vh;
     width: 100vw;
 }
@@ -26,17 +26,18 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 3fr 3fr 1fr;
-    border: 0.5px solid white;
+    border-right: 1px solid rgb(231, 232, 234);
+    background-color: rgb(245, 246, 248);
 }
 
 .main > .right {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 6fr 1fr;
-    border: 0.5px solid white;
+    /* border: 0.5px solid black; */
 }
 
-.right > div,
-.left > div {
-    border: 0.5px solid white;
+.left-third-section,
+.right-second-section {
+    border-top: 1px solid rgb(231, 232, 234);
 }
