@@ -4,7 +4,7 @@ import './styles.css';
 // Project module 
 const ProjectModule = (function() {
 
-    let projects = ['Sport', 'Math', 'Programming', 'Other'];
+    let projects = ['Sport', 'Math', 'Programming', 'Leisure'];
     
     function createProject(name) {
         const project = {};
@@ -66,57 +66,65 @@ const DOMModule = (function () {
         body.append(mainDiv);
     }
 
-    function drawLeftDiv() {
-        const mainDiv = document.querySelector('.main');
-        const leftDiv = document.createElement('div');
-        leftDiv.classList.add('left');
-        mainDiv.append(leftDiv);
-
+    
+    const drawLeftDiv = (function () {
+        function drawStructure () {
+            const mainDiv = document.querySelector('.main');
+            const leftDiv = document.createElement('div');
+            leftDiv.classList.add('left');
+            mainDiv.append(leftDiv);
+    
             const leftFirstDiv = document.createElement('div');
             leftFirstDiv.classList.add('left-first-section');
             leftDiv.append(leftFirstDiv);
+    
+            const firstSectionLabel = document.createElement('p');
+            firstSectionLabel.textContent = 'Tasks';
+            leftFirstDiv.append(firstSectionLabel);
+    
+            const firstSectionList = document.createElement('ul');
+            leftFirstDiv.append(firstSectionList);
+    
+            const firstLineItem = document.createElement('li');
+            firstLineItem.textContent = 'Today';
+            firstSectionList.append(firstLineItem);
 
-                const firstSectionLabel = document.createElement('p');
-                firstSectionLabel.textContent = 'Tasks';
-                leftFirstDiv.append(firstSectionLabel);
-
-                const firstSectionList = document.createElement('ul');
-                leftFirstDiv.append(firstSectionList);
-
-                    const firstLineItem = document.createElement('li');
-                    firstLineItem.textContent = 'Today';
-                    firstSectionList.append(firstLineItem);
-
-                    const secondLineItem = document.createElement('li');
-                    secondLineItem.textContent = 'Tomorrow';
-                    firstSectionList.append(secondLineItem);
-
+            const secondLineItem = document.createElement('li');
+            secondLineItem.textContent = 'Tomorrow';
+            firstSectionList.append(secondLineItem);
+    
             const leftSecondDiv = document.createElement('div');
             leftSecondDiv.classList.add('left-second-section');
             leftDiv.append(leftSecondDiv);
-
-                const secondSectionLabel = document.createElement('p');
-                secondSectionLabel.textContent = 'Projects';
-                leftSecondDiv.append(secondSectionLabel);
-
-                const secondSectionList = document.createElement('ul');
-                leftSecondDiv.append(secondSectionList);
-
-                ProjectModule.getProjects().forEach(element => {
-                    drawProjects(element);
-                });
-
-                function drawProjects(item) {
-                    const projectLineItem = document.createElement('li');
-                    projectLineItem.textContent = item;
-                    secondSectionList.append(projectLineItem);
-                }
-
+    
+            const secondSectionLabel = document.createElement('p');
+            secondSectionLabel.textContent = 'Projects';
+            leftSecondDiv.append(secondSectionLabel);
+    
+            const secondSectionList = document.createElement('ul');
+            secondSectionList.classList.add('second-section-list');
+            leftSecondDiv.append(secondSectionList);
+    
             const leftThirdDiv = document.createElement('div');
             leftThirdDiv.classList.add('left-third-section');
             leftDiv.append(leftThirdDiv);
+        }
 
-    }
+        function drawProjects() {
+            ProjectModule.getProjects().forEach(element => {
+                const secondSectionList = document.querySelector('.second-section-list');
+                const projectLineItem = document.createElement('li');
+                projectLineItem.textContent = element;
+                secondSectionList.append(projectLineItem);
+            });
+        }
+
+        return {
+            drawStructure,
+            drawProjects,
+        }
+
+    })();
 
     function drawRightDiv() {
         const mainDiv = document.querySelector('.main');
@@ -124,13 +132,13 @@ const DOMModule = (function () {
         rightDiv.classList.add('right');
         mainDiv.append(rightDiv);
 
-            const rightFirstDiv = document.createElement('div');
-            rightFirstDiv.classList.add('left-first-section');
-            rightDiv.append(rightFirstDiv);
+        const rightFirstDiv = document.createElement('div');
+        rightFirstDiv.classList.add('left-first-section');
+        rightDiv.append(rightFirstDiv);
 
-            const rightSecondDiv = document.createElement('div');
-            rightSecondDiv.classList.add('left-second-section');
-            rightDiv.append(rightSecondDiv);
+        const rightSecondDiv = document.createElement('div');
+        rightSecondDiv.classList.add('left-second-section');
+        rightDiv.append(rightSecondDiv);
     }
 
     // function updateContainerDiv() {
@@ -148,5 +156,6 @@ const DOMModule = (function () {
 
 
 DOMModule.drawMainDiv();
-DOMModule.drawLeftDiv();
+DOMModule.drawLeftDiv.drawStructure();
+DOMModule.drawLeftDiv.drawProjects();
 DOMModule.drawRightDiv();
