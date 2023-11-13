@@ -1,0 +1,19 @@
+1 The app shall allow user to create new projects.
+    1.1 When creating a new project, the user shall be able to choose project name (required) and project icon (optional).
+2 The app shall allow creating new tasks.
+    2.1 The user shall be able to fill out fields on the task:
+        - Project (required)
+        - Title
+        - Notes
+        - Priority
+        - Date
+    2.2 The user shall have the ability to verify the completion status of a task only on or after the specified target date (due date). 
+        Checking the task completion status before the target date shall not be allowed to ensure accuracy and prevent premature updates.
+    2.3 Future: The user shall have the ability to specify a task as recurring. Recurring tasks are created automatically.
+3 The app shall allow viewing all tasks in different ways:
+    3.1 All tasks (sorted by date -> category)
+    3.2 Today tasks (default)
+    3.3 Tomorrow tasks
+    3.4 This week tasks 
+    3.5 This month tasks
+    3.6 Tasks in specific categories (sorted by date)
