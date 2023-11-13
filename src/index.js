@@ -4,6 +4,7 @@ import './styles.css';
 // Project module 
 const ProjectModule = (function() {
 
+    // Projects in default configuration
     let projects = [
         {
             name: 'Sport',
@@ -19,6 +20,7 @@ const ProjectModule = (function() {
         },
     ];
     
+    // Add new project
     function createProject(name) {
         const project = {};
         project.name = name;
@@ -28,6 +30,7 @@ const ProjectModule = (function() {
         return project;
     }
 
+    // Retrieve projects
     function getProjects() {
         return projects.slice();
     }
@@ -45,6 +48,7 @@ const TaskModule = (function() {
 
     let tasks = [];
     
+    // Add new task
     function createTask(project, title, notes, priority, date) {
         const task = {};
         task.project = project;
@@ -58,6 +62,7 @@ const TaskModule = (function() {
         return task;
     }
 
+    // Retrieve tasks
     function getTasks() {
         return tasks.slice();
     }
@@ -79,8 +84,10 @@ const DOMModule = (function () {
         body.append(mainDiv);
     }
 
-    
+    // Handler for left div
     const drawLeftDiv = (function () {
+
+        // Draw layout structure
         function drawStructure () {
             const mainDiv = document.querySelector('.main');
             const leftDiv = document.createElement('div');
@@ -123,6 +130,7 @@ const DOMModule = (function () {
             leftDiv.append(leftThirdDiv);
         }
 
+        // Render projects
         function drawProjects() {
             const projectLineItems = document.querySelectorAll('.project');
             if (projectLineItems) {
@@ -147,6 +155,7 @@ const DOMModule = (function () {
 
     })();
 
+    // Handler for left div
     function drawRightDiv() {
         const mainDiv = document.querySelector('.main');
         const rightDiv = document.createElement('div');
