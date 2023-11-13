@@ -4,7 +4,20 @@ import './styles.css';
 // Project module 
 const ProjectModule = (function() {
 
-    let projects = ['Sport', 'Math', 'Programming', 'Leisure'];
+    let projects = [
+        {
+            name: 'Sport',
+        },
+        {
+            name: 'Math',
+        },
+        {
+            name: 'Programming',
+        },
+        {
+            name: 'Leisure',
+        },
+    ];
     
     function createProject(name) {
         const project = {};
@@ -111,10 +124,18 @@ const DOMModule = (function () {
         }
 
         function drawProjects() {
+            const projectLineItems = document.querySelectorAll('.project');
+            if (projectLineItems) {
+                projectLineItems.forEach(item => {
+                    item.remove();
+                });
+            }
+
             ProjectModule.getProjects().forEach(element => {
                 const secondSectionList = document.querySelector('.second-section-list');
                 const projectLineItem = document.createElement('li');
-                projectLineItem.textContent = element;
+                projectLineItem.classList.add('project');
+                projectLineItem.textContent = element.name;
                 secondSectionList.append(projectLineItem);
             });
         }
