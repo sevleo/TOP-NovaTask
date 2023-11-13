@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: white;
 }
 
 body {
@@ -15,7 +16,27 @@ body {
     width: 100%;
 }
 
-.container {
-    height: 100%;
-    width: 100%;
+.main {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 3fr;
+}
+
+.main > .left {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 3fr 1fr;
+    border: 0.5px solid white;
+}
+
+.main > .right {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 6fr 1fr;
+    border: 0.5px solid white;
+}
+
+.right > div,
+.left > div {
+    border: 0.5px solid white;
 }
