@@ -200,26 +200,43 @@ const DOMModule = (function () {
         closeTaskDialogSpan.textContent = 'close';
         closeTaskDialogDiv.append(closeTaskDialogSpan);
 
+
+        // Close animation on ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                const openDialog = document.querySelector('dialog[open]');
+                if (openDialog) {
+                    closeDialog(openDialog);
+                }
+            }
+        });
+
+        // Close animation on Save and Close
         handleCloseAnimation(newProjectDialogForm, newProjectDialog, 'submit');
         handleCloseAnimation(closeProjectDialogSpan, newProjectDialog, 'click');
         handleCloseAnimation(newTaskDialogForm, newTaskDialog, 'submit');
         handleCloseAnimation(closeTaskDialogSpan, newTaskDialog, 'click');
 
-        // Close animation
+        // Close animation handler
         function handleCloseAnimation(eventElement, dialog, eventType) {
             eventElement.addEventListener(eventType, function handleSubmit(event) {
                 event.preventDefault();
-                // eventElement.reset();
-                dialog.classList.add('hide');
-            
-                dialog.addEventListener('webkitAnimationEnd', animationEndHandler, false);
-    
-                function animationEndHandler() {
-                    dialog.classList.remove('hide');
-                    dialog.close();
-                    dialog.removeEventListener('webkitAnimationEnd', animationEndHandler, false);
-                }
+                closeDialog(dialog);
             });
+        }
+
+        // Close dialog
+        function closeDialog(dialog) {
+            dialog.classList.add('hide');
+            
+            dialog.addEventListener('webkitAnimationEnd', animationEndHandler, false);
+
+            function animationEndHandler() {
+                dialog.classList.remove('hide');
+                dialog.close();
+                dialog.removeEventListener('webkitAnimationEnd', animationEndHandler, false);
+            }
         }
     }
     
