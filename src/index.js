@@ -213,15 +213,16 @@ const DOMModule = (function () {
         });
 
         // Close animation on Save and Close
-        handleCloseAnimation(newProjectDialogForm, newProjectDialog, 'submit');
-        handleCloseAnimation(closeProjectDialogSpan, newProjectDialog, 'click');
-        handleCloseAnimation(newTaskDialogForm, newTaskDialog, 'submit');
-        handleCloseAnimation(closeTaskDialogSpan, newTaskDialog, 'click');
+        handleCloseAnimation(newProjectDialogForm, newProjectDialog, 'submit', newProjectDialogForm);
+        handleCloseAnimation(closeProjectDialogSpan, newProjectDialog, 'click', newProjectDialogForm);
+        handleCloseAnimation(newTaskDialogForm, newTaskDialog, 'submit', newTaskDialogForm);
+        handleCloseAnimation(closeTaskDialogSpan, newTaskDialog, 'click', newTaskDialogForm);
 
         // Close animation handler
-        function handleCloseAnimation(eventElement, dialog, eventType) {
+        function handleCloseAnimation(eventElement, dialog, eventType, form) {
             eventElement.addEventListener(eventType, function handleSubmit(event) {
                 event.preventDefault();
+                form.reset();
                 closeDialog(dialog);
             });
         }
