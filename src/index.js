@@ -226,28 +226,11 @@ const DOMModule = (function () {
             });
         }
 
-        // Close dialog
-        // function closeDialog(dialog) {
-        //     dialog.classList.add('hide');
-        //     dialog.classList.remove('displayed');
-            
-        //     dialog.addEventListener('webkitAnimationEnd', animationEndHandler, false);
-
-        //     function animationEndHandler() {
-        //         dialog.classList.remove('hide');
-        //         dialog.classList.add('hidden');
-        //         dialog.close();
-        //         dialog.removeEventListener('webkitAnimationEnd', animationEndHandler, false);
-        //     }
-        // }
-
         function closeDialog(dialog) {
             dialog.classList.add('hidden');
             dialog.classList.remove('displayed');
             dialog.addEventListener('transitionend', function handleTransitionEnd() {
-                // This function will be called once the transition has ended
                 dialog.close();
-                // Remove the event listener to avoid memory leaks
                 dialog.removeEventListener('transitionend', handleTransitionEnd);
             });
         }
