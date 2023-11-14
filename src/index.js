@@ -23,10 +23,14 @@ const ProjectModule = (function() {
             name: 'Leisure',
         },
     ];
+
+    let projectsCount = 3;
     
     // Add new project
     function createProject(name) {
         const project = {};
+        projectsCount = projectsCount + 1;
+        project.id = projectsCount;
         project.name = name;
 
         projects.push(project);
@@ -98,6 +102,12 @@ const DOMModule = (function () {
 
         const newProjectDialogForm = document.createElement('form');
         newProjectDialog.append(newProjectDialogForm);
+
+        newProjectDialogForm.addEventListener('submit', () => {
+            const projectName = document.querySelector('dialog.new-project > form input#project-name');
+            ProjectModule.createProject(projectName.value);
+            DOMModule.createLeftDiv.createProjects();
+        });
 
         const nameFieldDiv = document.createElement('div');
         nameFieldDiv.classList.add('project-name-field-div');
