@@ -396,7 +396,7 @@ const DOMModule = (function () {
     // Handler for left div
     const createLeftDiv = (function () {
 
-        // create layout structure
+        // Create layout structure
         function createStructure () {
             const mainDiv = document.querySelector('.main');
             const leftDiv = document.createElement('div');
@@ -472,11 +472,12 @@ const DOMModule = (function () {
             createStructure,
             createProjects,
         }
-
     })();
 
     // Handler for right div
     const createRightDiv = (function createRightDiv() {
+
+        // Create layout structure
         function createStructure() {
             const mainDiv = document.querySelector('.main');
             const rightDiv = document.createElement('div');
@@ -504,6 +505,7 @@ const DOMModule = (function () {
             })
         }
 
+         // Render tasks
         function createTasks(tasks) {
             tasks.forEach(element => {
                 const rightFirstSection = document.querySelector('.right-first-section');
@@ -544,14 +546,10 @@ const DOMModule = (function () {
             });
         }
         
-
-
         return {
             createStructure,
             createTasks,
         }
-
-        
     })();
 
     return {
@@ -560,7 +558,6 @@ const DOMModule = (function () {
         createLeftDiv,
         createRightDiv
     }
-
 })();
 
 
