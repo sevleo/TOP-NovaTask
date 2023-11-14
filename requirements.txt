@@ -20,6 +20,5 @@
 
 
 
-when adding a project, it needs to be saved to the object list, and DOM must be run again to show the new project
 add dummy tasks and add component to display tasks
 when adding a task, it needs to be added to the task list and DOM showing tasks must be reset
