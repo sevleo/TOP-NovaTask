@@ -93,7 +93,7 @@ const DOMModule = (function () {
 
         // New Project dialog and its children
         const newProjectDialog = document.createElement('dialog');
-        newProjectDialog.classList.add('new-project');
+        newProjectDialog.classList.add('new-project', 'hidden');
         body.append(newProjectDialog);
 
         const newProjectDialogForm = document.createElement('form');
@@ -130,7 +130,7 @@ const DOMModule = (function () {
 
         // New Task dialog and its children
         const newTaskDialog = document.createElement('dialog');
-        newTaskDialog.classList.add('new-task');
+        newTaskDialog.classList.add('new-task', 'hidden');
         body.append(newTaskDialog);
 
         const newTaskDialogForm = document.createElement('form');
@@ -227,16 +227,29 @@ const DOMModule = (function () {
         }
 
         // Close dialog
-        function closeDialog(dialog) {
-            dialog.classList.add('hide');
+        // function closeDialog(dialog) {
+        //     dialog.classList.add('hide');
+        //     dialog.classList.remove('displayed');
             
-            dialog.addEventListener('webkitAnimationEnd', animationEndHandler, false);
+        //     dialog.addEventListener('webkitAnimationEnd', animationEndHandler, false);
 
-            function animationEndHandler() {
-                dialog.classList.remove('hide');
+        //     function animationEndHandler() {
+        //         dialog.classList.remove('hide');
+        //         dialog.classList.add('hidden');
+        //         dialog.close();
+        //         dialog.removeEventListener('webkitAnimationEnd', animationEndHandler, false);
+        //     }
+        // }
+
+        function closeDialog(dialog) {
+            dialog.classList.add('hidden');
+            dialog.classList.remove('displayed');
+            dialog.addEventListener('transitionend', function handleTransitionEnd() {
+                // This function will be called once the transition has ended
                 dialog.close();
-                dialog.removeEventListener('webkitAnimationEnd', animationEndHandler, false);
-            }
+                // Remove the event listener to avoid memory leaks
+                dialog.removeEventListener('transitionend', handleTransitionEnd);
+            });
         }
     }
     
@@ -293,6 +306,8 @@ const DOMModule = (function () {
             createProjectButton.addEventListener('click', () => {
                 const newProjectDialog = document.querySelector('.new-project');
                 newProjectDialog.showModal();
+                newProjectDialog.classList.add('displayed');
+                newProjectDialog.classList.remove('hidden');
             })
         }
 
@@ -344,6 +359,8 @@ const DOMModule = (function () {
         createTaskButton.addEventListener('click', () => {
             const newTaskDialog = document.querySelector('.new-task');
             newTaskDialog.showModal();
+            newTaskDialog.classList.add('displayed');
+            newTaskDialog.classList.remove('hidden');
         })
     }
 
