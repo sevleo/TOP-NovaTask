@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+::backdrop {
+    background-color: #00000088;
+    backdrop-filter: blur(3px);
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -40,4 +56,51 @@ body {
 .left-third-section,
 .right-second-section {
     border-top: 1px solid rgb(231, 232, 234);
+}
+
+.new-project {
+    width: 300px;
+    height: 300px;
+    background-color: azure;
+}
+
+.new-task {
+    width: 300px;
+    height: 300px;
+    background-color: azure;
+}
+
+dialog {
+    position: absolute;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+
+
+dialog[open] {
+    -webkit-animation: show 0.5s ease normal;
+}
+
+dialog.hide {
+    -webkit-animation: hide 0.5s ease normal;
+}
+
+@-webkit-keyframes show{
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@-webkit-keyframes hide{
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0);
+    }
 }
