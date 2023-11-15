@@ -433,21 +433,6 @@ const DOMModule = (function () {
             const secondSectionList = document.createElement('ul');
             secondSectionList.classList.add('second-section-list');
             leftSecondDiv.append(secondSectionList);
-    
-            const leftThirdDiv = document.createElement('div');
-            leftThirdDiv.classList.add('left-third-section');
-            leftDiv.append(leftThirdDiv);
-
-            const createProjectButton = document.createElement('button');
-            createProjectButton.classList.add('create-project');
-            createProjectButton.textContent = 'Create Project';
-            leftThirdDiv.append(createProjectButton);
-            createProjectButton.addEventListener('click', () => {
-                const newProjectDialog = document.querySelector('.new-project');
-                newProjectDialog.showModal();
-                newProjectDialog.classList.add('displayed');
-                newProjectDialog.classList.remove('hidden');
-            })
         }
 
         // Render projects
@@ -475,7 +460,7 @@ const DOMModule = (function () {
     })();
 
     // Handler for right div
-    const createRightDiv = (function createRightDiv() {
+    const createRightDiv = (function () {
 
         // Create layout structure
         function createStructure() {
@@ -487,22 +472,6 @@ const DOMModule = (function () {
             const rightFirstDiv = document.createElement('div');
             rightFirstDiv.classList.add('right-first-section');
             rightDiv.append(rightFirstDiv);
-    
-            const rightSecondDiv = document.createElement('div');
-            rightSecondDiv.classList.add('right-second-section');
-            rightDiv.append(rightSecondDiv);
-    
-            const createTaskButton = document.createElement('button');
-            createTaskButton.classList.add('create-task');
-            createTaskButton.textContent = 'Create Task';
-            rightSecondDiv.append(createTaskButton);
-    
-            createTaskButton.addEventListener('click', () => {
-                const newTaskDialog = document.querySelector('.new-task');
-                newTaskDialog.showModal();
-                newTaskDialog.classList.add('displayed');
-                newTaskDialog.classList.remove('hidden');
-            })
         }
 
          // Render tasks
@@ -552,11 +521,63 @@ const DOMModule = (function () {
         }
     })();
 
+    const createFooterDiv = (function () {
+
+        function createStructure() {
+            const mainDiv = document.querySelector('.main');
+            const footerDiv = document.createElement('div');
+            footerDiv.classList.add('footer');
+            mainDiv.append(footerDiv);
+
+            const footerLeftDiv = document.createElement('div');
+            footerLeftDiv.classList.add('footer-left');
+            footerDiv.append(footerLeftDiv);
+
+            const footerRightDiv = document.createElement('div');
+            footerRightDiv.classList.add('footer-right');
+            footerDiv.append(footerRightDiv);
+        }
+
+        function createButtons() {
+            const footerLeftDiv = document.querySelector('.footer-left');
+            const footerRightDiv = document.querySelector('.footer-right');
+
+            const createProjectButton = document.createElement('button');
+            createProjectButton.classList.add('create-project');
+            createProjectButton.textContent = 'Create Project';
+            footerLeftDiv.append(createProjectButton);
+            createProjectButton.addEventListener('click', () => {
+                const newProjectDialog = document.querySelector('.new-project');
+                newProjectDialog.showModal();
+                newProjectDialog.classList.add('displayed');
+                newProjectDialog.classList.remove('hidden');
+            })
+
+            const createTaskButton = document.createElement('button');
+            createTaskButton.classList.add('create-task');
+            createTaskButton.textContent = 'Create Task';
+            footerRightDiv.append(createTaskButton);
+
+            createTaskButton.addEventListener('click', () => {
+                const newTaskDialog = document.querySelector('.new-task');
+                newTaskDialog.showModal();
+                newTaskDialog.classList.add('displayed');
+                newTaskDialog.classList.remove('hidden');
+            })
+            
+        }
+        return {
+            createStructure,
+            createButtons,
+        }
+    })();
+
     return {
         createMainDiv,
         createDialogs,
         createLeftDiv,
-        createRightDiv
+        createRightDiv,
+        createFooterDiv,
     }
 })();
 
@@ -567,3 +588,5 @@ DOMModule.createLeftDiv.createStructure();
 DOMModule.createLeftDiv.createProjects(ProjectModule.getProjects());
 DOMModule.createRightDiv.createStructure();
 DOMModule.createRightDiv.createTasks(TaskModule.getTasks());
+DOMModule.createFooterDiv.createStructure();
+DOMModule.createFooterDiv.createButtons();

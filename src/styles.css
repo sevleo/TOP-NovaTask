@@ -37,34 +37,49 @@ body {
     border-right: 1px solid rgb(231, 232, 234);
     background-color: rgb(245, 246, 248);
     flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: calc(100% - 100px);
 }
 
 .main > .right {
-    overflow: auto;
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 }
 
-
-
-/* .left > .left-third-section {
-    position: fixed;
-    bottom: 0;
-    width: 300px;
-} */
-
-.right > .right-second-section {
+.main > .footer {
+    display: flex;
     height: 100px;
-    position: fixed;
-    background-color: rgb(245, 246, 248);
-}
-
-
-
-
-.left-third-section,
-.right-second-section {
     border-top: 1px solid rgb(231, 232, 234);
 }
+
+.main > .footer > .footer-left {
+    flex: 0 0 300px;
+    background-color: rgb(245, 246, 248);
+    border-right: 1px solid rgb(231, 232, 234);
+}
+
+.main > .footer > .footer-right {
+    flex: 1;
+    background-color: rgb(255, 255, 255);
+}
+
+.right-first-section {
+    height: 100%;
+    overflow: auto;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
 
 .new-project {
     width: 300px;
