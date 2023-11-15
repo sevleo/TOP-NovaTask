@@ -20,5 +20,4 @@
 
 
 
-add dummy tasks and add component to display tasks
 when adding a task, it needs to be added to the task list and DOM showing tasks must be reset

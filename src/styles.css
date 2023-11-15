@@ -1,5 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
+
+:root {
+    /* Primary colors */
+    --primary-color: #3498db;
+    --primary-dark: #2980b9;
+    --primary-light: #87CEFA;
+
+    /* Secondary colors */
+    --secondary-color: #2ecc71;
+    --secondary-dark: #27ae60;
+    --secondary-light: #c8e6c9;
+
+    /* Accent colors */
+    --accent-color: #e74c3c;
+    --accent-dark: #c0392b;
+    --accent-light: #ef9a9a;
+
+    /* Background colors */
+    --background-color: #ecf0f1; /*used*/
+    --background-dark: #bdc3c7;
+    --background-light: #f5f5f5; /*used*/
+
+    /* Text colors */
+    --text-color: #333; /*used*/
+    --text-light: #fff;
+    --text-muted: #888;
+
+    /* Border colors */
+    --border-color: #ddd; /*used*/
+    --border-dark: #999;
+    --border-light: #eee;
+}
+
+
 ::backdrop {
     background-color: #00000088;
     backdrop-filter: blur(3px);
@@ -14,15 +48,17 @@
 }
 
 
+/* General layout */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: black;
+    color: var(--text-color);
 }
 
 body {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--background-light);
     height: 100vh;
     width: 100vw;
 }
@@ -34,8 +70,8 @@ body {
 }
 
 .main > .left {
-    border-right: 1px solid rgb(231, 232, 234);
-    background-color: rgb(245, 246, 248);
+    border-right: 1px solid var(--border-color);
+    background-color: var(--background-color);
     flex: 0 0 300px;
     display: flex;
     flex-direction: column;
@@ -53,18 +89,18 @@ body {
 .main > .footer {
     display: flex;
     height: 100px;
-    border-top: 1px solid rgb(231, 232, 234);
+    border-top: 1px solid var(--border-color);
 }
 
 .main > .footer > .footer-left {
     flex: 0 0 300px;
-    background-color: rgb(245, 246, 248);
-    border-right: 1px solid rgb(231, 232, 234);
+    background-color: var(--background-color);
+    border-right: 1px solid var(--border-color);
 }
 
 .main > .footer > .footer-right {
     flex: 1;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--background-light);
 }
 
 .right-first-section {
@@ -79,7 +115,36 @@ body {
 }
 
 
+/* Left div layout */
 
+.left > .left-first-section,
+.left > .left-second-section {
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+.left > .left-first-section p {
+    padding: 10px;
+}
+
+.left > .left-first-section li {
+    padding: 10px;
+    list-style: none;
+    margin-left: 10px;
+}
+
+.left > .left-second-section p {
+    padding: 10px;
+}
+
+.left > .left-second-section li {
+    padding: 10px;
+    list-style: none;
+    margin-left: 10px;
+}
+
+
+/* Dialog layout and animations */
 
 .new-project {
     width: 300px;
