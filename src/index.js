@@ -429,7 +429,6 @@ const DOMModule = (function () {
             secondLineItem.textContent = 'Tomorrow';
             firstSectionList.append(secondLineItem);
 
-
             const thirdLineItem = document.createElement('li');
             thirdLineItem.classList.add('task-filter');
             thirdLineItem.dataset.active = 'false';
@@ -563,9 +562,9 @@ const DOMModule = (function () {
             footerDiv.classList.add('footer');
             mainDiv.append(footerDiv);
 
-            const footerLeftDiv = document.createElement('div');
-            footerLeftDiv.classList.add('footer-left');
-            footerDiv.append(footerLeftDiv);
+            // const footerLeftDiv = document.createElement('div');
+            // footerLeftDiv.classList.add('footer-left');
+            // footerDiv.append(footerLeftDiv);
 
             const footerRightDiv = document.createElement('div');
             footerRightDiv.classList.add('footer-right');
@@ -573,13 +572,14 @@ const DOMModule = (function () {
         }
 
         function createButtons() {
-            const footerLeftDiv = document.querySelector('.footer-left');
+            
+            const leftSecondSection = document.querySelector('.left-second-section');
             const footerRightDiv = document.querySelector('.footer-right');
 
             const createProjectButton = document.createElement('button');
             createProjectButton.classList.add('create-project');
             createProjectButton.textContent = 'Create Project';
-            footerLeftDiv.append(createProjectButton);
+            leftSecondSection.append(createProjectButton);
             createProjectButton.addEventListener('click', () => {
                 const newProjectDialog = document.querySelector('.new-project');
                 newProjectDialog.showModal();
