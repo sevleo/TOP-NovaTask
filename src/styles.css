@@ -87,6 +87,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: start;
+    height: calc(100% - 100px);
 }
 
 .main > .footer {
@@ -138,31 +139,92 @@ body {
 .left > .left-first-section,
 .left > .left-second-section {
     margin-top: 40px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
 }
 
+
+
 .left > .left-first-section p {
-    padding: 10px;
+    padding-left: 20px;
     font-style: italic;
     font-weight: 200;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.left > .left-first-section ul {
+    position: relative;
 }
 
 .left > .left-first-section li {
-    padding: 10px;
+    padding-left: 20px;
     list-style: none;
-    margin-left: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    position: relative;
+    cursor: pointer;
+}
+
+
+/* Views animation */
+
+.left > .left-first-section .task-animation {
+    position: absolute;
+    top: 0;
+    height: 50px;
+    /* background-color: var(--accent-light); */
+    border-left: 6px solid var(--accent-light);
+    z-index: 0;
+    /* border-radius: 8px; */
+    transition: all 0.3s ease;
+}
+
+
+.views > li:nth-child(1)[data-active='true']~.task-animation {
+    width: 100%;
+    top: 0;
+}
+
+.views > li:nth-child(2)[data-active='true']~.task-animation {
+    width: 100%;
+    top: 50px;
+}
+
+.views > li:nth-child(3)[data-active='true']~.task-animation {
+    width: 100%;
+    top: 100px;
+}
+
+.left > .left-first-section li[data-active='false']:hover {
+    background-color: #ba181b28;
+    /* border-left: 4px solid var(--accent-darker); */
+    /* padding-left: 16px; */
+}
+
+.left > .left-first-section li[data-active='false']:active {
+    background-color: #ba181b5b;
+    /* border-left: 4px solid var(--accent-darker); */
+    /* padding-left: 16px; */
 }
 
 .left > .left-second-section p {
-    padding: 10px;
+    padding-left: 20px;
     font-style: italic;
     font-weight: 200;
+    height: 50px;
+    display: flex;
+    align-items: center;
 }
 
 .left > .left-second-section li {
-    padding: 10px;
+    padding-left: 20px;
     list-style: none;
-    margin-left: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
 }
 
 

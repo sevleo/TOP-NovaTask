@@ -405,6 +405,8 @@ const DOMModule = (function () {
     
             const leftFirstDiv = document.createElement('div');
             leftFirstDiv.classList.add('left-first-section');
+            leftFirstDiv.dataset.active = 'Today';
+
             leftDiv.append(leftFirstDiv);
     
             const firstSectionLabel = document.createElement('p');
@@ -412,15 +414,31 @@ const DOMModule = (function () {
             leftFirstDiv.append(firstSectionLabel);
     
             const firstSectionList = document.createElement('ul');
+            firstSectionList.classList.add('views');
             leftFirstDiv.append(firstSectionList);
     
             const firstLineItem = document.createElement('li');
+            firstLineItem.classList.add('task-filter');
+            firstLineItem.dataset.active = 'true';
             firstLineItem.textContent = 'Today';
             firstSectionList.append(firstLineItem);
 
             const secondLineItem = document.createElement('li');
+            secondLineItem.classList.add('task-filter');
+            secondLineItem.dataset.active = 'false';
             secondLineItem.textContent = 'Tomorrow';
             firstSectionList.append(secondLineItem);
+
+
+            const thirdLineItem = document.createElement('li');
+            thirdLineItem.classList.add('task-filter');
+            thirdLineItem.dataset.active = 'false';
+            thirdLineItem.textContent = 'All';
+            firstSectionList.append(thirdLineItem);
+
+            const animationDiv = document.createElement('div');
+            animationDiv.classList.add('task-animation', 'start-today');
+            firstSectionList.append(animationDiv);
     
             const leftSecondDiv = document.createElement('div');
             leftSecondDiv.classList.add('left-second-section');
@@ -433,6 +451,22 @@ const DOMModule = (function () {
             const secondSectionList = document.createElement('ul');
             secondSectionList.classList.add('second-section-list');
             leftSecondDiv.append(secondSectionList);
+
+            Array.from(document.getElementsByClassName('task-filter')).forEach((item) => {
+                item.onclick = () => {
+                    leftFirstDiv.dataset.active = item.textContent;
+                    Array.from(document.getElementsByClassName('task-filter')).forEach((item2) => {
+                        if (item === item2) {
+                            item2.dataset.active = 'true';
+                        }
+                        else {
+                            item2.dataset.active = 'false';
+                        }
+                    })
+                    
+                }
+            })
+
         }
 
         // Render projects
