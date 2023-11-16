@@ -20,6 +20,10 @@
 
 
 
+
+
+
+
 when adding a task, it needs to be added to the task list and DOM showing tasks must be reset
 change task field types
 style new task dialog

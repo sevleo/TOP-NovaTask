@@ -56,120 +56,120 @@ const TaskModule = (function() {
 
     let tasks = [
         {
-            id: 0,
-            project: 0,
+            id: 1,
+            project: 1,
             title: 'Complete Exercise 1',
             notes: 'Remember to focus on the key concepts',
             priority: 'High',
             date: '2023-11-15',
         },
         {
-            id: 1,
-            project: 1,
+            id: 2,
+            project: 2,
             title: 'Study Algebra',
             notes: 'Review chapters 3 and 4 for the upcoming test',
             priority: 'Medium',
             date: '2023-11-17',
         },
         {
-            id: 2,
-            project: 2,
+            id: 3,
+            project: 3,
             title: 'Code Review for Project X',
             notes: 'Check for code quality and potential optimizations',
             priority: 'High',
             date: '2023-11-18',
         },
         {
-            id: 3,
-            project: 3,
+            id: 4,
+            project: 4,
             title: 'Buy groceries',
             notes: 'Milk, eggs, bread, and fruits',
             priority: 'Low',
             date: '2023-11-20',
         },
         {
-            id: 4,
-            project: 4,
+            id: 5,
+            project: 5,
             title: 'Read "The Great Gatsby"',
             notes: 'Complete chapters 1-3 by the end of the week',
             priority: 'Medium',
             date: '2023-11-22',
         },
         {
-            id: 5,
-            project: 0,
+            id: 6,
+            project: 1,
             title: 'Prepare presentation slides',
             notes: 'Incorporate feedback from team members',
             priority: 'High',
             date: '2023-11-25',
         },
         {
-            id: 6,
-            project: 1,
+            id: 7,
+            project: 2,
             title: 'Practice guitar',
             notes: 'Learn new chords and practice scales',
             priority: 'Medium',
             date: '2023-11-28',
         },
         {
-            id: 7,
-            project: 2,
+            id: 8,
+            project: 3,
             title: 'Write documentation',
             notes: 'Document the new API endpoints',
             priority: 'High',
             date: '2023-11-30',
         },
         {
-            id: 8,
-            project: 3,
+            id: 9,
+            project: 4,
             title: 'Plan weekend hike',
             notes: 'Check weather forecast and pack essentials',
             priority: 'Low',
             date: '2023-12-02',
         },
         {
-            id: 9,
-            project: 4,
+            id: 10,
+            project: 5,
             title: 'Watch coding tutorial',
             notes: 'Focus on advanced JavaScript concepts',
             priority: 'Medium',
             date: '2023-12-05',
         },
         {
-            id: 10,
-            project: 0,
+            id: 11,
+            project: 1,
             title: 'Review meeting notes',
             notes: 'Prepare action items for follow-up',
             priority: 'High',
             date: '2023-12-08',
         },
         {
-            id: 11,
-            project: 1,
+            id: 12,
+            project: 2,
             title: 'Create flashcards',
             notes: 'For memorizing important math formulas',
             priority: 'Medium',
             date: '2023-12-10',
         },
         {
-            id: 12,
-            project: 2,
+            id: 13,
+            project: 3,
             title: 'Refactor code',
             notes: 'Address code smells and improve readability',
             priority: 'High',
             date: '2023-12-12',
         },
         {
-            id: 13,
-            project: 3,
+            id: 14,
+            project: 4,
             title: 'Water the plants',
             notes: 'Check soil moisture and water accordingly',
             priority: 'Low',
             date: '2023-12-15',
         },
         {
-            id: 14,
-            project: 4,
+            id: 15,
+            project: 5,
             title: 'Practice mindfulness meditation',
             notes: 'Take a break and clear the mind',
             priority: 'Medium',
@@ -178,15 +178,19 @@ const TaskModule = (function() {
 
     ];
     
+    let tasksCount = tasks.length;
+
     // Add new task object
     function createTask(project, title, notes, priority, date) {
         const task = {};
+        tasksCount = tasksCount + 1;
+        task.id = tasksCount;
         task.project = project;
         task.title = title;
         task.notes = notes;
         task.priority = priority;
         task.date = date;
-
+  
         tasks.push(task);
 
         return task;
@@ -290,6 +294,15 @@ const DOMModule = (function () {
             function createTaskDialogForm() {
                 const newTaskDialogForm = document.createElement('form');
                 newTaskDialog.append(newTaskDialogForm);
+                newTaskDialogForm.addEventListener('submit', () => {
+                    const taskProject = document.querySelector('dialog.new-task > form input#task-project');
+                    const taskTitle = document.querySelector('dialog.new-task > form input#task-title');
+                    const taskNotes = document.querySelector('dialog.new-task > form input#task-notes');
+                    const taskPriority = document.querySelector('dialog.new-task > form input#task-priority');
+                    const taskDate = document.querySelector('dialog.new-task > form input#task-date');
+                    TaskModule.createTask(taskProject.value, taskTitle.value, taskNotes.value, taskPriority.value, taskDate.value);
+                    DOMModule.createRightDiv.createTasks(TaskModule.getTasks());
+                })
     
                 const newTaskDialogFieldsTemplate = [
                     {
