@@ -25,7 +25,7 @@
 
 
 # when adding a task, it needs to be added to the task list and DOM showing tasks must be reset
-change task field types
+# change task field types
 style new task dialog
 style new project dialog
 style buttons to create new tasks and projects

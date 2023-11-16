@@ -38,14 +38,32 @@ const ProjectModule = (function() {
         return project;
     }
 
-    // Retrieve projects
-    function getProjects() {
+    // Retrieve list of projects (objects)
+    function getProjectObjects() {
         return projects.slice();
+    }
+
+    // Retrieve list of project (values)
+    function getProjectValues() {
+        let projectValues = [];
+        projects.forEach((p) => {
+            projectValues.push(p.name);
+        })
+        
+        return projectValues;
+    }
+
+    // Retrieve the id of a project that matches the provided name
+    function findIdByName(name) {
+        const project = projects.find(project => project.name === name);
+        return project ? project.id : null;
     }
 
     return {
         createProject,
-        getProjects,
+        getProjectObjects,
+        getProjectValues,
+        findIdByName,
     }
     
 })();
@@ -58,6 +76,7 @@ const TaskModule = (function() {
         {
             id: 1,
             projectId: 1,
+            projectName: 'Sport',
             title: 'Complete Exercise 1',
             notes: 'Remember to focus on the key concepts',
             priority: 'High',
@@ -66,6 +85,7 @@ const TaskModule = (function() {
         {
             id: 2,
             projectId: 2,
+            projectName: 'Math',
             title: 'Study Algebra',
             notes: 'Review chapters 3 and 4 for the upcoming test',
             priority: 'Medium',
@@ -74,6 +94,7 @@ const TaskModule = (function() {
         {
             id: 3,
             projectId: 3,
+            projectName: 'Programming',
             title: 'Code Review for Project X',
             notes: 'Check for code quality and potential optimizations',
             priority: 'High',
@@ -82,6 +103,7 @@ const TaskModule = (function() {
         {
             id: 4,
             projectId: 4,
+            projectName: 'Leisure',
             title: 'Buy groceries',
             notes: 'Milk, eggs, bread, and fruits',
             priority: 'Low',
@@ -89,7 +111,8 @@ const TaskModule = (function() {
         },
         {
             id: 5,
-            projectId: 5,
+            projectId: 1,
+            projectName: 'Sport',
             title: 'Read "The Great Gatsby"',
             notes: 'Complete chapters 1-3 by the end of the week',
             priority: 'Medium',
@@ -97,7 +120,8 @@ const TaskModule = (function() {
         },
         {
             id: 6,
-            projectId: 1,
+            projectId: 2,
+            projectName: 'Math',
             title: 'Prepare presentation slides',
             notes: 'Incorporate feedback from team members',
             priority: 'High',
@@ -105,7 +129,8 @@ const TaskModule = (function() {
         },
         {
             id: 7,
-            projectId: 2,
+            projectId: 3,
+            projectName: 'Programming',
             title: 'Practice guitar',
             notes: 'Learn new chords and practice scales',
             priority: 'Medium',
@@ -113,86 +138,33 @@ const TaskModule = (function() {
         },
         {
             id: 8,
-            projectId: 3,
+            projectId: 4,
+            projectName: 'Leisure',
             title: 'Write documentation',
             notes: 'Document the new API endpoints',
             priority: 'High',
             date: '2023-11-30',
         },
-        {
-            id: 9,
-            projectId: 4,
-            title: 'Plan weekend hike',
-            notes: 'Check weather forecast and pack essentials',
-            priority: 'Low',
-            date: '2023-12-02',
-        },
-        {
-            id: 10,
-            projectId: 5,
-            title: 'Watch coding tutorial',
-            notes: 'Focus on advanced JavaScript concepts',
-            priority: 'Medium',
-            date: '2023-12-05',
-        },
-        {
-            id: 11,
-            projectId: 1,
-            title: 'Review meeting notes',
-            notes: 'Prepare action items for follow-up',
-            priority: 'High',
-            date: '2023-12-08',
-        },
-        {
-            id: 12,
-            projectId: 2,
-            title: 'Create flashcards',
-            notes: 'For memorizing important math formulas',
-            priority: 'Medium',
-            date: '2023-12-10',
-        },
-        {
-            id: 13,
-            projectId: 3,
-            title: 'Refactor code',
-            notes: 'Address code smells and improve readability',
-            priority: 'High',
-            date: '2023-12-12',
-        },
-        {
-            id: 14,
-            projectId: 4,
-            title: 'Water the plants',
-            notes: 'Check soil moisture and water accordingly',
-            priority: 'Low',
-            date: '2023-12-15',
-        },
-        {
-            id: 15,
-            projectId: 5,
-            title: 'Practice mindfulness meditation',
-            notes: 'Take a break and clear the mind',
-            priority: 'Medium',
-            date: '2023-12-18',
-        },
+        
 
     ];
     
     let tasksCount = tasks.length;
 
     // Add new task object
-    function createTask(projectId, title, notes, priority, date) {
+    function createTask(projectName, title, notes, priority, date) {
         const task = {};
         tasksCount = tasksCount + 1;
         task.id = tasksCount;
-        task.projectId = projectId;
+        task.projectId = ProjectModule.findIdByName(projectName);
+        task.projectName = projectName;
         task.title = title;
         task.notes = notes;
         task.priority = priority;
         task.date = date;
   
         tasks.push(task);
-
+        console.log(TaskModule.getTasks());
         return task;
     }
 
@@ -240,7 +212,7 @@ const DOMModule = (function () {
                 newProjectDialogForm.addEventListener('submit', () => {
                     const projectName = document.querySelector('dialog.new-project > form input#project-name');
                     ProjectModule.createProject(projectName.value);
-                    DOMModule.createLeftDiv.createProjects(ProjectModule.getProjects());
+                    DOMModule.createLeftDiv.createProjects(ProjectModule.getProjectObjects());
                     });
 
                 const nameFieldDiv = document.createElement('div');
@@ -295,44 +267,52 @@ const DOMModule = (function () {
                 const newTaskDialogForm = document.createElement('form');
                 newTaskDialog.append(newTaskDialogForm);
                 newTaskDialogForm.addEventListener('submit', () => {
-                    const taskProject = document.querySelector('dialog.new-task > form input#task-project');
-                    const taskTitle = document.querySelector('dialog.new-task > form input#task-title');
-                    const taskNotes = document.querySelector('dialog.new-task > form input#task-notes');
-                    const taskPriority = document.querySelector('dialog.new-task > form input#task-priority');
-                    const taskDate = document.querySelector('dialog.new-task > form input#task-date');
+                    const taskProject = document.querySelector('dialog.new-task > form #task-project');
+                    const taskTitle = document.querySelector('dialog.new-task > form #task-title');
+                    const taskNotes = document.querySelector('dialog.new-task > form #task-notes');
+                    const taskPriority = document.querySelector('dialog.new-task > form #task-priority');
+                    const taskDate = document.querySelector('dialog.new-task > form #task-date');
                     TaskModule.createTask(taskProject.value, taskTitle.value, taskNotes.value, taskPriority.value, taskDate.value);
                     DOMModule.createRightDiv.createTasks(TaskModule.getTasks());
                 })
     
                 const newTaskDialogFieldsTemplate = [
                     {
+                        element_type: 'select',
                         div_class: 'task-project-field-div',
-                        input_id: 'task-project',
-                        type: 'text',
+                        element_id: 'task-project',
+                        input_type: 'text',
                         label: 'Project',
+                        select_options: ProjectModule.getProjectValues(),
                     },
                     {
+                        element_type: 'input',
                         div_class: 'task-title-field-div',
-                        input_id: 'task-title',
-                        type: 'text',
+                        element_id: 'task-title',
+                        input_type: 'text',
                         label: 'Title',
                     },
                     {
+                        element_type: 'textarea',
                         div_class: 'task-notes-field-div',
-                        input_id: 'task-notes',
-                        type: 'text',
+                        element_id: 'task-notes',
+                        input_type: '',
                         label: 'Notes',
                     },
                     {
+                        element_type: 'select',
                         div_class: 'task-priority-field-div',
-                        input_id: 'task-priority',
-                        type: 'text',
+                        element_id: 'task-priority',
+                        input_type: '',
                         label: 'Priority',
+                        select_options: ['High', 'Normal', 'Low'],
+                        select_default: 'Normal',
                     },
                     {
+                        element_type: 'input',
                         div_class: 'task-date-field-div',
-                        input_id: 'task-date',
-                        type: 'text',
+                        element_id: 'task-date',
+                        input_type: 'date',
                         label: 'Date',
                     },
                 ];
@@ -344,14 +324,29 @@ const DOMModule = (function () {
     
                     const fieldLabel = document.createElement('label');
                     fieldLabel.textContent = element.label;
-                    fieldLabel.setAttribute('for', element.input_id);
+                    fieldLabel.setAttribute('for', element.element_id);
                     fieldDiv.append(fieldLabel);
     
-                    const fieldInput = document.createElement('input');
+                    const fieldInput = document.createElement(element.element_type);
                     fieldInput.textContent = element.label;
-                    fieldInput.setAttribute('type', element.type);
-                    fieldInput.setAttribute('id', element.input_id);
+                    fieldInput.setAttribute('type', element.input_type);
+                    fieldInput.setAttribute('id', element.element_id);
                     fieldDiv.append(fieldInput);
+
+
+                    if (element.element_type === 'select') {
+                        element.select_options.forEach((item) => {
+                            const option = document.createElement('option');
+                            option.setAttribute('value', item);
+                            option.textContent = item;
+                            fieldInput.append(option);
+                            if (item === element.select_default) {
+                                option.setAttribute('selected', '');
+                            }
+                        })
+
+                    }
+
                 })
     
                 const submitTaskButton = document.createElement('button');
@@ -639,7 +634,7 @@ const DOMModule = (function () {
 DOMModule.createMainDiv();
 DOMModule.createDialogs();
 DOMModule.createLeftDiv.createStructure();
-DOMModule.createLeftDiv.createProjects(ProjectModule.getProjects());
+DOMModule.createLeftDiv.createProjects(ProjectModule.getProjectObjects());
 DOMModule.createRightDiv.createStructure();
 DOMModule.createRightDiv.createTasks(TaskModule.getTasks());
 DOMModule.createFooterDiv.createStructure();
