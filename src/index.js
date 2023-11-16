@@ -57,7 +57,7 @@ const TaskModule = (function() {
     let tasks = [
         {
             id: 1,
-            project: 1,
+            projectId: 1,
             title: 'Complete Exercise 1',
             notes: 'Remember to focus on the key concepts',
             priority: 'High',
@@ -65,7 +65,7 @@ const TaskModule = (function() {
         },
         {
             id: 2,
-            project: 2,
+            projectId: 2,
             title: 'Study Algebra',
             notes: 'Review chapters 3 and 4 for the upcoming test',
             priority: 'Medium',
@@ -73,7 +73,7 @@ const TaskModule = (function() {
         },
         {
             id: 3,
-            project: 3,
+            projectId: 3,
             title: 'Code Review for Project X',
             notes: 'Check for code quality and potential optimizations',
             priority: 'High',
@@ -81,7 +81,7 @@ const TaskModule = (function() {
         },
         {
             id: 4,
-            project: 4,
+            projectId: 4,
             title: 'Buy groceries',
             notes: 'Milk, eggs, bread, and fruits',
             priority: 'Low',
@@ -89,7 +89,7 @@ const TaskModule = (function() {
         },
         {
             id: 5,
-            project: 5,
+            projectId: 5,
             title: 'Read "The Great Gatsby"',
             notes: 'Complete chapters 1-3 by the end of the week',
             priority: 'Medium',
@@ -97,7 +97,7 @@ const TaskModule = (function() {
         },
         {
             id: 6,
-            project: 1,
+            projectId: 1,
             title: 'Prepare presentation slides',
             notes: 'Incorporate feedback from team members',
             priority: 'High',
@@ -105,7 +105,7 @@ const TaskModule = (function() {
         },
         {
             id: 7,
-            project: 2,
+            projectId: 2,
             title: 'Practice guitar',
             notes: 'Learn new chords and practice scales',
             priority: 'Medium',
@@ -113,7 +113,7 @@ const TaskModule = (function() {
         },
         {
             id: 8,
-            project: 3,
+            projectId: 3,
             title: 'Write documentation',
             notes: 'Document the new API endpoints',
             priority: 'High',
@@ -121,7 +121,7 @@ const TaskModule = (function() {
         },
         {
             id: 9,
-            project: 4,
+            projectId: 4,
             title: 'Plan weekend hike',
             notes: 'Check weather forecast and pack essentials',
             priority: 'Low',
@@ -129,7 +129,7 @@ const TaskModule = (function() {
         },
         {
             id: 10,
-            project: 5,
+            projectId: 5,
             title: 'Watch coding tutorial',
             notes: 'Focus on advanced JavaScript concepts',
             priority: 'Medium',
@@ -137,7 +137,7 @@ const TaskModule = (function() {
         },
         {
             id: 11,
-            project: 1,
+            projectId: 1,
             title: 'Review meeting notes',
             notes: 'Prepare action items for follow-up',
             priority: 'High',
@@ -145,7 +145,7 @@ const TaskModule = (function() {
         },
         {
             id: 12,
-            project: 2,
+            projectId: 2,
             title: 'Create flashcards',
             notes: 'For memorizing important math formulas',
             priority: 'Medium',
@@ -153,7 +153,7 @@ const TaskModule = (function() {
         },
         {
             id: 13,
-            project: 3,
+            projectId: 3,
             title: 'Refactor code',
             notes: 'Address code smells and improve readability',
             priority: 'High',
@@ -161,7 +161,7 @@ const TaskModule = (function() {
         },
         {
             id: 14,
-            project: 4,
+            projectId: 4,
             title: 'Water the plants',
             notes: 'Check soil moisture and water accordingly',
             priority: 'Low',
@@ -169,7 +169,7 @@ const TaskModule = (function() {
         },
         {
             id: 15,
-            project: 5,
+            projectId: 5,
             title: 'Practice mindfulness meditation',
             notes: 'Take a break and clear the mind',
             priority: 'Medium',
@@ -181,11 +181,11 @@ const TaskModule = (function() {
     let tasksCount = tasks.length;
 
     // Add new task object
-    function createTask(project, title, notes, priority, date) {
+    function createTask(projectId, title, notes, priority, date) {
         const task = {};
         tasksCount = tasksCount + 1;
         task.id = tasksCount;
-        task.project = project;
+        task.projectId = projectId;
         task.title = title;
         task.notes = notes;
         task.priority = priority;
@@ -522,6 +522,13 @@ const DOMModule = (function () {
 
          // Render tasks
         function createTasks(tasks) {
+
+            const taskLineItems = document.querySelectorAll('.task');
+            if (taskLineItems) {
+                taskLineItems.forEach(item => {
+                    item.remove();
+                });
+            }
             tasks.forEach(element => {
                 const rightFirstSection = document.querySelector('.right-first-section');
                 const taskLineItem = document.createElement('div');
@@ -531,7 +538,7 @@ const DOMModule = (function () {
                 const taskFieldsTemplate = [
                     {
                         div_class: 'task-project-field',
-                        textContent: element.project,
+                        textContent: element.projectId,
                     },
                     {
                         div_class: 'task-title-field',

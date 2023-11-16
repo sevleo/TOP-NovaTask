@@ -3,10 +3,10 @@
 2 The app shall allow creating new tasks.
     2.1 The user shall be able to fill out fields on the task:
         - Project (required)
-        - Title
+        - Title (required)
         - Notes
         - Priority
-        - Date
+        - Date (required, default today)
     2.2 The user shall have the ability to verify the completion status of a task only on or after the specified target date (due date). 
         Checking the task completion status before the target date shall not be allowed to ensure accuracy and prevent premature updates.
     2.3 Future: The user shall have the ability to specify a task as recurring. Recurring tasks are created automatically.
@@ -24,7 +24,7 @@
 
 
 
-when adding a task, it needs to be added to the task list and DOM showing tasks must be reset
+# when adding a task, it needs to be added to the task list and DOM showing tasks must be reset
 change task field types
 style new task dialog
 style new project dialog
