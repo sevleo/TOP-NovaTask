@@ -610,13 +610,17 @@ const DOMModule = (function () {
 
                 const taskFieldsTemplate = [
                     {
-                        div_class: 'task-project-color',
-                        color: element.projectColor,
-                        
-                    },
-                    {
-                        div_class: 'task-project-field',
-                        textContent: element.projectName,
+                        div_class: 'task-project',
+                        child_elements: [
+                            {
+                                div_class: 'task-project-color',
+                                color: element.projectColor,
+                            },
+                            {
+                                div_class: 'task-project-field',
+                                textContent: element.projectName,
+                            },
+                        ]
                     },
                     {
                         div_class: 'task-title-field',
@@ -642,6 +646,15 @@ const DOMModule = (function () {
                     taskField.textContent = field.textContent;
                     taskField.style.backgroundColor = field.color;
                     taskLineItem.append(taskField);
+                    if (field.child_elements) {
+                        field.child_elements.forEach(child_element => {
+                            const child_div = document.createElement('div');
+                            child_div.classList.add(child_element.div_class);
+                            child_div.textContent = child_element.textContent;
+                            child_div.style.backgroundColor = child_element.color;
+                            taskField.append(child_div);
+                        })
+                    }
 
                 });
             });
