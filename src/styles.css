@@ -290,12 +290,16 @@ dialog.displayed.new-project > form > .project-name-field-div {
     transition: all 300ms ease-in-out 250ms;
 }
 
-dialog.displayed.new-project > form > button {
+dialog.displayed.new-project > form > .project-color-field-div {
     transition: all 300ms ease-in-out 300ms;
 }
 
-dialog.displayed.new-project > form > .close-project-dialog {
+dialog.displayed.new-project > form > button {
     transition: all 300ms ease-in-out 350ms;
+}
+
+dialog.displayed.new-project > form > .close-project-dialog {
+    transition: all 300ms ease-in-out 400ms;
 }
 
 dialog.displayed.new-task > form > .task-project-field-div {

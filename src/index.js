@@ -9,18 +9,22 @@ const ProjectModule = (function() {
         {
             id: 1,
             name: 'Sport',
+            color: '#00FF00',
         },
         {
             id: 2,
             name: 'Math',
+            color: '#FF0000',
         },
         {
             id: 3,
             name: 'Programming',
+            color: '#0000FF',
         },
         {
             id: 4,
             name: 'Leisure',
+            color: '#FF00FF',
         },
     ];
 
@@ -35,8 +39,6 @@ const ProjectModule = (function() {
         project.color = color;
 
         projects.push(project);
-
-        console.log(project);
 
         return project;
     }
@@ -62,11 +64,18 @@ const ProjectModule = (function() {
         return project ? project.id : null;
     }
 
+    // Retrieve the color of a project that matches the provided name
+    function findColorByName(name) {
+        const project = projects.find(project => project.name === name);
+        return project ? project.color : null;
+    }
+
     return {
         createProject,
         getProjectObjects,
         getProjectValues,
         findIdByName,
+        findColorByName,
     }
     
 })();
@@ -80,6 +89,7 @@ const TaskModule = (function() {
             id: 1,
             projectId: 1,
             projectName: 'Sport',
+            projectColor: '#00FF00',
             title: 'Complete Exercise 1',
             notes: 'Remember to focus on the key concepts',
             priority: 'High',
@@ -89,6 +99,7 @@ const TaskModule = (function() {
             id: 2,
             projectId: 2,
             projectName: 'Math',
+            projectColor: '#FF0000',
             title: 'Study Algebra',
             notes: 'Review chapters 3 and 4 for the upcoming test',
             priority: 'Medium',
@@ -98,6 +109,7 @@ const TaskModule = (function() {
             id: 3,
             projectId: 3,
             projectName: 'Programming',
+            projectColor: '#0000FF',
             title: 'Code Review for Project X',
             notes: 'Check for code quality and potential optimizations',
             priority: 'High',
@@ -107,6 +119,7 @@ const TaskModule = (function() {
             id: 4,
             projectId: 4,
             projectName: 'Leisure',
+            projectColor: '#FF00FF',
             title: 'Buy groceries',
             notes: 'Milk, eggs, bread, and fruits',
             priority: 'Low',
@@ -116,6 +129,7 @@ const TaskModule = (function() {
             id: 5,
             projectId: 1,
             projectName: 'Sport',
+            projectColor: '#00FF00',
             title: 'Read "The Great Gatsby"',
             notes: 'Complete chapters 1-3 by the end of the week',
             priority: 'Medium',
@@ -125,6 +139,7 @@ const TaskModule = (function() {
             id: 6,
             projectId: 2,
             projectName: 'Math',
+            projectColor: '#FF0000',
             title: 'Prepare presentation slides',
             notes: 'Incorporate feedback from team members',
             priority: 'High',
@@ -134,6 +149,7 @@ const TaskModule = (function() {
             id: 7,
             projectId: 3,
             projectName: 'Programming',
+            projectColor: '#0000FF',
             title: 'Practice guitar',
             notes: 'Learn new chords and practice scales',
             priority: 'Medium',
@@ -143,6 +159,7 @@ const TaskModule = (function() {
             id: 8,
             projectId: 4,
             projectName: 'Leisure',
+            projectColor: '#FF00FF',
             title: 'Write documentation',
             notes: 'Document the new API endpoints',
             priority: 'High',
@@ -161,6 +178,7 @@ const TaskModule = (function() {
         task.id = tasksCount;
         task.projectId = ProjectModule.findIdByName(projectName);
         task.projectName = projectName;
+        task.projectColor = ProjectModule.findColorByName(projectName);
         task.title = title;
         task.notes = notes;
         task.priority = priority;
@@ -192,7 +210,7 @@ const DOMModule = (function () {
         body.append(mainDiv);
     }
 
-    function createDialogs() {
+    const createDialogs = (function () {
         const body = document.querySelector('body');
         newProjectDialogHandler();
         newTaskDialogHandler();
@@ -216,6 +234,7 @@ const DOMModule = (function () {
                     const projectColor = document.querySelector('dialog.new-project > form input#project-color');
                     ProjectModule.createProject(projectName.value, projectColor.value);
                     DOMModule.createLeftDiv.createProjects(ProjectModule.getProjectObjects());
+                    DOMModule.createDialogs.newTaskDialogHandler();
                     });
 
                 const nameFieldDiv = document.createElement('div');
@@ -271,6 +290,12 @@ const DOMModule = (function () {
         }
 
         function newTaskDialogHandler() {
+
+            const existingTaskDialog = document.querySelector('.new-task');
+            if (existingTaskDialog) {
+                existingTaskDialog.remove();
+            }
+
             const newTaskDialog = createTaskDialog();
             const newTaskDialogForm = createTaskDialogForm();
 
@@ -392,15 +417,19 @@ const DOMModule = (function () {
         }
         
         // Close animation on ESC
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                event.preventDefault();
-                const openDialog = document.querySelector('dialog[open]');
-                if (openDialog) {
-                    closeDialog(openDialog);
+        function addEscEvenListener() {
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    event.preventDefault();
+                    const openDialog = document.querySelector('dialog[open]');
+                    if (openDialog) {
+                        closeDialog(openDialog);
+                    }
                 }
-            }
-        });
+            });
+        }
+
+
 
         // Close animation handler
         function handleCloseAnimation(eventElement, dialog, eventType, form) {
@@ -424,7 +453,15 @@ const DOMModule = (function () {
                 dialog.removeEventListener('transitionend', handleTransitionEnd);
             });
         }
-    }
+
+
+        return {
+            newProjectDialogHandler,
+            newTaskDialogHandler,
+            addEscEvenListener,
+        }
+
+    })();
     
 
     // Handler for left div
@@ -658,10 +695,19 @@ const DOMModule = (function () {
 
 
 DOMModule.createMainDiv();
-DOMModule.createDialogs();
+DOMModule.createDialogs.newProjectDialogHandler();
+DOMModule.createDialogs.newTaskDialogHandler();
+DOMModule.createDialogs.addEscEvenListener();
 DOMModule.createLeftDiv.createStructure();
 DOMModule.createLeftDiv.createProjects(ProjectModule.getProjectObjects());
 DOMModule.createRightDiv.createStructure();
 DOMModule.createRightDiv.createTasks(TaskModule.getTasks());
 DOMModule.createFooterDiv.createStructure();
 DOMModule.createFooterDiv.createButtons();
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === "5") {
+        console.log(ProjectModule.getProjectObjects());
+        console.log(TaskModule.getTasks());
+    }
+})
