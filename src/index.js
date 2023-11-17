@@ -27,13 +27,16 @@ const ProjectModule = (function() {
     let projectsCount = projects.length;
     
     // Add new project
-    function createProject(name) {
+    function createProject(name, color) {
         const project = {};
         projectsCount = projectsCount + 1;
         project.id = projectsCount;
         project.name = name;
+        project.color = color;
 
         projects.push(project);
+
+        console.log(project);
 
         return project;
     }
@@ -210,7 +213,8 @@ const DOMModule = (function () {
                 newProjectDialog.append(newProjectDialogForm);
                 newProjectDialogForm.addEventListener('submit', () => {
                     const projectName = document.querySelector('dialog.new-project > form input#project-name');
-                    ProjectModule.createProject(projectName.value);
+                    const projectColor = document.querySelector('dialog.new-project > form input#project-color');
+                    ProjectModule.createProject(projectName.value, projectColor.value);
                     DOMModule.createLeftDiv.createProjects(ProjectModule.getProjectObjects());
                     });
 
@@ -228,6 +232,21 @@ const DOMModule = (function () {
                 nameFieldInput.setAttribute('type', 'text');
                 nameFieldInput.setAttribute('id', 'project-name');
                 nameFieldDiv.append(nameFieldInput);
+
+                const colorFieldDiv = document.createElement('div');
+                colorFieldDiv.classList.add('project-color-field-div');
+                newProjectDialogForm.append(colorFieldDiv);
+    
+                const colorFieldLabel = document.createElement('label');
+                colorFieldLabel.textContent = 'Color';
+                colorFieldLabel.setAttribute('for', 'project-color');
+                colorFieldDiv.append(colorFieldLabel);
+    
+                const colorFieldInput = document.createElement('input');
+                colorFieldInput.textContent = 'Color';
+                colorFieldInput.setAttribute('type', 'color');
+                colorFieldInput.setAttribute('id', 'project-color');
+                colorFieldDiv.append(colorFieldInput);
     
                 const submitProjectButton = document.createElement('button');
                 submitProjectButton.setAttribute('type', 'submit');
@@ -387,7 +406,11 @@ const DOMModule = (function () {
         function handleCloseAnimation(eventElement, dialog, eventType, form) {
             eventElement.addEventListener(eventType, function handleSubmit(event) {
                 event.preventDefault();
-                form.reset();
+
+                const projectName = document.querySelector('#project-name');
+
+                projectName.value = '';
+                // form.reset();
                 closeDialog(dialog);
             });
         }
