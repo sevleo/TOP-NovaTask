@@ -522,6 +522,7 @@ const DOMModule = (function () {
             secondSectionList.classList.add('second-section-list');
             leftSecondDiv.append(secondSectionList);
 
+            // Update data-active property on .task-filer and on parent .left-first-section
             Array.from(document.getElementsByClassName('task-filter')).forEach((item) => {
                 item.onclick = () => {
                     leftFirstDiv.dataset.active = item.textContent;
@@ -539,7 +540,7 @@ const DOMModule = (function () {
 
         }
 
-        // Render projects
+        // Render projects in .second-section-list
         function createProjects(projects) {
             const projectLineItems = document.querySelectorAll('.project');
             if (projectLineItems) {
@@ -552,8 +553,22 @@ const DOMModule = (function () {
                 const secondSectionList = document.querySelector('.second-section-list');
                 const projectLineItem = document.createElement('li');
                 projectLineItem.classList.add('project');
-                projectLineItem.textContent = element.name;
                 secondSectionList.append(projectLineItem);
+
+
+
+                
+
+                const circle = document.createElement('div');
+                circle.classList.add('circle');
+                circle.style.backgroundColor = element.color;
+                projectLineItem.append(circle);
+                const projectLineItemName = document.createElement('div');
+                projectLineItemName.textContent = element.name;
+                projectLineItem.append(projectLineItemName);
+
+                
+
             });
         }
 
@@ -595,6 +610,11 @@ const DOMModule = (function () {
 
                 const taskFieldsTemplate = [
                     {
+                        div_class: 'task-project-color',
+                        color: element.projectColor,
+                        
+                    },
+                    {
                         div_class: 'task-project-field',
                         textContent: element.projectName,
                     },
@@ -620,6 +640,7 @@ const DOMModule = (function () {
                     const taskField = document.createElement('div');
                     taskField.classList.add(field.div_class);
                     taskField.textContent = field.textContent;
+                    taskField.style.backgroundColor = field.color;
                     taskLineItem.append(taskField);
 
                 });
