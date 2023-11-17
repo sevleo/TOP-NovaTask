@@ -164,7 +164,6 @@ const TaskModule = (function() {
         task.date = date;
   
         tasks.push(task);
-        console.log(TaskModule.getTasks());
         return task;
     }
 
@@ -264,6 +263,10 @@ const DOMModule = (function () {
             }
 
             function createTaskDialogForm() {
+                const existingTaskDialogForm = document.querySelector('.new-task > form');
+                if (existingTaskDialogForm) {
+                    existingTaskDialogForm.remove();
+                }
                 const newTaskDialogForm = document.createElement('form');
                 newTaskDialog.append(newTaskDialogForm);
                 newTaskDialogForm.addEventListener('submit', () => {
@@ -533,7 +536,7 @@ const DOMModule = (function () {
                 const taskFieldsTemplate = [
                     {
                         div_class: 'task-project-field',
-                        textContent: element.projectId,
+                        textContent: element.projectName,
                     },
                     {
                         div_class: 'task-title-field',
