@@ -212,8 +212,8 @@ const DOMModule = (function () {
 
     const createDialogs = (function () {
         const body = document.querySelector('body');
-        newProjectDialogHandler();
-        newTaskDialogHandler();
+        // newProjectDialogHandler();
+        // newTaskDialogHandler();
 
         function newProjectDialogHandler() {
             const newProjectDialog = createProjectDialog();
@@ -237,12 +237,21 @@ const DOMModule = (function () {
                     DOMModule.createDialogs.newTaskDialogHandler();
                     });
 
+                const dialogName = document.createElement('div');
+                dialogName.classList.add('project-dialog-name');
+                dialogName.textContent = 'New Project';
+                newProjectDialogForm.append(dialogName);
+
+                const inputContainer = document.createElement('div');
+                inputContainer.classList.add('input-container');
+                newProjectDialogForm.append(inputContainer);
+
                 const nameFieldDiv = document.createElement('div');
                 nameFieldDiv.classList.add('project-name-field-div');
-                newProjectDialogForm.append(nameFieldDiv);
-    
+                inputContainer.append(nameFieldDiv);
+
                 const nameFieldLabel = document.createElement('label');
-                nameFieldLabel.textContent = 'Name';
+                nameFieldLabel.textContent = 'Name*';
                 nameFieldLabel.setAttribute('for', 'project-name');
                 nameFieldDiv.append(nameFieldLabel);
     
@@ -250,11 +259,13 @@ const DOMModule = (function () {
                 nameFieldInput.textContent = 'Name';
                 nameFieldInput.setAttribute('type', 'text');
                 nameFieldInput.setAttribute('id', 'project-name');
+                nameFieldInput.setAttribute('placeholder', 'Awesome project...');
+                nameFieldInput.setAttribute('required', 'required');
                 nameFieldDiv.append(nameFieldInput);
 
                 const colorFieldDiv = document.createElement('div');
                 colorFieldDiv.classList.add('project-color-field-div');
-                newProjectDialogForm.append(colorFieldDiv);
+                inputContainer.append(colorFieldDiv);
     
                 const colorFieldLabel = document.createElement('label');
                 colorFieldLabel.textContent = 'Color';
@@ -322,7 +333,17 @@ const DOMModule = (function () {
                     TaskModule.createTask(taskProject.value, taskTitle.value, taskNotes.value, taskPriority.value, taskDate.value);
                     DOMModule.createRightDiv.createTasks(TaskModule.getTasks());
                 })
+
+                const dialogName = document.createElement('div');
+                dialogName.classList.add('task-dialog-name');
+                dialogName.textContent = 'New Task';
+                newTaskDialogForm.append(dialogName);
     
+
+                const today = new Date();
+                console.log(today);
+                const formatteDate =  today.toISOString().split('T')[0];
+
                 const newTaskDialogFieldsTemplate = [
                     {
                         element_type: 'select',
@@ -330,6 +351,7 @@ const DOMModule = (function () {
                         element_id: 'task-project',
                         input_type: 'text',
                         label: 'Project',
+                        textContent: 'Project',
                         select_options: ProjectModule.getProjectValues(),
                     },
                     {
@@ -337,7 +359,10 @@ const DOMModule = (function () {
                         div_class: 'task-title-field-div',
                         element_id: 'task-title',
                         input_type: 'text',
-                        label: 'Title',
+                        label: 'Title *',
+                        textContent: 'Title',
+                        text_placeholder: 'Read a book',
+                        required: 'required',
                     },
                     {
                         element_type: 'textarea',
@@ -345,6 +370,8 @@ const DOMModule = (function () {
                         element_id: 'task-notes',
                         input_type: '',
                         label: 'Notes',
+                        textContent: '',
+                        text_placeholder: 'At least a page',
                     },
                     {
                         element_type: 'select',
@@ -352,6 +379,7 @@ const DOMModule = (function () {
                         element_id: 'task-priority',
                         input_type: '',
                         label: 'Priority',
+                        textContent: 'Priority',
                         select_options: ['High', 'Normal', 'Low'],
                         select_default: 'Normal',
                     },
@@ -360,7 +388,10 @@ const DOMModule = (function () {
                         div_class: 'task-date-field-div',
                         element_id: 'task-date',
                         input_type: 'date',
-                        label: 'Date',
+                        label: 'Date *',
+                        textContent: 'Date',
+                        required: 'required',
+                        value: formatteDate,
                     },
                 ];
     
@@ -375,9 +406,14 @@ const DOMModule = (function () {
                     fieldDiv.append(fieldLabel);
     
                     const fieldInput = document.createElement(element.element_type);
-                    fieldInput.textContent = element.label;
+                    fieldInput.textContent = element.textContent;
                     fieldInput.setAttribute('type', element.input_type);
                     fieldInput.setAttribute('id', element.element_id);
+                    fieldInput.setAttribute('placeholder', element.text_placeholder);
+                    fieldInput.setAttribute(element.required, element.required);
+                    if (element.value) {
+                        fieldInput.value = element.value;
+                    }
                     fieldDiv.append(fieldInput);
 
 
@@ -402,7 +438,7 @@ const DOMModule = (function () {
                 newTaskDialogForm.append(submitTaskButton);
     
                 const closeTaskDialogDiv = document.createElement('div');
-                closeTaskDialogDiv.classList.add('close-project-dialog');
+                closeTaskDialogDiv.classList.add('close-task-dialog');
                 newTaskDialogForm.append(closeTaskDialogDiv);
     
                 const closeTaskDialogSpan = document.createElement('span');

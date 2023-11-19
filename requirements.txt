@@ -30,13 +30,13 @@ style new task dialog
 style new project dialog
 style buttons to create new tasks and projects
 style tasks view
-change project id into project name
+# change project id into project name
 implement filter today/tomorrow/all
 save data
 add task completion checkbox and status
 add ability to delete tasks
 add icons to task filters
-add ability to apply color for projects
+# add ability to apply color for projects
 
 
 
@@ -46,3 +46,5 @@ add ability to apply color for projects
 
 add ability to delete projects
 add responsive design
+
+
