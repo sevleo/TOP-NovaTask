@@ -353,6 +353,7 @@ const DOMModule = (function () {
                         label: 'Project',
                         textContent: 'Project',
                         select_options: ProjectModule.getProjectValues(),
+                        cursor_style: 'pointer',
                     },
                     {
                         element_type: 'input',
@@ -382,6 +383,7 @@ const DOMModule = (function () {
                         textContent: 'Priority',
                         select_options: ['High', 'Normal', 'Low'],
                         select_default: 'Normal',
+                        cursor_style: 'pointer',
                     },
                     {
                         element_type: 'input',
@@ -414,6 +416,7 @@ const DOMModule = (function () {
                     if (element.value) {
                         fieldInput.value = element.value;
                     }
+                    fieldInput.style.cursor = element.cursor_style;
                     fieldDiv.append(fieldInput);
 
 

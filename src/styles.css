@@ -393,6 +393,7 @@ dialog.displayed.new-task > form > .close-task-dialog {
     border: 0.5px solid var(--border-dark);
     transition: background-color 1s ease;
     background-color: var(--secondary-light);
+    cursor: pointer;
 }
 
 .new-task > form > button:hover,
@@ -477,6 +478,7 @@ dialog.displayed.new-task > form > .close-task-dialog {
     height: 40px;
     width: 80px;
     padding: 5px;
+    cursor: pointer;
 }
 
 .new-project > form .input-container {
