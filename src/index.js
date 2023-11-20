@@ -526,24 +526,78 @@ const DOMModule = (function () {
             const firstSectionList = document.createElement('ul');
             firstSectionList.classList.add('views');
             leftFirstDiv.append(firstSectionList);
-    
-            const firstLineItem = document.createElement('li');
-            firstLineItem.classList.add('task-filter');
-            firstLineItem.dataset.active = 'true';
-            firstLineItem.textContent = 'Today';
-            firstSectionList.append(firstLineItem);
 
-            const secondLineItem = document.createElement('li');
-            secondLineItem.classList.add('task-filter');
-            secondLineItem.dataset.active = 'false';
-            secondLineItem.textContent = 'Tomorrow';
-            firstSectionList.append(secondLineItem);
-
-            const thirdLineItem = document.createElement('li');
-            thirdLineItem.classList.add('task-filter');
-            thirdLineItem.dataset.active = 'false';
-            thirdLineItem.textContent = 'All';
-            firstSectionList.append(thirdLineItem);
+            const firstSectionLineItems = [
+                {
+                    element_type: 'li',
+                    element_class: 'task-filter',
+                    dataset_active: 'true',
+                    child_elements: [
+                        {
+                            element_type: 'div',
+                            element_class: 'image',
+                            element_innerHtml: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--accent-dark)"><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg>',
+                        },
+                        {
+                            element_type: 'p',
+                            element_textContent: 'Today',
+                        }
+                    ]
+                },
+                {
+                    element_type: 'li',
+                    element_class: 'task-filter',
+                    dataset_active: 'false',
+                    child_elements: [
+                        {
+                            element_type: 'div',
+                            element_class: 'image',
+                            element_innerHtml: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--accent-dark)"><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg>',
+                        },
+                        {
+                            element_type: 'p',
+                            element_textContent: 'Tomorrow',
+                        }
+                    ]
+                },
+                {
+                    element_type: 'li',
+                    element_class: 'task-filter',
+                    dataset_active: 'false',
+                    child_elements: [
+                        {
+                            element_type: 'div',
+                            element_class: 'image',
+                            element_innerHtml: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--accent-dark)"><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg>',
+                        },
+                        {
+                            element_type: 'p',
+                            element_textContent: 'All',
+                        }
+                    ]
+                }
+            ]
+            
+            firstSectionLineItems.forEach(element => {
+                const lineItem = document.createElement(element.element_type);
+                lineItem.classList.add(element.element_class);
+                lineItem.dataset.active = element.dataset_active;
+                firstSectionList.append(lineItem);
+                if (element.child_elements) {
+                    element.child_elements.forEach(child_element => {
+                        const lineItemChild = document.createElement(child_element.element_type);
+                        lineItemChild.classList.add(child_element.element_class);
+                        if (child_element.element_innerHtml) {
+                            lineItemChild.innerHTML = `${child_element.element_innerHtml}`;
+                        }
+                        if (child_element.element_textContent) {
+                            lineItemChild.textContent = child_element.element_textContent;
+                        }
+                        lineItem.append(lineItemChild);
+                    })
+                }
+            })
+        
 
             const animationDiv = document.createElement('div');
             animationDiv.classList.add('task-animation', 'start-today');
@@ -593,10 +647,6 @@ const DOMModule = (function () {
                 const projectLineItem = document.createElement('li');
                 projectLineItem.classList.add('project');
                 secondSectionList.append(projectLineItem);
-
-
-
-                
 
                 const circle = document.createElement('div');
                 circle.classList.add('circle');
