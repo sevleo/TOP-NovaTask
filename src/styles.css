@@ -220,6 +220,14 @@ body {
 
 }
 
+.left > .left-first-section li[data-active='true'] > div > svg {
+    fill: var(--accent-color);
+}
+
+.left > .left-first-section li[data-active='true'] > p {
+    color: var(--accent-color);
+}
+
 .left > .left-first-section li[data-active='false']:active {
     background-color: #ba181b5b;
 
