@@ -243,7 +243,7 @@ body {
 }
 
 .left > .left-second-section li {
-    padding-left: 50px;
+    padding-left: 30px;
     list-style: none;
     height: 50px;
     display: flex;
@@ -251,12 +251,12 @@ body {
     gap: 10px;
 }
 
-.left > .left-second-section li > .circle {
+/* .left > .left-second-section li > .circle {
     height: 10px;
     width: 10px;
     border-radius: 50%;
     border: 0.5px solid var(--text-muted);
-}
+} */
 
 .left > .left-second-section button {
     margin-left: 50px;
@@ -500,4 +500,11 @@ dialog.displayed.new-task > form > .close-task-dialog {
     display: flex;
     width: 100%;
     justify-content: space-around;
+}
+
+
+.icon {
+    width: 20px;
+    height: 20px;
+    /* fill: red; */
 }

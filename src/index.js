@@ -648,10 +648,23 @@ const DOMModule = (function () {
                 projectLineItem.classList.add('project');
                 secondSectionList.append(projectLineItem);
 
-                const circle = document.createElement('div');
-                circle.classList.add('circle');
-                circle.style.backgroundColor = element.color;
-                projectLineItem.append(circle);
+                // const circle = document.createElement('div');
+                // circle.classList.add('circle');
+                // circle.style.backgroundColor = element.color;
+                // projectLineItem.append(circle);
+                const icon = document.createElement('div');
+                icon.classList.add('icon');
+                icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="0.5" stroke="var(--border-dark)">
+                <title>checkbox-multiple-blank-circle</title>
+                <path d="M14,2A8,8 0 0,0 6,10A8,8 0 0,0 14,18A8,8 0 0,0 22,10A8,8 0 0,0 14,2M4.93,5.82C3.08,7.34 2,9.61 2,12A8,8 0 0,0 10,20C10.64,20 11.27,19.92 11.88,19.77C10.12,19.38 8.5,18.5 7.17,17.29C5.22,16.25 4,14.21 4,12C4,11.7 4.03,11.41 4.07,11.11C4.03,10.74 4,10.37 4,10C4,8.56 4.32,7.13 4.93,5.82Z"/>
+                </svg>`;
+                // icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>leaf</title><path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z" /></svg>`;
+                // icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>leaf</title><path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z" /></svg>`;
+
+
+                icon.style.fill = element.color;
+                projectLineItem.append(icon);
+                
                 const projectLineItemName = document.createElement('div');
                 projectLineItemName.textContent = element.name;
                 projectLineItem.append(projectLineItemName);
