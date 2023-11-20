@@ -31,7 +31,8 @@
 style buttons to create new tasks and projects
 style tasks view
 # change project id into project name
-implement filter today/tomorrow/all
+# implement filter today/tomorrow/all
+implement filter by projects
 save data
 add task completion checkbox and status
 add ability to delete tasks

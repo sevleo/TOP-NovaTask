@@ -10,21 +10,25 @@ const ProjectModule = (function() {
             id: 1,
             name: 'Sport',
             color: '#00FF00',
+            active: 'false',
         },
         {
             id: 2,
             name: 'Math',
             color: '#FF0000',
+            active: 'false',
         },
         {
             id: 3,
             name: 'Programming',
             color: '#0000FF',
+            active: 'false',
         },
         {
             id: 4,
             name: 'Leisure',
             color: '#FF00FF',
+            active: 'false',
         },
     ];
 
@@ -93,6 +97,7 @@ const TaskModule = (function() {
     function getActiveView() {
         return active_view;
     }
+
 
     let tasks = [
         {
@@ -577,7 +582,6 @@ const DOMModule = (function () {
             });
         }
 
-
         return {
             newProjectDialogHandler,
             newTaskDialogHandler,
@@ -706,10 +710,11 @@ const DOMModule = (function () {
             secondSectionList.classList.add('second-section-list');
             leftSecondDiv.append(secondSectionList);
 
+
             // Update data-active property on .task-filer and on parent .left-first-section
             Array.from(document.getElementsByClassName('task-filter')).forEach((item) => {
                 item.onclick = () => {
-                    leftFirstDiv.dataset.active = item.textContent;
+                    // leftFirstDiv.dataset.active = item.textContent;
                     Array.from(document.getElementsByClassName('task-filter')).forEach((item2) => {
                         if (item === item2) {
                             item2.dataset.active = 'true';
@@ -721,7 +726,6 @@ const DOMModule = (function () {
                     
                 }
             })
-
         }
 
         // Render projects in .second-section-list
@@ -737,6 +741,7 @@ const DOMModule = (function () {
                 const secondSectionList = document.querySelector('.second-section-list');
                 const projectLineItem = document.createElement('li');
                 projectLineItem.classList.add('project');
+                projectLineItem.dataset.active = element.active;
                 secondSectionList.append(projectLineItem);
 
                 // const circle = document.createElement('div');
@@ -759,10 +764,45 @@ const DOMModule = (function () {
                 const projectLineItemName = document.createElement('div');
                 projectLineItemName.textContent = element.name;
                 projectLineItem.append(projectLineItemName);
-
-                
-
             });
+
+            const existingAnimationDiv2 = document.querySelector('.second-section-list > .task-animation');
+            if (existingAnimationDiv2) {
+                existingAnimationDiv2.remove();
+
+            }
+
+            const secondSectionList = document.querySelector('.second-section-list');
+            const animationDiv2 = document.createElement('div');
+            animationDiv2.classList.add('task-animation', 'start-first');
+            secondSectionList.append(animationDiv2);
+
+            // Update data-active property on .project
+            Array.from(document.getElementsByClassName('project')).forEach((item) => {
+                item.onclick = () => {
+
+                    
+                    Array.from(document.getElementsByClassName('project')).forEach((item2) => {
+                        if (item === item2) {
+                            if (item.dataset.active == 'true') {
+                                const task_animation = document.querySelector('.start-first');
+                                task_animation.style.opacity = '0';
+
+                                setTimeout(() => {
+                                    item2.dataset.active = 'false';
+                                    task_animation.style.opacity = '1';
+                                  }, 300);
+    
+                            } else {
+                                item2.dataset.active = 'true';
+                            }
+                        }
+                        else {
+                            item2.dataset.active = 'false';
+                        }
+                    })
+                }
+            })
         }
 
         return {
@@ -867,10 +907,6 @@ const DOMModule = (function () {
             footerDiv.classList.add('footer');
             mainDiv.append(footerDiv);
 
-            // const footerLeftDiv = document.createElement('div');
-            // footerLeftDiv.classList.add('footer-left');
-            // footerDiv.append(footerLeftDiv);
-
             const footerRightDiv = document.createElement('div');
             footerRightDiv.classList.add('footer-right');
             footerDiv.append(footerRightDiv);
@@ -891,6 +927,7 @@ const DOMModule = (function () {
                 newProjectDialog.classList.add('displayed');
                 newProjectDialog.classList.remove('hidden');
             })
+
 
             const createTaskButton = document.createElement('button');
             createTaskButton.classList.add('create-task');
