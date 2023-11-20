@@ -787,7 +787,7 @@ const DOMModule = (function () {
                             if (item.dataset.active == 'true') {
                                 const task_animation = document.querySelector('.start-first');
                                 task_animation.style.opacity = '0';
-
+                                item2.classList.remove('font-accent');
                                 setTimeout(() => {
                                     item2.dataset.active = 'false';
                                     task_animation.style.opacity = '1';
@@ -795,10 +795,12 @@ const DOMModule = (function () {
     
                             } else {
                                 item2.dataset.active = 'true';
+                                item2.classList.add('font-accent');
                             }
                         }
                         else {
                             item2.dataset.active = 'false';
+                            item2.classList.remove('font-accent');
                         }
                     })
                 }

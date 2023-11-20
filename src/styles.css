@@ -181,6 +181,10 @@ body {
     gap: 10px;
 }
 
+.left > .left-second-section li {
+    cursor: pointer;
+}
+
 .left > .left-first-section li > .image {
     height: 20px;
     width: 20px;
@@ -223,7 +227,8 @@ body {
 
 /* Views styles */
 
-.left > .left-first-section li[data-active='false']:hover {
+.left > .left-first-section li[data-active='false']:hover,
+.left > .left-second-section li:hover {
     background-color: #ba181b28;
 }
 
@@ -235,9 +240,13 @@ body {
     color: var(--accent-color);
 }
 
-.left > .left-first-section li[data-active='false']:active {
-    background-color: #ba181b5b;
+.left > .left-second-section li.font-accent > div {
+    color: var(--accent-color);
+}
 
+.left > .left-first-section li[data-active='false']:active,
+.left > .left-second-section li:active {
+    background-color: #ba181b5b;
 }
 
 
