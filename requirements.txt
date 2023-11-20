@@ -35,9 +35,10 @@ implement filter today/tomorrow/all
 save data
 add task completion checkbox and status
 add ability to delete tasks
-add icons to task filters
+# add icons to task filters
 # add ability to apply color for projects
 
+change line "DOMModule.createRightDiv.createTasks(TaskModule.getTodayTasks());" to make this conditional - call function last called before dialog
 
 
 

@@ -84,6 +84,16 @@ const ProjectModule = (function() {
 // Task module 
 const TaskModule = (function() {
 
+    let active_view = 'today';
+
+    function changeActiveView(view) {
+        active_view = view;
+    }
+
+    function getActiveView() {
+        return active_view;
+    }
+
     let tasks = [
         {
             id: 1,
@@ -103,7 +113,7 @@ const TaskModule = (function() {
             title: 'Study Algebra',
             notes: 'Review chapters 3 and 4 for the upcoming test',
             priority: 'Medium',
-            date: '2023-11-17',
+            date: '2023-11-21',
         },
         {
             id: 3,
@@ -113,7 +123,7 @@ const TaskModule = (function() {
             title: 'Code Review for Project X',
             notes: 'Check for code quality and potential optimizations',
             priority: 'High',
-            date: '2023-11-18',
+            date: '2023-11-21',
         },
         {
             id: 4,
@@ -188,14 +198,78 @@ const TaskModule = (function() {
         return task;
     }
 
-    // Retrieve tasks
-    function getTasks() {
+    // Retrieve all tasks
+    function getAllTasks() {
+        changeActiveView('all');
         return tasks.slice();
+    }
+
+    // Retrieve today's tasks
+    function getTodayTasks() {
+        const today = new Date();        
+        const tasksToReturn = [];
+        tasks.forEach((task) => {
+            const dateString = task.date;
+            const dateParts = dateString.split("-");
+
+            const year = parseInt(dateParts[0]);
+            const month = parseInt(dateParts[1]);
+            const date = parseInt(dateParts[2]);
+
+            const taskDate = new Date(year, month - 1, date);
+
+            const isSameYear = taskDate.getFullYear() === today.getFullYear();
+            const isSameMonth = taskDate.getMonth() === today.getMonth();
+            const isSameDay = taskDate.getDate() === today.getDate();
+
+
+            if (isSameYear && isSameMonth && isSameDay) {
+                tasksToReturn.push(task);
+            }
+        })
+
+        changeActiveView('today');
+        return tasksToReturn;
+    }
+
+    // Retrieve tomorrow's tasks
+    function getTomorrowTasks() {
+
+        const tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);       
+        const tasksToReturn = [];
+        tasks.forEach((task) => {
+            const dateString = task.date;
+            const dateParts = dateString.split("-");
+
+            const year = parseInt(dateParts[0]);
+            const month = parseInt(dateParts[1]);
+            const date = parseInt(dateParts[2]);
+
+            const taskDate = new Date(year, month - 1, date);
+
+            const isSameYear = taskDate.getFullYear() === tomorrow.getFullYear();
+            const isSameMonth = taskDate.getMonth() === tomorrow.getMonth();
+            const isSameDay = taskDate.getDate() === tomorrow.getDate();
+
+
+            if (isSameYear && isSameMonth && isSameDay) {
+                tasksToReturn.push(task);
+            }
+        })
+
+        changeActiveView('tomorrow');
+        return tasksToReturn;
+
+
     }
 
     return {
         createTask,
-        getTasks,
+        getAllTasks,
+        getTodayTasks,
+        getTomorrowTasks,
+        changeActiveView,
+        getActiveView,
     }
     
 })();
@@ -331,7 +405,18 @@ const DOMModule = (function () {
                     const taskPriority = document.querySelector('dialog.new-task > form #task-priority');
                     const taskDate = document.querySelector('dialog.new-task > form #task-date');
                     TaskModule.createTask(taskProject.value, taskTitle.value, taskNotes.value, taskPriority.value, taskDate.value);
-                    DOMModule.createRightDiv.createTasks(TaskModule.getTasks());
+
+                   
+                    if (TaskModule.getActiveView() == 'all') {
+                        console.log('all');
+                        DOMModule.createRightDiv.createTasks(TaskModule.getAllTasks());
+                    } else if (TaskModule.getActiveView() == 'today') {
+                        console.log('today');
+                        DOMModule.createRightDiv.createTasks(TaskModule.getTodayTasks());
+                    } else if (TaskModule.getActiveView() == 'tomorrow') {
+                        console.log('tomorrow');
+                        DOMModule.createRightDiv.createTasks(TaskModule.getTomorrowTasks());
+                    }
                 })
 
                 const dialogName = document.createElement('div');
@@ -341,8 +426,7 @@ const DOMModule = (function () {
     
 
                 const today = new Date();
-                console.log(today);
-                const formatteDate =  today.toISOString().split('T')[0];
+                const formatteDate = today.toISOString().split('T')[0];
 
                 const newTaskDialogFieldsTemplate = [
                     {
@@ -542,7 +626,8 @@ const DOMModule = (function () {
                             element_type: 'p',
                             element_textContent: 'Today',
                         }
-                    ]
+                    ],
+                    function: 'getTodayTasks',
                 },
                 {
                     element_type: 'li',
@@ -558,7 +643,8 @@ const DOMModule = (function () {
                             element_type: 'p',
                             element_textContent: 'Tomorrow',
                         }
-                    ]
+                    ],
+                    function: 'getTomorrowTasks',
                 },
                 {
                     element_type: 'li',
@@ -574,7 +660,8 @@ const DOMModule = (function () {
                             element_type: 'p',
                             element_textContent: 'All',
                         }
-                    ]
+                    ],
+                    function: 'getAllTasks',
                 }
             ]
             
@@ -596,6 +683,10 @@ const DOMModule = (function () {
                         lineItem.append(lineItemChild);
                     })
                 }
+                const tasksFunction = TaskModule[element.function];
+                lineItem.addEventListener('click', function() {
+                    lineItem.addEventListener('click', DOMModule.createRightDiv.createTasks(tasksFunction()));
+                } )
             })
         
 
@@ -837,13 +928,16 @@ DOMModule.createDialogs.addEscEvenListener();
 DOMModule.createLeftDiv.createStructure();
 DOMModule.createLeftDiv.createProjects(ProjectModule.getProjectObjects());
 DOMModule.createRightDiv.createStructure();
-DOMModule.createRightDiv.createTasks(TaskModule.getTasks());
+DOMModule.createRightDiv.createTasks(TaskModule.getTodayTasks());
 DOMModule.createFooterDiv.createStructure();
 DOMModule.createFooterDiv.createButtons();
 
 document.addEventListener('keydown', function(event) {
     if (event.key === "5") {
-        console.log(ProjectModule.getProjectObjects());
-        console.log(TaskModule.getTasks());
+        // console.log(ProjectModule.getProjectObjects());
+        // console.log(TaskModule.getTodayTasks());
+        // console.log(TaskModule.getTomorrowTasks());
+        // console.log(TaskModule.getAllTasks());
+        console.log(TaskModule.getActiveView());
     }
 })
