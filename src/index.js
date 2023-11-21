@@ -456,17 +456,7 @@ const DOMModule = (function () {
                     const taskDate = document.querySelector('dialog.new-task > form #task-date');
                     TaskModule.createTask(taskProject.value, taskTitle.value, taskNotes.value, taskPriority.value, taskDate.value);
 
-                   
-                    if (TaskModule.getActiveView() == 'all') {
-                        console.log('all');
-                        DOMModule.createRightDiv.createTasks(TaskModule.getAllTasks());
-                    } else if (TaskModule.getActiveView() == 'today') {
-                        console.log('today');
-                        DOMModule.createRightDiv.createTasks(TaskModule.getTodayTasks());
-                    } else if (TaskModule.getActiveView() == 'tomorrow') {
-                        console.log('tomorrow');
-                        DOMModule.createRightDiv.createTasks(TaskModule.getTomorrowTasks());
-                    }
+                    DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
                 })
 
                 const dialogName = document.createElement('div');
