@@ -808,7 +808,7 @@ const DOMModule = (function () {
                 projectLineItem.append(projectLineItemName);
 
                 projectLineItem.addEventListener('click', (event) => {
-                    if (TaskModule.getActiveProject() == event.target.childNodes[1].innerHTML) {
+                    if (TaskModule.getActiveProject() === event.target.childNodes[1].innerHTML) {
                         TaskModule.changeActiveProject('');
                     } else {
                         TaskModule.changeActiveProject(event.target.childNodes[1].innerHTML);
@@ -888,10 +888,15 @@ const DOMModule = (function () {
                     item.remove();
                 });
             }
+
+            let counter = 0;
+            let sub_counter = 0;
+
             tasks.forEach(element => {
                 const rightFirstSection = document.querySelector('.right-first-section');
                 const taskLineItem = document.createElement('div');
                 taskLineItem.classList.add('task');
+                taskLineItem.classList.add('hidden');
                 rightFirstSection.append(taskLineItem);
 
                 const taskFieldsTemplate = [
@@ -925,10 +930,13 @@ const DOMModule = (function () {
                         textContent: element.date,
                     },
                 ];
+                
+
 
                 taskFieldsTemplate.forEach(field => {
                     const taskField = document.createElement('div');
                     taskField.classList.add(field.div_class);
+                    taskField.classList.add('hidden');
                     taskField.textContent = field.textContent;
                     taskField.style.backgroundColor = field.color;
                     taskLineItem.append(taskField);
@@ -941,8 +949,17 @@ const DOMModule = (function () {
                             taskField.append(child_div);
                         })
                     }
+                    setTimeout(() => {
+                        taskField.classList.remove('hidden');
+                      }, 30 * sub_counter);
+                    sub_counter = sub_counter + 1;
 
                 });
+                setTimeout(() => {
+                    taskLineItem.classList.remove('hidden');
+                  }, 80 * counter);
+                counter = counter + 1;
+
             });
         }
         
@@ -985,7 +1002,7 @@ const DOMModule = (function () {
             createProjectButton.append(createProjectButtonIcon);
 
             const createProjectButtonLabel = document.createElement('div');
-            createProjectButtonLabel.textContent = 'Add';
+            createProjectButtonLabel.textContent = 'Project';
             createProjectButton.append(createProjectButtonLabel);
 
             const createTaskButton = document.createElement('div');
@@ -1010,7 +1027,7 @@ const DOMModule = (function () {
             createTaskButtonContainer.append(createTaskButtonIcon);
 
             const createTaskButtonLabel = document.createElement('div');
-            createTaskButtonLabel.textContent = 'Add Task';
+            createTaskButtonLabel.textContent = 'Task';
             createTaskButtonContainer.append(createTaskButtonLabel);
             
         }
