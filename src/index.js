@@ -808,10 +808,19 @@ const DOMModule = (function () {
                 projectLineItem.append(projectLineItemName);
 
                 projectLineItem.addEventListener('click', (event) => {
-                    if (TaskModule.getActiveProject() === event.target.childNodes[1].innerHTML) {
+                    // console.log(event);
+                    // console.log(event.target);
+                    // console.log(event.target.childNodes);
+                    // console.log(event.target.childNodes[1]);
+                    // let a = event.target.childNodes[1].textContent;
+                    
+                    // console.log(projectLineItemName.textContent);
+                    // console.log(TaskModule.getActiveProject());
+
+                    if (TaskModule.getActiveProject() === projectLineItemName.textContent) {
                         TaskModule.changeActiveProject('');
                     } else {
-                        TaskModule.changeActiveProject(event.target.childNodes[1].innerHTML);
+                        TaskModule.changeActiveProject(projectLineItemName.textContent);
                     }
                     DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
                 })
@@ -951,7 +960,7 @@ const DOMModule = (function () {
                     }
                     setTimeout(() => {
                         taskField.classList.remove('hidden');
-                      }, 30 * sub_counter);
+                      }, 40 * sub_counter);
                     sub_counter = sub_counter + 1;
 
                 });

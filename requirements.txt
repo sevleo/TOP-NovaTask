@@ -35,6 +35,7 @@
 # change line "DOMModule.createRightDiv.createTasks(TaskModule.getTodayTasks());" to make this conditional - call function last called before dialog
 # implement filter by projects
 # style buttons to create new tasks and projects
+# bug in line 811-815 (appears to be fixed but keep watch
 style tasks view
 save data
 add task completion checkbox and status
@@ -44,5 +45,6 @@ add today date in today view
 add tomorrow date in tomorrow view
 add ability to delete projects
 add responsive design
+
 
 
