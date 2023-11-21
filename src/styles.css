@@ -32,6 +32,10 @@
     --border-color: #D6CCC2; /*used*/
     --border-dark: #999; /*used*/
     --border-light: #eee;
+
+    /* Button colors */
+    --button-hover: #ba181b28; /*used*/
+    --button-active: #ba181b5b; /*used*/
 }
 
 
@@ -96,11 +100,12 @@ body {
 .main > .footer {
     display: flex;
     height: 100px;
-    border-top: 1px solid var(--border-color);
+    /* border-top: 1px solid var(--border-color); */
     position: fixed;
     bottom: 0;
     width: 100%;
     left: 300px;
+    box-shadow: 0px -50px 40px -20px var(--background-light);
 }
 
 .main > .footer > .footer-left {
@@ -381,6 +386,46 @@ body {
 }
 
 
+/* Footer add new task button */
+
+.footer > .footer-right > .create-task {
+    height: 100%;
+    width: calc(100% - 300px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.footer > .footer-right > .create-task > .create-task-container {
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 0.5px solid var(--border-dark);
+    box-shadow: 0px 0px 5px 2px var(--border-color);
+}
+
+.footer > .footer-right > .create-task > .create-task-container div:nth-child(2) {
+    font-size: 20px;
+}
+
+.footer > .footer-right > .create-task > .create-task-container > div:first-child {
+    height: 20px;
+    width: 20px;
+}
+
+.footer > .footer-right > .create-task > .create-task-container:hover {
+    background-color: var(--button-hover);
+}
+
+.footer > .footer-right > .create-task > .create-task-container:active {
+    background-color: var(--button-active)
+}
 
 
 /* Dialog layout and animations */

@@ -990,7 +990,6 @@ const DOMModule = (function () {
                 newProjectDialog.classList.remove('hidden');
             })
 
-
             const createProjectButtonIcon = document.createElement('div');
             createProjectButtonIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>`;
             createProjectButton.append(createProjectButtonIcon);
@@ -999,10 +998,8 @@ const DOMModule = (function () {
             createProjectButtonLabel.textContent = 'Add';
             createProjectButton.append(createProjectButtonLabel);
 
-
-            const createTaskButton = document.createElement('button');
+            const createTaskButton = document.createElement('div');
             createTaskButton.classList.add('create-task');
-            createTaskButton.textContent = 'Create Task';
             footerRightDiv.append(createTaskButton);
 
             createTaskButton.addEventListener('click', () => {
@@ -1011,6 +1008,20 @@ const DOMModule = (function () {
                 newTaskDialog.classList.add('displayed');
                 newTaskDialog.classList.remove('hidden');
             })
+
+
+            const createTaskButtonContainer = document.createElement('div');
+            createTaskButtonContainer.classList.add('create-task-container')
+            createTaskButton.append(createTaskButtonContainer);
+
+
+            const createTaskButtonIcon = document.createElement('div');
+            createTaskButtonIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>`;
+            createTaskButtonContainer.append(createTaskButtonIcon);
+
+            const createTaskButtonLabel = document.createElement('div');
+            createTaskButtonLabel.textContent = 'Add Task';
+            createTaskButtonContainer.append(createTaskButtonLabel);
             
         }
         return {
