@@ -89,6 +89,7 @@ const ProjectModule = (function() {
 const TaskModule = (function() {
 
     let active_view = 'today';
+    let active_project = '';
 
     function changeActiveView(view) {
         active_view = view;
@@ -96,6 +97,16 @@ const TaskModule = (function() {
 
     function getActiveView() {
         return active_view;
+    }
+
+
+
+    function changeActiveProject(project) {
+        active_project = project;
+    }
+
+    function getActiveProject() {
+        return active_project;
     }
 
 
@@ -268,6 +279,36 @@ const TaskModule = (function() {
 
     }
 
+    // Retrieve tasks from active view
+    function getTasksFromActiveView() {
+        if (getActiveView() === 'today') {
+            return getTodayTasks();
+        } else if (getActiveView() === 'tomorrow') {
+            return getTomorrowTasks();
+        } else if (getActiveView() === 'all') {
+            return getAllTasks();
+        }
+    }
+
+    // Retrieve a project's tasks
+    function getProjectTasks(project, tasks) {
+        if (project == '') {
+            return tasks;
+        }
+        
+        const tasksToReturn = [];
+        
+        tasks.forEach(task => {
+            if (task.projectName == project) {
+                tasksToReturn.push(task);
+            }
+        })
+
+        changeActiveProject(project);
+
+        return tasksToReturn;
+    }
+
     return {
         createTask,
         getAllTasks,
@@ -275,6 +316,10 @@ const TaskModule = (function() {
         getTomorrowTasks,
         changeActiveView,
         getActiveView,
+        changeActiveProject,
+        getActiveProject,
+        getProjectTasks,
+        getTasksFromActiveView,
     }
     
 })();
@@ -689,7 +734,14 @@ const DOMModule = (function () {
                 }
                 const tasksFunction = TaskModule[element.function];
                 lineItem.addEventListener('click', function() {
-                    lineItem.addEventListener('click', DOMModule.createRightDiv.createTasks(tasksFunction()));
+                    DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), tasksFunction()));
+                    
+                    // DOMModule.createRightDiv.createTasks(tasksFunction());
+                    // console.log(TaskModule.getActiveProject());
+                    // console.log(TaskModule.getProjectTasks(TaskModule.getActiveProject(), tasksFunction()));
+                    // console.log(tasksFunction());
+                    // console.log(TaskModule.getActiveProject());
+                    // console.log(TaskModule.getProjectTasks(TaskModule.getActiveProject(), tasksFunction()));
                 } )
             })
         
@@ -764,6 +816,15 @@ const DOMModule = (function () {
                 const projectLineItemName = document.createElement('div');
                 projectLineItemName.textContent = element.name;
                 projectLineItem.append(projectLineItemName);
+
+                projectLineItem.addEventListener('click', (event) => {
+                    if (TaskModule.getActiveProject() == event.target.childNodes[1].innerHTML) {
+                        TaskModule.changeActiveProject('');
+                    } else {
+                        TaskModule.changeActiveProject(event.target.childNodes[1].innerHTML);
+                    }
+                    DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
+                })
             });
 
             const existingAnimationDiv2 = document.querySelector('.second-section-list > .task-animation');
@@ -977,6 +1038,10 @@ document.addEventListener('keydown', function(event) {
         // console.log(TaskModule.getTodayTasks());
         // console.log(TaskModule.getTomorrowTasks());
         // console.log(TaskModule.getAllTasks());
+        // console.log(TaskModule.getProjectTasks('Math', TaskModule.getTodayTasks()));
+        // console.log(TaskModule.getActiveProject());
+        // console.log(TaskModule.getActiveView());
+        console.log(TaskModule.getActiveProject());
         console.log(TaskModule.getActiveView());
     }
 })

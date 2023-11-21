@@ -28,19 +28,17 @@
 # change task field types
 # style new task dialog
 # style new project dialog
-style buttons to create new tasks and projects
-style tasks view
 # change project id into project name
 # implement filter today/tomorrow/all
+# add icons to task filters
+# add ability to apply color for projects
+# change line "DOMModule.createRightDiv.createTasks(TaskModule.getTodayTasks());" to make this conditional - call function last called before dialog
 implement filter by projects
+style buttons to create new tasks and projects
+style tasks view
 save data
 add task completion checkbox and status
 add ability to delete tasks
-# add icons to task filters
-# add ability to apply color for projects
-
-change line "DOMModule.createRightDiv.createTasks(TaskModule.getTodayTasks());" to make this conditional - call function last called before dialog
-
 
 
 
