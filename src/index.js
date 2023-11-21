@@ -295,7 +295,7 @@ const TaskModule = (function() {
         if (project == '') {
             return tasks;
         }
-        
+
         const tasksToReturn = [];
         
         tasks.forEach(task => {
@@ -980,9 +980,8 @@ const DOMModule = (function () {
             const leftSecondSection = document.querySelector('.left-second-section');
             const footerRightDiv = document.querySelector('.footer-right');
 
-            const createProjectButton = document.createElement('button');
+            const createProjectButton = document.createElement('div');
             createProjectButton.classList.add('create-project');
-            createProjectButton.textContent = 'Create Project';
             leftSecondSection.append(createProjectButton);
             createProjectButton.addEventListener('click', () => {
                 const newProjectDialog = document.querySelector('.new-project');
@@ -990,6 +989,15 @@ const DOMModule = (function () {
                 newProjectDialog.classList.add('displayed');
                 newProjectDialog.classList.remove('hidden');
             })
+
+
+            const createProjectButtonIcon = document.createElement('div');
+            createProjectButtonIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>`;
+            createProjectButton.append(createProjectButtonIcon);
+
+            const createProjectButtonLabel = document.createElement('div');
+            createProjectButtonLabel.textContent = 'Add';
+            createProjectButton.append(createProjectButtonLabel);
 
 
             const createTaskButton = document.createElement('button');

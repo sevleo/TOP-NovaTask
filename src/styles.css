@@ -146,10 +146,17 @@ body {
 
 /* Left div layout */
 
-.left > .left-first-section,
+.left > .left-first-section {
+    margin-top: 40px;
+    overflow: auto;
+    flex: 0 0 200px;
+    /* margin-left: 10px; */
+}
+
 .left > .left-second-section {
     margin-top: 40px;
     overflow: auto;
+    flex: 1 0 200px;
     /* margin-left: 10px; */
 }
 
@@ -342,10 +349,35 @@ body {
     gap: 10px;
 }
 
-.left > .left-second-section button {
-    margin-left: 50px;
+.left > .left-second-section .create-project {
+    /* margin-left: 50px; */
+    margin-top: 30px;
+    padding-left: 30px;
     height: 50px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+    /* justify-content: center; */
+    cursor: pointer;
+}
 
+.left > .left-second-section .create-project div {
+    /* font-style: italic; */
+    font-size: 20px;
+}
+
+.left > .left-second-section .create-project:hover {
+    background-color: #ba181b28;
+}
+
+.left > .left-second-section .create-project:active {
+    background-color: #ba181b5b
+}
+
+.left > .left-second-section .create-project > div:first-child{
+    height: 20px;
+    width: 20px;
 }
 
 
