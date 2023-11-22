@@ -99,7 +99,8 @@ body {
 .main {
     height: 100%;
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 200px 1fr;
 }
 
 .main > .left {
@@ -113,6 +114,7 @@ body {
     /* height: calc(100% - 100px); */
     height: 100%;
     overflow: auto;
+    grid-column: 1 / 2;
 }
 
 .main > .right {
@@ -121,6 +123,7 @@ body {
     flex-direction: column;
     justify-content: start;
     height: calc(100% - 100px);
+    grid-column: 2 / 3;
 }
 
 .main > .footer {
@@ -148,9 +151,12 @@ body {
 }
 
 .right-first-section {
-    padding: 50px 10px 50px 50px;
+    padding-right: 10px;
+    padding-left: 20px;
+    padding-top: 50px;
     height: 100%;
     width: 100%;
+    /* background-color: black; */
     overflow: auto;
     display: flex;
     flex-direction: column;
@@ -163,12 +169,13 @@ body {
 .right-first-section > .task {
     /* border: 1px solid var(--border-color); */
     /* border-radius: 5px; */
-    padding-left: 20px;
-    padding-bottom: 20px;
-    padding-top: 20px;
+    width: 60%;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
 
     flex: 0;
-    width: clamp(200px, 60%, 800px);
+    /* width: clamp(200px, 60%, 800px); */
     opacity: 1;
     /* max-width: 500px; */
     transition: all 175ms ease-in;
@@ -180,6 +187,7 @@ body {
     /* border-radius: 5px; */
     position: relative;
     cursor: pointer;
+    gap: 40px;
 }
 
 .right-first-section > .task:hover > .task-right-section > .task-title-field,
@@ -189,12 +197,12 @@ body {
     /* box-shadow:  0px 0px 2px 1px var(--border-dark); */
     /* border: 1px green solid; */
     /* transform: scale(1.1); */
-    transform: translateX(-15px)
+    transform: translateX(-10px)
 }
 
 .right-first-section > .task > .task-left-section {
-    width: 35px;
-    height: 35px;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
     transition: transform 0.1s ease;
 
@@ -244,23 +252,26 @@ body {
 }
 
 .right-first-section > .task > .task-right-section {
-    width: 80%;
+    width: 100%;
     display: grid;
     grid-template-columns: 5fr 1fr;
     grid-template-rows: auto;
-    gap: 10px;
+    gap: 5px;
     /* position: relative; */
 }
 
 .right-first-section > .task > .task-right-section > .hover-effect {
     position: absolute;
     left: 110%;
-    top: 20px;
-    width: 40%;
-    min-height: 71.5px;
+    top: 0px;
+    width: auto;
+    height: auto;
+    width: 300px;
+    max-width: 500px;
+    min-height: 60px;
     z-index: 1;
     /* background-color: rgb(153, 189, 153); */
-    padding: 20px;
+    padding: 10px;
     /* box-shadow: 0px 0px 3px 1px var(--border-dark); */
     transition: opacity 0.5s ease-in-out,
                 transform 0.5s ease;
@@ -270,6 +281,8 @@ body {
     border: 0.3px solid var(--border-dark);
     opacity: 0;
     /* transform: translateX(-300px); */
+
+    font-size: 12px;
 
     border-radius: 5px;
     background: #e0e0e0;
@@ -299,14 +312,15 @@ body {
 .right-first-section > .task > .task-right-section > .task-project > * {
     padding: 1px 5px 1px 5px;
     border-radius: 5px;
-    border: 0.5px solid var(--border-dark);
-    box-shadow: 1px 1px 3px 0px var(--border-dark);
+    border: 1px solid var(--border-dark);
+    /* box-shadow: 1px 1px 3px 0px var(--border-dark); */
+    font-size: 12px;
 }
 
 .right-first-section > .task > .task-right-section > .task-title-field {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .right-first-section > .task > .task-right-section > .task-notes-field {
@@ -321,6 +335,7 @@ body {
 .right-first-section > .task > .task-right-section > .task-date-field {
     grid-column: 1 / 2;
     grid-row: 3 / 4;
+    font-size: 12px;
 }
 
 .right-first-section > .task > .task-right-section > .task-date-field::before {
@@ -335,6 +350,7 @@ body {
     /* justify-content: center; */
     align-items: center;
     gap: 10px;
+    justify-self: end;
 }
 
 
@@ -591,7 +607,7 @@ body {
 
 .left > .left-second-section .create-project div {
     /* font-style: italic; */
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .left > .left-second-section .create-project:hover {
@@ -603,8 +619,8 @@ body {
 }
 
 .left > .left-second-section .create-project > div:first-child{
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
 }
 
 

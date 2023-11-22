@@ -1046,7 +1046,8 @@ const DOMModule = (function () {
                             const child_div = document.createElement('div');
                             child_div.classList.add(child_element.div_class);
                             child_div.textContent = child_element.textContent;
-                            child_div.style.backgroundColor = child_element.color;
+                            child_div.style.color = child_element.color;
+                            child_div.style.borderColor = child_element.color;
                             taskField.append(child_div);
                         })
                     }
