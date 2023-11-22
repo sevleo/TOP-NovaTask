@@ -124,6 +124,7 @@ const TaskModule = (function() {
             notes: 'Remember to focus on the key concepts',
             priority: 'High',
             date: '2023-11-22',
+            completed: 'true',
         },
         {
             id: 2,
@@ -134,6 +135,7 @@ const TaskModule = (function() {
             notes: 'Review chapters 3 and 4 for the upcoming test',
             priority: 'Medium',
             date: '2023-11-22',
+            completed: 'false',
         },
         {
             id: 3,
@@ -144,6 +146,7 @@ const TaskModule = (function() {
             notes: 'Check for code quality and potential optimizations',
             priority: 'High',
             date: '2023-11-22',
+            completed: 'false',
         },
         {
             id: 4,
@@ -154,6 +157,7 @@ const TaskModule = (function() {
             notes: 'Milk, eggs, bread, and fruits',
             priority: 'Low',
             date: '2023-11-23',
+            completed: 'false',
         },
         {
             id: 5,
@@ -164,6 +168,7 @@ const TaskModule = (function() {
             notes: 'Complete chapters 1-3 by the end of the week',
             priority: 'Medium',
             date: '2023-11-23',
+            completed: 'true',
         },
         {
             id: 6,
@@ -174,6 +179,7 @@ const TaskModule = (function() {
             notes: 'Incorporate feedback from team members',
             priority: 'High',
             date: '2023-11-23',
+            completed: 'false',
         },
         {
             id: 7,
@@ -184,6 +190,7 @@ const TaskModule = (function() {
             notes: 'Learn new chords and practice scales',
             priority: 'Medium',
             date: '2023-11-24',
+            completed: 'false',
         },
         {
             id: 8,
@@ -194,6 +201,7 @@ const TaskModule = (function() {
             notes: 'Document the new API endpoints',
             priority: 'High',
             date: '2023-11-24',
+            completed: 'false',
         },
         
 
@@ -916,7 +924,11 @@ const DOMModule = (function () {
 
                 const taskLineItemLeftSection = document.createElement('div');
                 taskLineItemLeftSection.classList.add('task-left-section');
-                taskLineItemLeftSection.classList.add('unchecked');
+                if (element.completed === 'true') {
+                    taskLineItemLeftSection.classList.add('checked');
+                } else {
+                    taskLineItemLeftSection.classList.add('unchecked');
+                }
                 taskLineItemLeftSection.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <title>check-circle-outline</title>
                 <!-- Outer circle -->
@@ -930,9 +942,11 @@ const DOMModule = (function () {
                     if (taskLineItemLeftSection.classList.contains('unchecked')) {
                         taskLineItemLeftSection.classList.remove('unchecked');
                         taskLineItemLeftSection.classList.add('checked');
+                        element.completed = 'true';
                     } else {
                         taskLineItemLeftSection.classList.remove('checked');
                         taskLineItemLeftSection.classList.add('unchecked');
+                        element.completed = 'false';
                     }
                 })
 
@@ -1115,11 +1129,11 @@ document.addEventListener('keydown', function(event) {
         // console.log(ProjectModule.getProjectObjects());
         // console.log(TaskModule.getTodayTasks());
         // console.log(TaskModule.getTomorrowTasks());
-        // console.log(TaskModule.getAllTasks());
+        console.log(TaskModule.getAllTasks());
         // console.log(TaskModule.getProjectTasks('Math', TaskModule.getTodayTasks()));
         // console.log(TaskModule.getActiveProject());
         // console.log(TaskModule.getActiveView());
-        console.log(TaskModule.getActiveProject());
-        console.log(TaskModule.getActiveView());
+        // console.log(TaskModule.getActiveProject());
+        // console.log(TaskModule.getActiveView());
     }
 })
