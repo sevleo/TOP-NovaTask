@@ -9,25 +9,25 @@ const ProjectModule = (function() {
         {
             id: 1,
             name: 'Sport',
-            color: '#00FF00',
+            color: '#dab8de',
             active: 'false',
         },
         {
             id: 2,
             name: 'Math',
-            color: '#FF0000',
+            color: '#93c7b4',
             active: 'false',
         },
         {
             id: 3,
             name: 'Programming',
-            color: '#0000FF',
+            color: '#e8ceb5',
             active: 'false',
         },
         {
             id: 4,
             name: 'Leisure',
-            color: '#FF00FF',
+            color: '#a6b5ff',
             active: 'false',
         },
     ];
@@ -119,7 +119,7 @@ const TaskModule = (function() {
             id: 1,
             projectId: 1,
             projectName: 'Sport',
-            projectColor: '#00FF00',
+            projectColor: '#dab8de',
             title: 'Complete Exercise 1',
             notes: 'Remember to focus on the key concepts',
             priority: 'High',
@@ -130,7 +130,7 @@ const TaskModule = (function() {
             id: 2,
             projectId: 2,
             projectName: 'Math',
-            projectColor: '#FF0000',
+            projectColor: '#93c7b4',
             title: 'Study Algebra',
             notes: 'Review chapters 3 and 4 for the upcoming test',
             priority: 'Medium',
@@ -141,9 +141,9 @@ const TaskModule = (function() {
             id: 3,
             projectId: 3,
             projectName: 'Programming',
-            projectColor: '#0000FF',
+            projectColor: '#e8ceb5',
             title: 'Code Review for Project X',
-            notes: 'Check for code quality and potential optimizations',
+            notes: 'Add notes regarding code quality, optimizations, and potential improvements here. Ensure comprehensive checks for syntax errors, algorithmic efficiencies, and best practices. Provide detailed comments on functions, variables, and logic to enhance readability.',
             priority: 'High',
             date: '2023-11-22',
             completed: 'false',
@@ -152,7 +152,7 @@ const TaskModule = (function() {
             id: 4,
             projectId: 4,
             projectName: 'Leisure',
-            projectColor: '#FF00FF',
+            projectColor: '#a6b5ff',
             title: 'Buy groceries',
             notes: 'Milk, eggs, bread, and fruits',
             priority: 'Low',
@@ -163,7 +163,7 @@ const TaskModule = (function() {
             id: 5,
             projectId: 1,
             projectName: 'Sport',
-            projectColor: '#00FF00',
+            projectColor: '#dab8de',
             title: 'Read "The Great Gatsby"',
             notes: 'Complete chapters 1-3 by the end of the week',
             priority: 'Medium',
@@ -174,7 +174,7 @@ const TaskModule = (function() {
             id: 6,
             projectId: 2,
             projectName: 'Math',
-            projectColor: '#FF0000',
+            projectColor: '#93c7b4',
             title: 'Prepare presentation slides',
             notes: 'Incorporate feedback from team members',
             priority: 'High',
@@ -185,7 +185,7 @@ const TaskModule = (function() {
             id: 7,
             projectId: 3,
             projectName: 'Programming',
-            projectColor: '#0000FF',
+            projectColor: '#e8ceb5',
             title: 'Practice guitar',
             notes: 'Learn new chords and practice scales',
             priority: 'Medium',
@@ -196,7 +196,7 @@ const TaskModule = (function() {
             id: 8,
             projectId: 4,
             projectName: 'Leisure',
-            projectColor: '#FF00FF',
+            projectColor: '#a6b5ff',
             title: 'Write documentation',
             notes: 'Document the new API endpoints',
             priority: 'High',
@@ -954,6 +954,44 @@ const DOMModule = (function () {
 
                 const taskLineItemRightSection = document.createElement('div');
                 taskLineItemRightSection.classList.add('task-right-section');
+
+                const afterElement = document.createElement('div');
+                afterElement.classList.add('hover-effect');
+                taskLineItemRightSection.append(afterElement);
+                afterElement.textContent = element.notes;
+                // afterElement.style.opacity = "0";
+                taskLineItemRightSection.addEventListener('mouseover', () => {
+
+
+                    // afterElement.style.opacity = "1";
+                    afterElement.style.transform = "scale(1)";
+
+                    taskLineItemRightSection.addEventListener('mouseout', () => {
+                        // afterElement.style.opacity = "0";
+                        afterElement.style.transform = "scale(0)";
+                    })
+                })
+
+                // taskLineItemRightSection.addEventListener('mouseover', () => {
+                //     const afterElement = document.createElement('div');
+                //     afterElement.classList('hover-effect');
+
+                //     afterElement.style.position = 'absolute';
+                //     afterElement.style.left = '0';
+                //     afterElement.style.top = '100%';
+                //     afterElement.style.width = '100%';
+                //     afterElement.style.content = 'absolute';
+                //     afterElement.style.zIndex = '1';
+                //     afterElement.style.afterElement.style.backgroundColor = '#d34949';
+                //     afterElement.style.opacity = '1';
+                //     afterElement.style.transition = 'all 1s ease';
+                //     taskLineItemRightSection.appendChild(afterElement);
+
+
+                //     taskLineItemRightSection.addEventListener('mouseout', () => {
+                //         taskLineItemRightSection.removeChild(afterElement);
+                // })
+
                 taskLineItem.append(taskLineItemRightSection);
 
                 const taskLineItemDivider = document.createElement('div');
@@ -966,12 +1004,9 @@ const DOMModule = (function () {
                         div_class: 'task-project',
                         child_elements: [
                             {
-                                div_class: 'task-project-color',
-                                color: element.projectColor,
-                            },
-                            {
                                 div_class: 'task-project-field',
                                 textContent: element.projectName,
+                                color: element.projectColor,
                             },
                         ]
                     },
