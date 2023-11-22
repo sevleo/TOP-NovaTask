@@ -179,14 +179,17 @@ body {
     /* box-shadow: 0px 1px 5px 0px gray; */
     /* border-radius: 5px; */
     position: relative;
+    cursor: pointer;
 }
 
-.right-first-section > .task:hover {
+.right-first-section > .task:hover > .task-right-section > .task-title-field,
+.right-first-section > .task:hover > .task-right-section > .task-date-field {
     /* box-shadow: inset 0px 0px 50px 50px darkgreen,
     0px 0px 50px 50px darkgreen; */
     /* box-shadow:  0px 0px 2px 1px var(--border-dark); */
     /* border: 1px green solid; */
-    border-radius: 5px;
+    /* transform: scale(1.1); */
+    transform: translateX(-15px)
 }
 
 .right-first-section > .task > .task-left-section {
@@ -214,17 +217,17 @@ body {
 }
 
 
-.right-first-section > .task > .task-left-section:hover {
+.right-first-section > .task:hover > .task-left-section {
     transform: scale(1.1);
     transition: transform 0.1s ease;
 }
 
-.right-first-section > .task > .task-left-section:hover circle {
+.right-first-section > .task:hover > .task-left-section circle {
     stroke: var(--checkbox-color);
 }
 
-.right-first-section > .task > .task-left-section:hover path, 
-.right-first-section > .task > .task-left-section:hover circle {
+.right-first-section > .task:hover > .task-left-section path, 
+.right-first-section > .task:hover > .task-left-section circle {
     /* stroke: red; */
     /* stroke-width: 1px; */
     transition: all 0.3s ease-in-out;
@@ -254,17 +257,19 @@ body {
     left: 110%;
     top: 20px;
     width: 40%;
-    min-height: 93px;
+    min-height: 71.5px;
     z-index: 1;
     /* background-color: rgb(153, 189, 153); */
     padding: 20px;
     /* box-shadow: 0px 0px 3px 1px var(--border-dark); */
-    transition: all 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out,
+                transform 0.5s ease;
     /* transition: all 0.5s cubic-bezier(0.18,0.89,0.43,1.19); */
     /* border-radius: 0px; */
     /* transform: scale(0); */
     border: 0.3px solid var(--border-dark);
     opacity: 0;
+    /* transform: translateX(-300px); */
 
     border-radius: 5px;
     background: #e0e0e0;
@@ -288,7 +293,7 @@ body {
 
 .right-first-section > .task > .task-right-section > .task-project {
     grid-column: 2 / 3;
-    grid-row: 2 / 3;
+    grid-row: 3 / 4;
 }
 
 .right-first-section > .task > .task-right-section > .task-project > * {

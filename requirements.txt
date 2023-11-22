@@ -36,9 +36,9 @@
 # implement filter by projects
 # style buttons to create new tasks and projects
 # bug in line 811-815 (appears to be fixed but keep watch
-style tasks view
+# style tasks view
+# add task completion checkbox and status
 save data
-add task completion checkbox and status
 add ability to delete tasks
 add sort by dates in all view
 add today date in today view

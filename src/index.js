@@ -210,7 +210,7 @@ const TaskModule = (function() {
     let tasksCount = tasks.length;
 
     // Add new task object
-    function createTask(projectName, title, notes, priority, date) {
+    function createTask(projectName, title, notes, date) {
         const task = {};
         tasksCount = tasksCount + 1;
         task.id = tasksCount;
@@ -219,7 +219,7 @@ const TaskModule = (function() {
         task.projectColor = ProjectModule.findColorByName(projectName);
         task.title = title;
         task.notes = notes;
-        task.priority = priority;
+        // task.priority = priority;
         task.date = date;
   
         tasks.push(task);
@@ -464,9 +464,9 @@ const DOMModule = (function () {
                     const taskProject = document.querySelector('dialog.new-task > form #task-project');
                     const taskTitle = document.querySelector('dialog.new-task > form #task-title');
                     const taskNotes = document.querySelector('dialog.new-task > form #task-notes');
-                    const taskPriority = document.querySelector('dialog.new-task > form #task-priority');
+                    // const taskPriority = document.querySelector('dialog.new-task > form #task-priority');
                     const taskDate = document.querySelector('dialog.new-task > form #task-date');
-                    TaskModule.createTask(taskProject.value, taskTitle.value, taskNotes.value, taskPriority.value, taskDate.value);
+                    TaskModule.createTask(taskProject.value, taskTitle.value, taskNotes.value, taskDate.value);
 
                     DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
                 })
@@ -510,17 +510,17 @@ const DOMModule = (function () {
                         textContent: '',
                         text_placeholder: 'At least a page',
                     },
-                    {
-                        element_type: 'select',
-                        div_class: 'task-priority-field-div',
-                        element_id: 'task-priority',
-                        input_type: '',
-                        label: 'Priority',
-                        textContent: 'Priority',
-                        select_options: ['High', 'Normal', 'Low'],
-                        select_default: 'Normal',
-                        cursor_style: 'pointer',
-                    },
+                    // {
+                    //     element_type: 'select',
+                    //     div_class: 'task-priority-field-div',
+                    //     element_id: 'task-priority',
+                    //     input_type: '',
+                    //     label: 'Priority',
+                    //     textContent: 'Priority',
+                    //     select_options: ['High', 'Normal', 'Low'],
+                    //     select_default: 'Normal',
+                    //     cursor_style: 'pointer',
+                    // },
                     {
                         element_type: 'input',
                         div_class: 'task-date-field-div',
@@ -938,7 +938,7 @@ const DOMModule = (function () {
                 <path d="M7,13.5 L10,16.5 L17,9.5" stroke="currentColor" stroke-width="0.5" fill="none" />
                 </svg>`;
 
-                taskLineItemLeftSection.addEventListener('click', function() {
+                taskLineItem.addEventListener('click', function() {
                     if (taskLineItemLeftSection.classList.contains('unchecked')) {
                         taskLineItemLeftSection.classList.remove('unchecked');
                         taskLineItemLeftSection.classList.add('checked');
@@ -965,8 +965,12 @@ const DOMModule = (function () {
                 if (afterElement.textContent !== '') {
                     taskLineItemRightSection.addEventListener('mouseover', () => {
                         afterElement.style.opacity = "1";
+                        // afterElement.style.transform = "translateX(0)";
                         taskLineItemRightSection.addEventListener('mouseout', () => {
                             afterElement.style.opacity = "0";
+                            // afterElement.style.transform = "translateX(-300px)";
+  
+                            
                         })
                     })
                 }
@@ -1018,10 +1022,10 @@ const DOMModule = (function () {
                         div_class: 'task-notes-field',
                         textContent: element.notes,
                     },
-                    {
-                        div_class: 'task-priority-field',
-                        textContent: element.priority,
-                    },
+                    // {
+                    //     div_class: 'task-priority-field',
+                    //     textContent: element.priority,
+                    // },
                     {
                         div_class: 'task-date-field',
                         textContent: element.date,
