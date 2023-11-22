@@ -110,6 +110,10 @@ const TaskModule = (function() {
     }
 
 
+    // const today = new Date(); 
+    // const tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+    // const dayAfterTomorrow = new Date(new Date().getTime() + 48 * 60 * 60 * 1000);
+
     let tasks = [
         {
             id: 1,
@@ -119,7 +123,7 @@ const TaskModule = (function() {
             title: 'Complete Exercise 1',
             notes: 'Remember to focus on the key concepts',
             priority: 'High',
-            date: '2023-11-15',
+            date: '2023-11-22',
         },
         {
             id: 2,
@@ -129,7 +133,7 @@ const TaskModule = (function() {
             title: 'Study Algebra',
             notes: 'Review chapters 3 and 4 for the upcoming test',
             priority: 'Medium',
-            date: '2023-11-21',
+            date: '2023-11-22',
         },
         {
             id: 3,
@@ -139,7 +143,7 @@ const TaskModule = (function() {
             title: 'Code Review for Project X',
             notes: 'Check for code quality and potential optimizations',
             priority: 'High',
-            date: '2023-11-21',
+            date: '2023-11-22',
         },
         {
             id: 4,
@@ -149,7 +153,7 @@ const TaskModule = (function() {
             title: 'Buy groceries',
             notes: 'Milk, eggs, bread, and fruits',
             priority: 'Low',
-            date: '2023-11-20',
+            date: '2023-11-23',
         },
         {
             id: 5,
@@ -159,7 +163,7 @@ const TaskModule = (function() {
             title: 'Read "The Great Gatsby"',
             notes: 'Complete chapters 1-3 by the end of the week',
             priority: 'Medium',
-            date: '2023-11-22',
+            date: '2023-11-23',
         },
         {
             id: 6,
@@ -169,7 +173,7 @@ const TaskModule = (function() {
             title: 'Prepare presentation slides',
             notes: 'Incorporate feedback from team members',
             priority: 'High',
-            date: '2023-11-25',
+            date: '2023-11-23',
         },
         {
             id: 7,
@@ -179,7 +183,7 @@ const TaskModule = (function() {
             title: 'Practice guitar',
             notes: 'Learn new chords and practice scales',
             priority: 'Medium',
-            date: '2023-11-28',
+            date: '2023-11-24',
         },
         {
             id: 8,
@@ -189,7 +193,7 @@ const TaskModule = (function() {
             title: 'Write documentation',
             notes: 'Document the new API endpoints',
             priority: 'High',
-            date: '2023-11-30',
+            date: '2023-11-24',
         },
         
 
@@ -891,7 +895,7 @@ const DOMModule = (function () {
          // Render tasks
         function createTasks(tasks) {
 
-            const taskLineItems = document.querySelectorAll('.task');
+            const taskLineItems = document.querySelectorAll('.task, .task-divider');
             if (taskLineItems) {
                 taskLineItems.forEach(item => {
                     item.remove();
@@ -902,11 +906,46 @@ const DOMModule = (function () {
             let sub_counter = 0;
 
             tasks.forEach(element => {
+
+
                 const rightFirstSection = document.querySelector('.right-first-section');
                 const taskLineItem = document.createElement('div');
                 taskLineItem.classList.add('task');
                 taskLineItem.classList.add('hidden');
                 rightFirstSection.append(taskLineItem);
+
+                const taskLineItemLeftSection = document.createElement('div');
+                taskLineItemLeftSection.classList.add('task-left-section');
+                taskLineItemLeftSection.classList.add('unchecked');
+                taskLineItemLeftSection.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>check-circle-outline</title>
+                <!-- Outer circle -->
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="0.5" fill="none" />
+                
+                <!-- Checkmark path -->
+                <path d="M7,13.5 L10,16.5 L17,9.5" stroke="currentColor" stroke-width="0.5" fill="none" />
+                </svg>`;
+
+                taskLineItemLeftSection.addEventListener('click', function() {
+                    if (taskLineItemLeftSection.classList.contains('unchecked')) {
+                        taskLineItemLeftSection.classList.remove('unchecked');
+                        taskLineItemLeftSection.classList.add('checked');
+                    } else {
+                        taskLineItemLeftSection.classList.remove('checked');
+                        taskLineItemLeftSection.classList.add('unchecked');
+                    }
+                })
+
+                taskLineItem.append(taskLineItemLeftSection);
+
+                const taskLineItemRightSection = document.createElement('div');
+                taskLineItemRightSection.classList.add('task-right-section');
+                taskLineItem.append(taskLineItemRightSection);
+
+                const taskLineItemDivider = document.createElement('div');
+                taskLineItemDivider.classList.add('task-divider');
+                taskLineItemDivider.classList.add('hidden');
+                rightFirstSection.append(taskLineItemDivider);
 
                 const taskFieldsTemplate = [
                     {
@@ -948,7 +987,7 @@ const DOMModule = (function () {
                     taskField.classList.add('hidden');
                     taskField.textContent = field.textContent;
                     taskField.style.backgroundColor = field.color;
-                    taskLineItem.append(taskField);
+                    taskLineItemRightSection.append(taskField);
                     if (field.child_elements) {
                         field.child_elements.forEach(child_element => {
                             const child_div = document.createElement('div');
@@ -960,7 +999,7 @@ const DOMModule = (function () {
                     }
                     setTimeout(() => {
                         taskField.classList.remove('hidden');
-                      }, 40 * sub_counter);
+                      }, 20 * sub_counter);
                     sub_counter = sub_counter + 1;
 
                 });
@@ -968,6 +1007,10 @@ const DOMModule = (function () {
                     taskLineItem.classList.remove('hidden');
                   }, 80 * counter);
                 counter = counter + 1;
+
+                setTimeout(() => {
+                    taskLineItemDivider.classList.remove('hidden');
+                  }, 100 * counter);
 
             });
         }

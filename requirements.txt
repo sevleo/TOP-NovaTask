@@ -45,6 +45,9 @@ add today date in today view
 add tomorrow date in tomorrow view
 add ability to delete projects
 add responsive design
-
+change clicking area of New Task button
+add filler if there are no tasks in a view
+remove clickability from an active view
+figure out a way to make scroll stay on top of the shadow
 
 
