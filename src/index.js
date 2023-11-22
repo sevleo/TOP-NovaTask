@@ -942,6 +942,8 @@ const DOMModule = (function () {
                     if (taskLineItemLeftSection.classList.contains('unchecked')) {
                         taskLineItemLeftSection.classList.remove('unchecked');
                         taskLineItemLeftSection.classList.add('checked');
+                        // taskLineItem.style.background = 'blue';
+                        
                         element.completed = 'true';
                     } else {
                         taskLineItemLeftSection.classList.remove('checked');
@@ -959,18 +961,16 @@ const DOMModule = (function () {
                 afterElement.classList.add('hover-effect');
                 taskLineItemRightSection.append(afterElement);
                 afterElement.textContent = element.notes;
-                // afterElement.style.opacity = "0";
-                taskLineItemRightSection.addEventListener('mouseover', () => {
 
-
-                    // afterElement.style.opacity = "1";
-                    afterElement.style.transform = "scale(1)";
-
-                    taskLineItemRightSection.addEventListener('mouseout', () => {
-                        // afterElement.style.opacity = "0";
-                        afterElement.style.transform = "scale(0)";
+                if (afterElement.textContent !== '') {
+                    taskLineItemRightSection.addEventListener('mouseover', () => {
+                        afterElement.style.opacity = "1";
+                        taskLineItemRightSection.addEventListener('mouseout', () => {
+                            afterElement.style.opacity = "0";
+                        })
                     })
-                })
+                }
+
 
                 // taskLineItemRightSection.addEventListener('mouseover', () => {
                 //     const afterElement = document.createElement('div');
