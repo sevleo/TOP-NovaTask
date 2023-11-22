@@ -38,6 +38,7 @@
     --button-active: #ba181b5b; /*used*/
 
     --elements-hover: #ba181b28; /*used*/
+    --checkbox-color: green; /*used*/
 }
 
 
@@ -170,6 +171,16 @@ body {
     justify-content: space-between;
     align-items: center;
     /* gap: 50px; */
+    /* box-shadow: 0px 1px 5px 0px gray; */
+    /* border-radius: 5px; */
+}
+
+.right-first-section > .task:hover {
+    /* box-shadow: inset 0px 0px 50px 50px darkgreen,
+    0px 0px 50px 50px darkgreen; */
+    box-shadow:  0px 0px 2px 1px var(--border-dark);
+    /* border: 1px green solid; */
+    border-radius: 5px;
 }
 
 .right-first-section > .task > .task-left-section {
@@ -184,7 +195,7 @@ body {
 .right-first-section > .task > .task-left-section.checked svg path,
 .right-first-section > .task > .task-left-section.checked svg circle {
     transition: all 0.3s ease;
-    stroke: green;
+    stroke: var(--checkbox-color);
     stroke-width: 1px;
 }
 
@@ -200,6 +211,10 @@ body {
 .right-first-section > .task > .task-left-section:hover {
     transform: scale(1.1);
     transition: transform 0.1s ease;
+}
+
+.right-first-section > .task > .task-left-section:hover circle {
+    stroke: var(--checkbox-color);
 }
 
 .right-first-section > .task > .task-left-section:hover path, 
