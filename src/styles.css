@@ -115,8 +115,9 @@ body {
     justify-content: start;
     /* height: calc(100% - 100px); */
     height: 100%;
-    overflow: auto;
+    /* overflow: auto; */
     grid-column: 1 / 2;
+    /* position: sticky; */
 }
 
 .main > .right {
@@ -434,14 +435,14 @@ body {
 
 .left > .left-first-section {
     margin-top: 20px;
-    overflow: auto;
+    /* overflow: auto; */
     flex: 0 0 200px;
     /* margin-left: 10px; */
 }
 
 .left > .left-second-section {
     margin-top: 20px;
-    overflow: auto;
+    /* overflow: auto; */
     flex: 1 0 200px;
     /* margin-left: 10px; */
 }
