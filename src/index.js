@@ -431,9 +431,29 @@ const DOMModule = (function () {
             body.append(taskDeleteDialog);
         }
 
+
         function createProjectDeleteDialog() {
             const projectDeleteDialog = document.createElement('dialog');
             projectDeleteDialog.classList.add('project-delete', 'hidden');
+
+            const deleteConfirmForm = document.createElement('form');
+            projectDeleteDialog.append(deleteConfirmForm);
+
+            const deleteConfirmText = document.createElement('div');
+            deleteConfirmText.classList.add('confirm-text');
+            deleteConfirmText.textContent = "Are you sure you want to delete the project? All tasks that belong to this project will be deleted too."
+            deleteConfirmForm.append(deleteConfirmText);
+
+            const deleteConfirmButton = document.createElement('button');
+            deleteConfirmButton.setAttribute('type', 'submit');
+            deleteConfirmButton.textContent = 'Confirm';
+            deleteConfirmForm.append(deleteConfirmButton);
+
+            const deleteCancelButton = document.createElement('button');
+            deleteCancelButton.setAttribute('type', 'close');
+            deleteCancelButton.textContent = 'Cancel';
+            deleteConfirmForm.append(deleteCancelButton);
+
             body.append(projectDeleteDialog);
         }
 
@@ -722,6 +742,7 @@ const DOMModule = (function () {
             createTaskDeleteDialog,
             createProjectDeleteDialog,
             handleCloseAnimation,
+            createProjectDeleteDialog,
         }
 
     })();
@@ -916,9 +937,47 @@ const DOMModule = (function () {
                 projectLineItem.append(projectLineItemName);
 
                 const projectLineItemDeleteButton = document.createElement('div');
-                projectLineItemDeleteButton.classList.add('delete-project');
+                projectLineItemDeleteButton.classList.add('delete-project-button');
                 projectLineItemDeleteButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>delete-outline</title><path d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" /></svg>`;
                 projectLineItem.append(projectLineItemDeleteButton);
+
+                
+
+
+                projectLineItemDeleteButton.addEventListener('click', function() {
+                    const confirmProjectDeleteDialog = document.querySelector('.project-delete');
+                    const confirmProjectDeleteForm = document.querySelector('.project-delete > form');
+                    confirmProjectDeleteDialog.showModal();
+                    confirmProjectDeleteDialog.classList.remove('hidden');
+                    confirmProjectDeleteDialog.classList.add('displayed');
+                    
+                    const confirmProjectDeleteButton = document.querySelector('.project-delete > form > button[type="submit"]');
+                    const cancelProjectDeleteButton = document.querySelector('.project-delete > form > button[type="close"]');
+
+                    confirmProjectDeleteButton.addEventListener('click', () => {
+                        // TaskModule.deleteTask(element.id);
+                        // DOMModule.createDialogs.handleCloseAnimation(confirmTaskDeleteForm, confirmTaskDeleteDialog, 'submit', confirmTaskDeleteForm);
+                        // DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
+                        console.log('mocking deletion of project');
+                    })
+
+                    cancelProjectDeleteButton.addEventListener('click', () => {
+                        DOMModule.createDialogs.handleCloseAnimation(confirmProjectDeleteForm, confirmProjectDeleteDialog, 'click', confirmProjectDeleteForm);
+                    })
+                })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 projectLineItemDeleteButton.addEventListener('mouseover', () => {
@@ -941,7 +1000,7 @@ const DOMModule = (function () {
                 projectLineItem.addEventListener('click', () => {
                     
 
-                    const deleteHovered = document.querySelector('.delete-project.hovered');
+                    const deleteHovered = document.querySelector('.delete-project-button.hovered');
                     if (!deleteHovered) {
                         if (TaskModule.getActiveProject() === projectLineItemName.textContent) {
                             TaskModule.changeActiveProject('');
@@ -977,7 +1036,7 @@ const DOMModule = (function () {
             Array.from(document.getElementsByClassName('project')).forEach((item) => {
                 item.onclick = () => {
 
-                    const deleteHovered = document.querySelector('.delete-project.hovered');
+                    const deleteHovered = document.querySelector('.delete-project-button.hovered');
                     if (!deleteHovered) {
                         Array.from(document.getElementsByClassName('project')).forEach((item2) => {
                             if (item === item2) {
@@ -1184,18 +1243,13 @@ const DOMModule = (function () {
                             const cancelTaskDeleteButton = document.querySelector('.task-delete > form > button[type="close"]');
 
                             confirmTaskDeleteButton.addEventListener('click', () => {
-                                // console.log(TaskModule.getAllTasks());
                                 TaskModule.deleteTask(element.id);
-                                // console.log(TaskModule.getAllTasks());
                                 DOMModule.createDialogs.handleCloseAnimation(confirmTaskDeleteForm, confirmTaskDeleteDialog, 'submit', confirmTaskDeleteForm);
                                 DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
                             })
 
                             cancelTaskDeleteButton.addEventListener('click', () => {
-                                // console.log(TaskModule.getAllTasks());
-                                // console.log(TaskModule.getAllTasks());
-                                DOMModule.createDialogs.handleCloseAnimation(confirmTaskDeleteForm, confirmTaskDeleteDialog, 'submit', confirmTaskDeleteForm);
-                                // DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
+                                DOMModule.createDialogs.handleCloseAnimation(confirmTaskDeleteForm, confirmTaskDeleteDialog, 'click', confirmTaskDeleteForm);
                             })
                         })
                     }

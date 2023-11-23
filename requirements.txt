@@ -41,8 +41,11 @@
 # change clicking area of New Task button
 # figure out a way to make scroll stay on top of the shadow
 # add filler if there are no tasks in a view
-add ability to delete tasks
+# add ability to delete tasks
+
+continue from line 958
 add ability to delete projects
+
 add sort by dates in all view
 save data
 add responsive design
