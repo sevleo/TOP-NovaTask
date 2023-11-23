@@ -88,25 +88,34 @@ const ProjectModule = (function() {
 // Task module 
 const TaskModule = (function() {
 
+
+    // This should be in different module (DOM module perhaps)
     let active_view = 'today';
     let active_project = '';
 
+    // This should be in different module (DOM module perhaps)
     function changeActiveView(view) {
         active_view = view;
     }
 
+    // This should be in different module (DOM module perhaps)
     function getActiveView() {
         return active_view;
     }
 
 
-
+    // This should be in different module (DOM module perhaps)
     function changeActiveProject(project) {
         active_project = project;
     }
 
+    // This should be in different module (DOM module perhaps)    
     function getActiveProject() {
         return active_project;
+    }
+
+    function deleteTask(taskId) {
+        tasks = tasks.filter((task) => task.id !== taskId);
     }
 
 
@@ -377,6 +386,7 @@ const TaskModule = (function() {
         getActiveProject,
         getProjectTasks,
         getTasksFromActiveView,
+        deleteTask,
     }
     
 })();
@@ -539,7 +549,7 @@ const DOMModule = (function () {
                 newTaskDialogForm.addEventListener('submit', () => {
                     const taskProject = document.querySelector('dialog.new-task > form #task-project');
                     const taskTitle = document.querySelector('dialog.new-task > form #task-title');
-                    // const taskNotes = document.querySelector('dialog.new-task > form #task-notes');
+                    const taskNotes = document.querySelector('dialog.new-task > form #task-notes');
                     // const taskPriority = document.querySelector('dialog.new-task > form #task-priority');
                     const taskDate = document.querySelector('dialog.new-task > form #task-date');
                     TaskModule.createTask(taskProject.value, taskTitle.value, taskNotes.value, taskDate.value);
@@ -711,6 +721,7 @@ const DOMModule = (function () {
             addEscEvenListener,
             createTaskDeleteDialog,
             createProjectDeleteDialog,
+            handleCloseAnimation,
         }
 
     })();
@@ -1138,9 +1149,21 @@ const DOMModule = (function () {
                     if (field.div_class === 'task-delete-button') {
                         taskField.addEventListener('click', function() {
                             const confirmTaskDeleteDialog = document.querySelector('.task-delete');
+                            const confirmTaskDeleteForm = document.querySelector('.task-delete > form');
                             confirmTaskDeleteDialog.showModal();
                             confirmTaskDeleteDialog.classList.remove('hidden');
                             confirmTaskDeleteDialog.classList.add('displayed');
+                            
+                            const confirmTaskDeleteButton = document.querySelector('.task-delete > form > button[type="submit"]');
+                            const cancelTaskDeleteButton = document.querySelector('.task-delete > form > button[type="close"]');
+
+                            confirmTaskDeleteButton.addEventListener('click', () => {
+                                // console.log(TaskModule.getAllTasks());
+                                TaskModule.deleteTask(element.id);
+                                // console.log(TaskModule.getAllTasks());
+                                DOMModule.createDialogs.handleCloseAnimation(confirmTaskDeleteForm, confirmTaskDeleteDialog, 'submit', confirmTaskDeleteForm);
+                                DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
+                            })
                         })
                     }
 
@@ -1276,10 +1299,10 @@ document.addEventListener('keydown', function(event) {
         // console.log(ProjectModule.getProjectObjects());
         // console.log(TaskModule.getTodayTasks());
         // console.log(TaskModule.getTomorrowTasks());
-        console.log(TaskModule.getAllTasks());
+        // console.log(TaskModule.getAllTasks());
         // console.log(TaskModule.getProjectTasks('Math', TaskModule.getTodayTasks()));
-        // console.log(TaskModule.getActiveProject());
-        // console.log(TaskModule.getActiveView());
+        console.log(TaskModule.getActiveProject());
+        console.log(TaskModule.getActiveView());
         // console.log(TaskModule.getActiveProject());
         // console.log(TaskModule.getActiveView());
     }
