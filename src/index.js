@@ -508,7 +508,7 @@ const DOMModule = (function () {
                 newTaskDialogForm.addEventListener('submit', () => {
                     const taskProject = document.querySelector('dialog.new-task > form #task-project');
                     const taskTitle = document.querySelector('dialog.new-task > form #task-title');
-                    const taskNotes = document.querySelector('dialog.new-task > form #task-notes');
+                    // const taskNotes = document.querySelector('dialog.new-task > form #task-notes');
                     // const taskPriority = document.querySelector('dialog.new-task > form #task-priority');
                     const taskDate = document.querySelector('dialog.new-task > form #task-date');
                     TaskModule.createTask(taskProject.value, taskTitle.value, taskNotes.value, taskDate.value);
@@ -1072,10 +1072,10 @@ const DOMModule = (function () {
                         div_class: 'task-title-field',
                         textContent: element.title,
                     },
-                    {
-                        div_class: 'task-notes-field',
-                        textContent: element.notes,
-                    },
+                    // {
+                    //     div_class: 'task-notes-field',
+                    //     textContent: element.notes,
+                    // },
                     // {
                     //     div_class: 'task-priority-field',
                     //     textContent: element.priority,
@@ -1083,6 +1083,10 @@ const DOMModule = (function () {
                     {
                         div_class: 'task-date-field',
                         textContent: element.date,
+                    },
+                    {
+                        div_class: 'task-delete-button',
+                        innerHTML: `<span class="material-symbols-outlined">close</span>`,
                     },
                 ];
                 
@@ -1092,7 +1096,18 @@ const DOMModule = (function () {
                     const taskField = document.createElement('div');
                     taskField.classList.add(field.div_class);
                     taskField.classList.add('hidden');
-                    taskField.textContent = field.textContent;
+                    if (field.textContent) {
+                        taskField.textContent = field.textContent;
+                    }
+                    if (field.innerHTML) {
+                        taskField.innerHTML = field.innerHTML;
+                    }
+                    if (field.div_class === 'task-delete-button') {
+                        taskField.addEventListener('click', function() {
+                            console.log(taskField);
+                        })
+                    }
+
                     taskField.style.backgroundColor = field.color;
                     taskLineItemRightSection.append(taskField);
                     if (field.child_elements) {

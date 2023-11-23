@@ -381,6 +381,41 @@ body {
     font-size: 12px;
 }
 
+.right-first-section > .task > .task-right-section > .task-delete-button {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    font-size: 12px;
+    justify-self: end;
+    transform: scale(0.7);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.right-first-section > .task > .task-right-section:hover > .task-delete-button {
+    /* transform: rotate(90deg); */
+    opacity: 1;
+}
+
+.right-first-section > .task > .task-right-section > .task-delete-button span {
+    color: var(--accent-color);
+    background-color: var(--background-light);
+}
+
+.right-first-section > .task > .task-right-section:hover > .task-delete-button span {
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    color: var(--accent-color);
+    background-color: var(--background-light);
+}
+
+.right-first-section > .task > .task-right-section:hover > .task-delete-button:hover span {
+    /* transform: rotate(90deg); */
+    background-color: var(--accent-color);
+    color: var(--background-light);
+
+}
+
+
 .right-first-section > .task > .task-right-section > .task-date-field::before {
     content: "Due: ";
 }
