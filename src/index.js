@@ -915,29 +915,50 @@ const DOMModule = (function () {
                 projectLineItemName.textContent = element.name;
                 projectLineItem.append(projectLineItemName);
 
-                projectLineItem.addEventListener('click', (event) => {
-                    // console.log(event);
-                    // console.log(event.target);
-                    // console.log(event.target.childNodes);
-                    // console.log(event.target.childNodes[1]);
-                    // let a = event.target.childNodes[1].textContent;
+                const projectLineItemDeleteButton = document.createElement('div');
+                projectLineItemDeleteButton.classList.add('delete-project');
+                projectLineItemDeleteButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>delete-outline</title><path d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" /></svg>`;
+                projectLineItem.append(projectLineItemDeleteButton);
+
+
+                projectLineItemDeleteButton.addEventListener('mouseover', () => {
+                    projectLineItemDeleteButton.classList.add('hovered');
+                    projectLineItem.classList.add('hovered-delete');
+                }) 
+
+                projectLineItemDeleteButton.addEventListener('mouseleave', () => {
+                    projectLineItemDeleteButton.classList.remove('hovered');
+                    projectLineItem.classList.remove('hovered-delete');
+                }) 
+
+                projectLineItemDeleteButton.addEventListener('click', () => {
                     
-                    // console.log(projectLineItemName.textContent);
-                    // console.log(TaskModule.getActiveProject());
+                    console.log(projectLineItemDeleteButton);
+                })
 
-                    if (TaskModule.getActiveProject() === projectLineItemName.textContent) {
-                        TaskModule.changeActiveProject('');
-                    } else {
-                        TaskModule.changeActiveProject(projectLineItemName.textContent);
+
+
+                projectLineItem.addEventListener('click', () => {
+                    
+
+                    const deleteHovered = document.querySelector('.delete-project.hovered');
+                    if (!deleteHovered) {
+                        if (TaskModule.getActiveProject() === projectLineItemName.textContent) {
+                            TaskModule.changeActiveProject('');
+                        } else {
+                            TaskModule.changeActiveProject(projectLineItemName.textContent);
+                        }
+                        DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
+    
+                        const rightFirstHeader = document.querySelector('.right-first-header');                    
+                        rightFirstHeader.textContent = TaskModule.getActiveView().charAt(0).toUpperCase() + TaskModule.getActiveView().slice(1);
+                        if (TaskModule.getActiveProject()) {
+    
+                            rightFirstHeader.textContent += " - " + TaskModule.getActiveProject();
+                        }
                     }
-                    DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
 
-                    const rightFirstHeader = document.querySelector('.right-first-header');                    
-                    rightFirstHeader.textContent = TaskModule.getActiveView().charAt(0).toUpperCase() + TaskModule.getActiveView().slice(1);
-                    if (TaskModule.getActiveProject()) {
 
-                        rightFirstHeader.textContent += " - " + TaskModule.getActiveProject();
-                    }
                 })
             });
 
@@ -956,28 +977,33 @@ const DOMModule = (function () {
             Array.from(document.getElementsByClassName('project')).forEach((item) => {
                 item.onclick = () => {
 
-                    
-                    Array.from(document.getElementsByClassName('project')).forEach((item2) => {
-                        if (item === item2) {
-                            if (item.dataset.active == 'true') {
-                                const task_animation = document.querySelector('.start-first');
-                                task_animation.style.opacity = '0';
-                                item2.classList.remove('font-accent');
-                                setTimeout(() => {
-                                    item2.dataset.active = 'false';
-                                    task_animation.style.opacity = '1';
-                                  }, 300);
-    
-                            } else {
-                                item2.dataset.active = 'true';
-                                item2.classList.add('font-accent');
+                    const deleteHovered = document.querySelector('.delete-project.hovered');
+                    if (!deleteHovered) {
+                        Array.from(document.getElementsByClassName('project')).forEach((item2) => {
+                            if (item === item2) {
+                                if (item.dataset.active == 'true') {
+                                    const task_animation = document.querySelector('.start-first');
+                                    task_animation.style.opacity = '0';
+                                    item2.classList.remove('font-accent');
+                                    setTimeout(() => {
+                                        item2.dataset.active = 'false';
+                                        task_animation.style.opacity = '1';
+                                      }, 300);
+        
+                                } else {
+                                    item2.dataset.active = 'true';
+                                    item2.classList.add('font-accent');
+                                }
                             }
-                        }
-                        else {
-                            item2.dataset.active = 'false';
-                            item2.classList.remove('font-accent');
-                        }
-                    })
+                            else {
+                                item2.dataset.active = 'false';
+                                item2.classList.remove('font-accent');
+                            }
+                        })
+                    }
+
+                    
+
                 }
             })
         }
