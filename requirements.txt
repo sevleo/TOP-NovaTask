@@ -38,16 +38,14 @@
 # bug in line 811-815 (appears to be fixed but keep watch
 # style tasks view
 # add task completion checkbox and status
-save data
+# change clicking area of New Task button
+# figure out a way to make scroll stay on top of the shadow
+# add filler if there are no tasks in a view
 add ability to delete tasks
 add sort by dates in all view
-add today date in today view
-add tomorrow date in tomorrow view
+save data
 add ability to delete projects
 add responsive design
-change clicking area of New Task button
-add filler if there are no tasks in a view
 remove clickability from an active view
-figure out a way to make scroll stay on top of the shadow
 
 

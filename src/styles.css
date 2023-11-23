@@ -972,3 +972,9 @@ dialog.displayed.new-task > form > .close-task-dialog {
 @media (max-width: 850px) {
     
 }
+
+
+.no-tasks-filler {
+    color: var(--text-muted);
+    font-style: italic;
+}

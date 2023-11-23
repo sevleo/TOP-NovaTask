@@ -969,6 +969,10 @@ const DOMModule = (function () {
         function createTasks(tasks) {
 
             const taskLineItems = document.querySelectorAll('.task, .task-divider');
+            const filler = document.querySelector('.no-tasks-filler');
+            if (filler) {
+                filler.remove();
+            }
             if (taskLineItems) {
                 taskLineItems.forEach(item => {
                     item.remove();
@@ -977,6 +981,16 @@ const DOMModule = (function () {
 
             let counter = 0;
             let sub_counter = 0;
+
+            if (tasks.length === 0) {
+                const rightFirstSection = document.querySelector('.right-first-section');
+                const filler = document.createElement('div');
+                filler.classList.add('no-tasks-filler');
+                filler.textContent = `Seems like you don't have any tasks here! Whether it is good or bad, only time will tell...`;
+                rightFirstSection.append(filler);
+
+            }
+
 
             tasks.forEach(element => {
 
@@ -1030,36 +1044,11 @@ const DOMModule = (function () {
                 if (afterElement.textContent !== '') {
                     taskLineItemRightSection.addEventListener('mouseover', () => {
                         afterElement.style.opacity = "1";
-                        // afterElement.style.transform = "translateX(0)";
                         taskLineItemRightSection.addEventListener('mouseout', () => {
                             afterElement.style.opacity = "0";
-                            // afterElement.style.transform = "translateX(-300px)";
-  
-                            
                         })
                     })
                 }
-
-
-                // taskLineItemRightSection.addEventListener('mouseover', () => {
-                //     const afterElement = document.createElement('div');
-                //     afterElement.classList('hover-effect');
-
-                //     afterElement.style.position = 'absolute';
-                //     afterElement.style.left = '0';
-                //     afterElement.style.top = '100%';
-                //     afterElement.style.width = '100%';
-                //     afterElement.style.content = 'absolute';
-                //     afterElement.style.zIndex = '1';
-                //     afterElement.style.afterElement.style.backgroundColor = '#d34949';
-                //     afterElement.style.opacity = '1';
-                //     afterElement.style.transition = 'all 1s ease';
-                //     taskLineItemRightSection.appendChild(afterElement);
-
-
-                //     taskLineItemRightSection.addEventListener('mouseout', () => {
-                //         taskLineItemRightSection.removeChild(afterElement);
-                // })
 
                 taskLineItem.append(taskLineItemRightSection);
 
@@ -1173,7 +1162,7 @@ const DOMModule = (function () {
             createProjectButton.append(createProjectButtonIcon);
 
             const createProjectButtonLabel = document.createElement('div');
-            createProjectButtonLabel.textContent = 'Project';
+            createProjectButtonLabel.textContent = 'Add Project';
             createProjectButton.append(createProjectButtonLabel);
 
             const createTaskButton = document.createElement('div');
@@ -1198,7 +1187,7 @@ const DOMModule = (function () {
             createTaskButtonContainer.append(createTaskButtonIcon);
 
             const createTaskButtonLabel = document.createElement('div');
-            createTaskButtonLabel.textContent = 'Task';
+            createTaskButtonLabel.textContent = 'Add Task';
             createTaskButtonContainer.append(createTaskButtonLabel);
             
         }
