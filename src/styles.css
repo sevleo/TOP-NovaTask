@@ -94,13 +94,15 @@ body {
     background-color: var(--background-light);
     height: 100vh;
     width: 100vw;
+    overflow-x: hidden;
 }
 
 .main {
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: minmax(200px, 1fr) 3fr;
+    position: relative;
 }
 
 .main > .left {
@@ -124,46 +126,58 @@ body {
     justify-content: start;
     height: calc(100% - 100px);
     grid-column: 2 / 3;
+    position: relative;
 }
 
-.main > .footer {
+.footer {
     display: flex;
-    height: 100px;
+    /* height: 100px; */
     /* border-top: 1px solid var(--border-color); */
     position: fixed;
-    bottom: 0;
-    width: 100%;
-    left: 300px;
+    bottom: 20px;
+    /* width: 100%; */
+    left: 50%;
     box-shadow: 0px -50px 24px -20px var(--background-light);
     /* box-shadow: -150px -40px 21px -30px black; */
 
 }
 
-.main > .footer > .footer-left {
+.footer > .footer-left {
     flex: 0 0 300px;
     background-color: var(--background-color);
     border-right: 1px solid var(--border-color);
 }
 
-.main > .footer > .footer-right {
+.footer > .footer-right {
     flex: 1;
     background-color: var(--background-light);
 }
 
+.right-first-header {
+    padding-top: 20px;
+    padding-left: 10px;
+    margin-left: 30px;
+    font-size: 25px;
+    border-bottom: 1px solid var(--border-dark);
+    width: clamp(300px, 70%, 700px);
+    color: var(--text-color);
+}
+
 .right-first-section {
-    padding-right: 10px;
-    padding-left: 20px;
+    padding-right: clamp(10px, 9%, 100px);
+    padding-left: clamp(10px, 9%, 100px);
+    /* padding-left: minmax(10px, 100px); */
     padding-top: 50px;
     height: 100%;
     width: 100%;
     /* background-color: black; */
-    overflow: auto;
+    /* overflow: auto; */
     display: flex;
     flex-direction: column;
     gap: 3px;
     /* align-items: center; */
     position: relative;
-    /* margin-bottom: 50px; */
+    margin-bottom: 150px;
 }
 
 .right-first-section > .task {
@@ -187,7 +201,23 @@ body {
     /* border-radius: 5px; */
     position: relative;
     cursor: pointer;
-    gap: 40px;
+    gap: clamp(20px, 5%, 40px);
+    min-width: 300px;
+}
+
+@media (max-width: 700px) {
+    .right-first-section > .task {
+        /* width: 100%; */
+    }
+
+    .right-first-section > .task + .task-divider {
+        /* width: 100%; */
+    }
+}
+
+.right-first-section > .task:hover + .task-divider {
+    /* background-color: black; */
+    
 }
 
 .right-first-section > .task:hover > .task-right-section > .task-title-field,
@@ -197,7 +227,8 @@ body {
     /* box-shadow:  0px 0px 2px 1px var(--border-dark); */
     /* border: 1px green solid; */
     /* transform: scale(1.1); */
-    transform: translateX(-10px)
+    transform: translateX(-10px);
+
 }
 
 .right-first-section > .task > .task-left-section {
@@ -262,16 +293,16 @@ body {
 
 .right-first-section > .task > .task-right-section > .hover-effect {
     position: absolute;
-    left: 110%;
+    left: 105%;
     top: 0px;
     width: auto;
-    height: auto;
-    width: 300px;
+    /* height: auto; */
+    width: clamp(100px, 30%, 700px);
     max-width: 500px;
     min-height: 60px;
     z-index: 1;
     /* background-color: rgb(153, 189, 153); */
-    padding: 10px;
+    padding: 5px;
     /* box-shadow: 0px 0px 3px 1px var(--border-dark); */
     transition: opacity 0.5s ease-in-out,
                 transform 0.5s ease;
@@ -284,13 +315,16 @@ body {
 
     font-size: 12px;
 
-    border-radius: 5px;
+    border-radius: 3px;
     background: #e0e0e0;
-    box-shadow:  8px 8px 16px #9f9f9f,
-                 -8px -8px 16px #ffffff;
+    /* box-shadow:  8px 8px 16px #9f9f9f,
+                 -8px -8px 16px #ffffff; */
+}
 
-
-
+@media (max-width: 675px) {
+    .right-first-section > .task > .task-right-section > .hover-effect {
+        display: none;
+    }
 }
 
 /* .right-first-section > .task > .task-right-section:hover > .task-notes-field {
@@ -321,6 +355,14 @@ body {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
     font-size: 15px;
+}
+
+@media (max-width: 850px) {
+    .right-first-section > .task > .task-right-section > .task-title-field {
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+        font-size: 15px;
+    }
 }
 
 .right-first-section > .task > .task-right-section > .task-notes-field {
@@ -360,6 +402,7 @@ body {
     background-color: var(--border-color);
     transition: all 175ms ease-in;
     opacity: 1;
+    min-width: 300px;
 }
 
 .right-first-section > .task.hidden,
@@ -390,14 +433,14 @@ body {
 /* Left div layout */
 
 .left > .left-first-section {
-    margin-top: 40px;
+    margin-top: 20px;
     overflow: auto;
     flex: 0 0 200px;
     /* margin-left: 10px; */
 }
 
 .left > .left-second-section {
-    margin-top: 40px;
+    margin-top: 20px;
     overflow: auto;
     flex: 1 0 200px;
     /* margin-left: 10px; */
@@ -594,7 +637,7 @@ body {
 
 .left > .left-second-section .create-project {
     /* margin-left: 50px; */
-    margin-top: 30px;
+    margin-top: 20px;
     padding-left: 30px;
     height: 50px;
     display: flex;
@@ -627,8 +670,8 @@ body {
 /* Footer add new task button */
 
 .footer > .footer-right > .create-task {
-    height: 100%;
-    width: calc(100% - 300px);
+    /* height: 100%; */
+    /* width: calc(100% - 300px); */
     display: flex;
     align-items: center;
     gap: 10px;
@@ -645,14 +688,14 @@ body {
     gap: 10px;
     /* border-radius: 10px; */
     /* border: 0.5px solid var(--border-dark); */
-    /* box-shadow: 0px 0px 5px 2px var(--border-color); */
+    box-shadow: 0px 0px 5px 2px var(--border-color);
     transition: all 0.1s ease-in-out;
 
 
     border-radius: 5px;
     background: #e0e0e0;
-    box-shadow:  8px 8px 16px #9f9f9f,
-                 -8px -8px 16px #ffffff;
+    /* box-shadow:  8px 8px 16px #9f9f9f,
+                 -8px -8px 16px #ffffff; */
 }
 
 
@@ -922,4 +965,9 @@ dialog.displayed.new-task > form > .close-task-dialog {
     /* fill: red; */
     display: flex;
     justify-content: center;
+}
+
+
+@media (max-width: 850px) {
+    
 }

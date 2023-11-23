@@ -203,6 +203,51 @@ const TaskModule = (function() {
             date: '2023-11-24',
             completed: 'false',
         },
+        {
+            id: 9,
+            projectId: 4,
+            projectName: 'Leisure',
+            projectColor: '#a6b5ff',
+            title: 'Write documentation',
+            notes: 'Document the new API endpoints',
+            priority: 'High',
+            date: '2023-11-24',
+            completed: 'false',
+        },
+        {
+            id: 10,
+            projectId: 4,
+            projectName: 'Leisure',
+            projectColor: '#a6b5ff',
+            title: 'Write documentation',
+            notes: 'Document the new API endpoints',
+            priority: 'High',
+            date: '2023-11-24',
+            completed: 'false',
+        },
+        {
+            id: 11,
+            projectId: 4,
+            projectName: 'Leisure',
+            projectColor: '#a6b5ff',
+            title: 'Write documentation',
+            notes: 'Document the new API endpoints',
+            priority: 'High',
+            date: '2023-11-24',
+            completed: 'false',
+        },
+        {
+            id: 12,
+            projectId: 4,
+            projectName: 'Leisure',
+            projectColor: '#a6b5ff',
+            title: 'Write documentation',
+            notes: 'Document the new API endpoints',
+            priority: 'High',
+            date: '2023-11-24',
+            completed: 'false',
+        },
+
         
 
     ];
@@ -737,6 +782,13 @@ const DOMModule = (function () {
                 const tasksFunction = TaskModule[element.function];
                 lineItem.addEventListener('click', function() {
                     DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), tasksFunction()));
+                   
+                    const rightFirstHeader = document.querySelector('.right-first-header');                    
+                    rightFirstHeader.textContent = TaskModule.getActiveView().charAt(0).toUpperCase() + TaskModule.getActiveView().slice(1);
+                    if (TaskModule.getActiveProject()) {
+
+                        rightFirstHeader.textContent += " - " + TaskModule.getActiveProject();
+                    }
                     
                     // DOMModule.createRightDiv.createTasks(tasksFunction());
                     // console.log(TaskModule.getActiveProject());
@@ -835,6 +887,13 @@ const DOMModule = (function () {
                         TaskModule.changeActiveProject(projectLineItemName.textContent);
                     }
                     DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
+
+                    const rightFirstHeader = document.querySelector('.right-first-header');                    
+                    rightFirstHeader.textContent = TaskModule.getActiveView().charAt(0).toUpperCase() + TaskModule.getActiveView().slice(1);
+                    if (TaskModule.getActiveProject()) {
+
+                        rightFirstHeader.textContent += " - " + TaskModule.getActiveProject();
+                    }
                 })
             });
 
@@ -894,6 +953,12 @@ const DOMModule = (function () {
             const rightDiv = document.createElement('div');
             rightDiv.classList.add('right');
             mainDiv.append(rightDiv);
+
+            const rightFirstHeader = document.createElement('div');
+            rightFirstHeader.classList.add('right-first-header');
+            rightFirstHeader.textContent = "All";
+            rightDiv.append(rightFirstHeader);
+
     
             const rightFirstDiv = document.createElement('div');
             rightFirstDiv.classList.add('right-first-section');
@@ -1078,10 +1143,10 @@ const DOMModule = (function () {
     const createFooterDiv = (function () {
 
         function createStructure() {
-            const mainDiv = document.querySelector('.main');
+            const rightDiv = document.querySelector('.right');
             const footerDiv = document.createElement('div');
             footerDiv.classList.add('footer');
-            mainDiv.append(footerDiv);
+            rightDiv.append(footerDiv);
 
             const footerRightDiv = document.createElement('div');
             footerRightDiv.classList.add('footer-right');
