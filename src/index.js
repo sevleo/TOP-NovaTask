@@ -398,12 +398,25 @@ const DOMModule = (function () {
 
         function createTaskDeleteDialog() {
             const taskDeleteDialog = document.createElement('dialog');
-            taskDeleteDialog.classList.add('task-delete');
+            taskDeleteDialog.classList.add('task-delete', 'hidden');
+
+            const deleteConfirmForm = document.createElement('form');
+            taskDeleteDialog.append(deleteConfirmForm);
 
             const deleteConfirmText = document.createElement('div');
             deleteConfirmText.classList.add('confirm-text');
             deleteConfirmText.textContent = "Are you sure you want to delete this task?"
-            taskDeleteDialog.append(deleteConfirmText);
+            deleteConfirmForm.append(deleteConfirmText);
+
+            const deleteConfirmButton = document.createElement('button');
+            deleteConfirmButton.setAttribute('type', 'submit');
+            deleteConfirmButton.textContent = 'Confirm';
+            deleteConfirmForm.append(deleteConfirmButton);
+
+            const deleteCancelButton = document.createElement('button');
+            deleteCancelButton.setAttribute('type', 'close');
+            deleteCancelButton.textContent = 'Cancel';
+            deleteConfirmForm.append(deleteCancelButton);
 
             body.append(taskDeleteDialog);
         }
