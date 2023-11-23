@@ -396,6 +396,24 @@ const DOMModule = (function () {
         // newProjectDialogHandler();
         // newTaskDialogHandler();
 
+        function createTaskDeleteDialog() {
+            const taskDeleteDialog = document.createElement('dialog');
+            taskDeleteDialog.classList.add('task-delete');
+
+            const deleteConfirmText = document.createElement('div');
+            deleteConfirmText.classList.add('confirm-text');
+            deleteConfirmText.textContent = "Are you sure you want to delete this task?"
+            taskDeleteDialog.append(deleteConfirmText);
+
+            body.append(taskDeleteDialog);
+        }
+
+        function createProjectDeleteDialog() {
+            const projectDeleteDialog = document.createElement('dialog');
+            projectDeleteDialog.classList.add('project-delete', 'hidden');
+            body.append(projectDeleteDialog);
+        }
+
         function newProjectDialogHandler() {
             const newProjectDialog = createProjectDialog();
             const newProjectDialogForm = createProjectDialogForm();
@@ -678,6 +696,8 @@ const DOMModule = (function () {
             newProjectDialogHandler,
             newTaskDialogHandler,
             addEscEvenListener,
+            createTaskDeleteDialog,
+            createProjectDeleteDialog,
         }
 
     })();
@@ -1104,7 +1124,10 @@ const DOMModule = (function () {
                     }
                     if (field.div_class === 'task-delete-button') {
                         taskField.addEventListener('click', function() {
-                            console.log(taskField);
+                            const confirmTaskDeleteDialog = document.querySelector('.task-delete');
+                            confirmTaskDeleteDialog.showModal();
+                            confirmTaskDeleteDialog.classList.remove('hidden');
+                            confirmTaskDeleteDialog.classList.add('displayed');
                         })
                     }
 
@@ -1225,6 +1248,8 @@ const DOMModule = (function () {
 DOMModule.createMainDiv();
 DOMModule.createDialogs.newProjectDialogHandler();
 DOMModule.createDialogs.newTaskDialogHandler();
+DOMModule.createDialogs.createProjectDeleteDialog();
+DOMModule.createDialogs.createTaskDeleteDialog();
 DOMModule.createDialogs.addEscEvenListener();
 DOMModule.createLeftDiv.createStructure();
 DOMModule.createLeftDiv.createProjects(ProjectModule.getProjectObjects());

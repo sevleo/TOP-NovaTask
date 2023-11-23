@@ -779,7 +779,8 @@ dialog.hidden {
                 transform 1000ms ease-in-out;
 }
 
-dialog.hidden > form > * {
+dialog.hidden > form > *,
+dialog.hidden.task-delete > * {
     position: relative;
     top: 10px;
     opacity: 0;
@@ -793,9 +794,11 @@ dialog.displayed {
     /* transition: transform 300ms ease; */
 }
 
-dialog.displayed > form > * {
+dialog.displayed > form > *,
+dialog.displayed.task-delete > * {
     top: 0px;
     opacity: 1;
+    /* background-color: black; */
 }
 
 dialog.displayed.new-project > form .project-dialog-name {
@@ -859,7 +862,8 @@ dialog.displayed.new-task > form > .close-task-dialog {
 
 
 .new-project,
-.new-task {
+.new-task,
+.task-delete {
     width: 400px;
     background-color: var(--background-light);
 }
