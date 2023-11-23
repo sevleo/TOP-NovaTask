@@ -1080,19 +1080,19 @@ const DOMModule = (function () {
                 const taskLineItemRightSection = document.createElement('div');
                 taskLineItemRightSection.classList.add('task-right-section');
 
-                const afterElement = document.createElement('div');
-                afterElement.classList.add('hover-effect');
-                taskLineItemRightSection.append(afterElement);
-                afterElement.textContent = element.notes;
+                // const afterElement = document.createElement('div');
+                // afterElement.classList.add('hover-effect');
+                // taskLineItemRightSection.append(afterElement);
+                // afterElement.textContent = element.notes;
 
-                if (afterElement.textContent !== '') {
-                    taskLineItemRightSection.addEventListener('mouseover', () => {
-                        afterElement.style.opacity = "1";
-                        taskLineItemRightSection.addEventListener('mouseout', () => {
-                            afterElement.style.opacity = "0";
-                        })
-                    })
-                }
+                // if (afterElement.textContent !== '') {
+                //     taskLineItemRightSection.addEventListener('mouseover', () => {
+                //         afterElement.style.opacity = "1";
+                //         taskLineItemRightSection.addEventListener('mouseout', () => {
+                //             afterElement.style.opacity = "0";
+                //         })
+                //     })
+                // }
 
                 taskLineItem.append(taskLineItemRightSection);
 
@@ -1116,10 +1116,10 @@ const DOMModule = (function () {
                         div_class: 'task-title-field',
                         textContent: element.title,
                     },
-                    // {
-                    //     div_class: 'task-notes-field',
-                    //     textContent: element.notes,
-                    // },
+                    {
+                        div_class: 'task-notes-field',
+                        textContent: element.notes,
+                    },
                     // {
                     //     div_class: 'task-priority-field',
                     //     textContent: element.priority,
@@ -1163,6 +1163,13 @@ const DOMModule = (function () {
                                 // console.log(TaskModule.getAllTasks());
                                 DOMModule.createDialogs.handleCloseAnimation(confirmTaskDeleteForm, confirmTaskDeleteDialog, 'submit', confirmTaskDeleteForm);
                                 DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
+                            })
+
+                            cancelTaskDeleteButton.addEventListener('click', () => {
+                                // console.log(TaskModule.getAllTasks());
+                                // console.log(TaskModule.getAllTasks());
+                                DOMModule.createDialogs.handleCloseAnimation(confirmTaskDeleteForm, confirmTaskDeleteDialog, 'submit', confirmTaskDeleteForm);
+                                // DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
                             })
                         })
                     }
