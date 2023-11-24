@@ -2,43 +2,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Lato:wght@300&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&family=Roboto:wght@100&family=Rubik:wght@300&display=swap');
 
 :root {
-
-
     /* Font */
-    --text-color: #333; /*used in font*/
+    --font-color: #333; /*used in font*/
 
     /* Backgrounds */
     --background-light: #EDEDE9; /*used in backgrounds*/
     --background-color: #F5EBE0; /*used in navigation panel on the left*/
-    --elements-hover: #ba181b28; /*used in navigation panel on the left hover*/
 
     /* Borders */
     --border-color: #D6CCC2; /*used in border colors*/
     --border-dark: #999; /*used in border colors*/
 
     /* Buttons */
-    --secondary-color: #2ecc71; /*used in Submit button hover*/
-    --secondary-dark: #27ae60; /*used in Submit button active*/
-    --secondary-light: #c8e6c9; /*used in Submit button*/
+    --submit-button-hover: #2ecc71; /*used in Submit button hover*/
+    --submit-button-active: #27ae60; /*used in Submit button active*/
+    --submit-button: #c8e6c9; /*used in Submit button*/
 
-    --button-hover: #ba181b28; /*used in new task button hover*/
-    --button-active: #ba181b5b; /*used in new task button active*/
+    --new-task-button-hover: #ba181b28; /*used in new task button hover*/
+   --new-task-button-active: #ba181b5b; /*used in new task button active*/
 
-    --close-button: rgb(169, 169, 169); /*used in dialog close button*/
-    --close-button-hover: rgb(136, 136, 136); /*used in dialog close button hover*/
-    --close-button-active: rgb(108, 108, 108); /*used in dialog close button active*/
+    --dialog-close-button: rgb(169, 169, 169); /*used in dialog close button*/
+    --dialog-close-button-hover: rgb(136, 136, 136); /*used in dialog close button hover*/
+    --dialog-close-button-active: rgb(108, 108, 108); /*used in dialog close button active*/
 
     /* Icons */
-    --accent-color: #BA181B; /*used in task delete and edit icons, project delete icon, and in views on the left*/
+    --icons-views: #BA181B; /*used in task delete and edit icons, project delete icon, and in views on the left*/
 
     /* Scroll bar and slider */
-    --accent-light: #E5383B; /*used scroll bar and slider animation*/
+    --scrollbar-slider: #E5383B; /*used scroll bar and slider animation*/
+    --navigation-elements-hover: #ba181b28; /*used in navigation panel on the left hover*/
 
     /* Input placeholder and checkboxes */
-    --text-muted: #888; /*used input placeholders and in checkbox icon */
-    --checkbox-color: green; /*used in checkbox*/
-
-
+    --input-placeholders-and-checkbox: #888; /*used input placeholders and in checkbox icon */
+    --checkbox: green; /*used in checkbox*/
 }
 
 
@@ -49,7 +45,7 @@
   }
   
   ::-webkit-scrollbar-thumb {
-      background: var(--accent-light); /* Change the color to your preference */
+      background: var(--scrollbar-slider); /* Change the color to your preference */
       border-radius: 6px;
       z-index: 9999;
   }
@@ -85,7 +81,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: var(--text-color);
+    color: var(--font-color);
     font-family: 'Nunito', sans-serif;
     font-weight: 300;
 }
@@ -211,7 +207,7 @@ body {
 .right-first-section > .task > .task-left-section.checked svg path,
 .right-first-section > .task > .task-left-section.checked svg circle {
     transition: all 0.3s ease;
-    stroke: var(--checkbox-color);
+    stroke: var(--checkbox);
     stroke-width: 1px;
 }
 
@@ -230,7 +226,7 @@ body {
 }
 
 .right-first-section > .task:hover > .task-left-section circle {
-    stroke: var(--checkbox-color);
+    stroke: var(--checkbox);
 }
 
 .right-first-section > .task:hover > .task-left-section path, 
@@ -240,12 +236,12 @@ body {
 
 .right-first-section > .task > .task-left-section > svg circle {
     fill: none;
-    stroke: var(--text-muted);
+    stroke: var(--input-placeholders-and-checkbox);
 }
 
 .right-first-section > .task > .task-left-section > svg path {
     fill: none;
-    stroke: var(--text-muted);
+    stroke: var(--input-placeholders-and-checkbox);
 }
 
 .right-first-section > .task > .task-right-section {
@@ -324,7 +320,7 @@ body {
 
 .right-first-section > .task > .task-right-section > .task-delete-button span,
 .right-first-section > .task > .task-right-section > .task-edit-button span {
-    color: var(--accent-color);
+    color: var(--icons-views);
     background-color: var(--background-light);
 }
 
@@ -332,13 +328,13 @@ body {
 .right-first-section > .task > .task-right-section:hover > .task-edit-button span {
     transition: all 0.3s ease;
     border-radius: 50%;
-    color: var(--accent-color);
+    color: var(--icons-views);
     background-color: var(--background-light);
 }
 
 .right-first-section > .task > .task-right-section:hover > .task-delete-button:hover span,
 .right-first-section > .task > .task-right-section:hover > .task-edit-button:hover span {
-    background-color: var(--accent-color);
+    background-color: var(--icons-views);
     color: var(--background-light);
 
 }
@@ -379,7 +375,7 @@ body {
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    border: 0.5px solid var(--text-muted);
+    border: 0.5px solid var(--input-placeholders-and-checkbox);
 }
 
 
@@ -447,7 +443,7 @@ body {
     position: absolute;
     /* top: 0; */
     height: 50px;
-    border-left: 6px solid var(--accent-light);
+    border-left: 6px solid var(--scrollbar-slider);
     z-index: 0;
     transition: all 0.3s ease;
     opacity: 0;
@@ -477,19 +473,19 @@ body {
 
 .left > .left-first-section li[data-active='false']:hover,
 .left > .left-second-section li:hover {
-    background-color: var(--elements-hover);
+    background-color: var(--navigation-elements-hover);
 }
 
 .left > .left-first-section li[data-active='true'] > div > svg {
-    fill: var(--accent-color);
+    fill: var(--icons-views);
 }
 
 .left > .left-first-section li[data-active='true'] > p {
-    color: var(--accent-color);
+    color: var(--icons-views);
 }
 
 .left > .left-second-section li.font-accent > div {
-    color: var(--accent-color);
+    color: var(--icons-views);
 }
 
 .left > .left-first-section li[data-active='false']:active,
@@ -667,7 +663,7 @@ body {
 }
 
 .footer > .footer-right > .create-task > .create-task-container:hover {
-    background-color: var(--button-hover);
+    background-color: var(--new-task-button-hover);
     transform: scale(1.1);
 
 }
@@ -806,13 +802,13 @@ dialog.displayed.project-delete > form > button {
     margin-right: 20px;
     opacity: 0;
     border-radius: 50%;
-    fill: var(--accent-color);
+    fill: var(--icons-views);
     transition: all 0.3s ease;
 }
 
 .delete-project-button:hover {
     fill: var(--background-light);
-    background-color: var(--accent-color);
+    background-color: var(--icons-views);
 }
 
 li.project:hover > .delete-project-button {
@@ -900,7 +896,7 @@ li.project:hover > .delete-project-button {
     border-radius: 5px;
     border: 0.5px solid var(--border-dark);
     transition: background-color 1s ease;
-    background-color: var(--secondary-light);
+    background-color: var(--submit-button);
     cursor: pointer;
 }
 
@@ -916,28 +912,28 @@ li.project:hover > .delete-project-button {
     border-radius: 5px;
     border: 0.5px solid var(--border-dark);
     transition: background-color 1s ease;
-    background-color: var(--secondary-light);
+    background-color: var(--submit-button);
     cursor: pointer;
 }
 
 .task-delete > form > button[type='submit'],
 .project-delete > form > button[type='submit'] {
-    background-color: var(--secondary-light);
+    background-color: var(--submit-button);
 }
 
 .task-delete > form > button[type='close'],
 .project-delete > form > button[type='close'] {
-    background-color: var(--close-button);
+    background-color: var(--dialog-close-button);
 }
 
 .task-delete > form > button[type="close"]:hover,
 .project-delete > form > button[type="close"]:hover {
-    background-color: var(--close-button-hover);
+    background-color: var(--dialog-close-button-hover);
 }
 
 .task-delete > form > button[type="close"]:active,
 .project-delete > form > button[type="close"]:active {
-    background-color: var(--close-button-active);
+    background-color: var(--dialog-close-button-active);
 }
 
 .new-task > form > button:focus,
@@ -954,7 +950,7 @@ li.project:hover > .delete-project-button {
 .task-delete > form > button[type="submit"]:hover,
 .project-delete > form > button[type="submit"]:hover {
     border: 0.5px solid black;
-    background-color: var(--secondary-color);
+    background-color: var(--submit-button-hover);
 }
 
 .new-task > form > button:active,
@@ -962,7 +958,7 @@ li.project:hover > .delete-project-button {
 .new-project > form > button:active,
 .task-delete > form > button[type="submit"]:active,
 .project-delete > form > button[type="submit"]:active {
-    background-color: var(--secondary-dark);
+    background-color: var(--submit-button-active);
 }
 
 .new-task > form > .close-task-dialog,
@@ -1031,7 +1027,7 @@ li.project:hover > .delete-project-button {
 .new-project > form input::placeholder,
 .new-project > form select::placeholder,
 .new-project > form textarea::placeholder {
-    color: var(--text-muted);
+    color: var(--input-placeholders-and-checkbox);
     font-style: italic;
 }
 
@@ -1074,6 +1070,6 @@ li.project:hover > .delete-project-button {
 
 
 .no-tasks-filler {
-    color: var(--text-muted);
+    color: var(--input-placeholders-and-checkbox);
     font-style: italic;
 }
