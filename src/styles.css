@@ -19,7 +19,7 @@
     --submit-button: #c8e6c9; /*used in Submit button*/
 
     --new-task-button-hover: #ba181b28; /*used in new task button hover*/
-   --new-task-button-active: #ba181b5b; /*used in new task button active*/
+    --new-task-button-active: #ba181b5b; /*used in new task button active*/
 
     --dialog-close-button: rgb(169, 169, 169); /*used in dialog close button*/
     --dialog-close-button-hover: rgb(136, 136, 136); /*used in dialog close button hover*/
