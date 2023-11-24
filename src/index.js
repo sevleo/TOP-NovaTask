@@ -5,33 +5,46 @@ import {format, parseISO} from 'date-fns';
 // Project module 
 const ProjectModule = (function() {
 
-    // Projects in default configuration
-    let projects = [
-        {
-            id: 1,
-            name: 'Sport',
-            color: '#dab8de',
-            active: 'false',
-        },
-        {
-            id: 2,
-            name: 'Math',
-            color: '#93c7b4',
-            active: 'false',
-        },
-        {
-            id: 3,
-            name: 'Programming',
-            color: '#e8ceb5',
-            active: 'false',
-        },
-        {
-            id: 4,
-            name: 'Leisure',
-            color: '#a6b5ff',
-            active: 'false',
-        },
-    ];
+    let projects = [];
+
+    let storedProjects = checkProjectsInLocalStorage();
+    if (storedProjects) {
+        projects = storedProjects;
+    } else {
+
+        // Mock projects
+        projects = [
+            {
+                id: 1,
+                name: 'Sport',
+                color: '#dab8de',
+                active: 'false',
+            },
+            {
+                id: 2,
+                name: 'Math',
+                color: '#93c7b4',
+                active: 'false',
+            },
+            {
+                id: 3,
+                name: 'Programming',
+                color: '#e8ceb5',
+                active: 'false',
+            },
+            {
+                id: 4,
+                name: 'Leisure',
+                color: '#a6b5ff',
+                active: 'false',
+            },
+        ];
+
+        projects.forEach((project) => {
+            saveProjectToLocalStorage(project);
+        });
+    }
+    
 
     let projectsCount = projects.length;
     
@@ -44,6 +57,7 @@ const ProjectModule = (function() {
         project.color = color;
 
         projects.push(project);
+        saveProjectToLocalStorage(project);
 
         return project;
     }
@@ -77,6 +91,13 @@ const ProjectModule = (function() {
 
     // Delete project
     function deleteProject(projectId) {
+        projects.forEach((projectObject) => {
+
+            if (projectObject.id === projectId) {
+                deleteProjectFromLocalStorage(projectObject);
+            }
+        })
+
         projects = projects.filter((project) => project.id !== projectId);
     }
 
@@ -142,6 +163,13 @@ const TaskModule = (function() {
     }
 
     function deleteTaskByProjectId(projectId) {
+
+        tasks.forEach((taskObject) => {
+            if (taskObject.projectId === projectId) {
+                deleteTaskFromLocalStorage(taskObject);
+            }
+        })
+
         tasks = tasks.filter((task) => task.projectId !== projectId);
     }
 
@@ -156,6 +184,8 @@ const TaskModule = (function() {
     if (storedTasks) {
         tasks = storedTasks;
     } else {
+
+        // Mock projects
         tasks = [
             {
                 id: 1,
@@ -425,7 +455,7 @@ const TaskModule = (function() {
 
         tasks.forEach((task) => {
             saveTaskToLocalStorage(task);
-        })
+        });
     }
 
 
@@ -447,6 +477,7 @@ const TaskModule = (function() {
   
         tasks.push(task);
         saveTaskToLocalStorage(task);
+
         return task;
     }
 
@@ -1759,7 +1790,6 @@ document.addEventListener('keydown', function(event) {
 
 
 // Local Storage Logic
-
 let localStorageStatus = {
     loaded: 'false',
 }
@@ -1776,6 +1806,7 @@ function switchLocalStorageStatus() {
 }
 
 
+// Local storage for tasks
 function saveTaskToLocalStorage(taskObject) {
     if (storageAvailable("localStorage")) {
         localStorage.setItem('task ' + taskObject.id, JSON.stringify(taskObject));
@@ -1810,6 +1841,42 @@ function checkTasksInLocalStorage() {
 }
 
 
+// Local sotrage for projects
+function saveProjectToLocalStorage(projectObject) {
+    if (storageAvailable("localStorage")) {
+        localStorage.setItem('project ' + projectObject.id, JSON.stringify(projectObject));
+        // console.log(JSON.parse(localStorage.getItem('task ' + taskObject.id)));
+    }
+}
+
+function deleteProjectFromLocalStorage(projectObject) {
+    if (storageAvailable("localStorage")) {
+        localStorage.removeItem('project ' + projectObject.id);
+    }
+}
+
+
+
+function checkProjectsInLocalStorage() {
+    if (storageAvailable("localStorage")) {
+        if (localStorage.getItem('localStorageLoaded')) {  
+
+            let projects = [];
+
+            const keys = Object.values(localStorage);
+            keys.forEach((key) => {
+                const parsedKey = JSON.parse(key);
+                if (parsedKey.name) {
+                    projects.push(parsedKey);
+                }
+            })
+            return projects;
+        }
+    }
+}
+
+
+// Check if local storage is available
 function storageAvailable(type) {
     let storage;
     try {
