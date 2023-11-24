@@ -1,6 +1,7 @@
 import { ProjectModule } from "./ProjectModule";
 import { TaskModule } from "./TaskModule";
 import {format, parseISO} from 'date-fns';
+export {DOMModule};
 
 // DOM module
 const DOMModule = (function () {
@@ -1134,6 +1135,3 @@ const DOMModule = (function () {
 })();
 
 
-export {
-    DOMModule
-};

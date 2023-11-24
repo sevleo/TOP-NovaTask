@@ -1,6 +1,7 @@
 import { checkProjectsInLocalStorage } from "./LocalStorageModule";
 import { deleteProjectFromLocalStorage } from "./LocalStorageModule";
 import { saveProjectToLocalStorage } from "./LocalStorageModule";
+export {ProjectModule};
 
 // Project module 
 const ProjectModule = (function() {
@@ -112,6 +113,3 @@ const ProjectModule = (function() {
     
 })();
 
-export {
-    ProjectModule,
-};

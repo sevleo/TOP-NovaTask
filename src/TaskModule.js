@@ -3,6 +3,7 @@ import { checkTasksInLocalStorage } from "./LocalStorageModule";
 import { deleteTaskFromLocalStorage } from "./LocalStorageModule";
 import { saveTaskToLocalStorage } from "./LocalStorageModule";
 import format from "date-fns/format";
+export {TaskModule};
 
 // Task module 
 const TaskModule = (function() {
@@ -520,4 +521,3 @@ const TaskModule = (function() {
     
 })();
 
-export {TaskModule};

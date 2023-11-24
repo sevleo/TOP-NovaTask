@@ -1,3 +1,14 @@
+export {
+    switchLocalStorageStatus,
+    saveTaskToLocalStorage,
+    deleteTaskFromLocalStorage,
+    checkTasksInLocalStorage,
+    saveProjectToLocalStorage,
+    deleteProjectFromLocalStorage,
+    checkProjectsInLocalStorage,
+}
+
+
 // Local Storage Logic
 let localStorageStatus = {
     loaded: 'false',
@@ -113,12 +124,3 @@ function storageAvailable(type) {
     }
 }
 
-export {
-    switchLocalStorageStatus,
-    saveTaskToLocalStorage,
-    deleteTaskFromLocalStorage,
-    checkTasksInLocalStorage,
-    saveProjectToLocalStorage,
-    deleteProjectFromLocalStorage,
-    checkProjectsInLocalStorage,
-}
