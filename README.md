@@ -3,8 +3,6 @@
 
 Nova Task reimagines the classic todo list app with a fresh perspective, offering seamless animations and an intuitive user interface.
 
-![Home page screenshot](screenshot.png)
-
 
 ## Table of Contents
 
@@ -27,6 +25,8 @@ Nova Task reimagines the classic todo list app with a fresh perspective, offerin
 ## Demo
 
 You can view the project at [Nova Task Demo](https://sevleo.github.io/nova_task/).
+
+![Home page screenshot](screenshot.png)
 
 
 ## Technologies
