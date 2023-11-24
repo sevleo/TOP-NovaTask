@@ -21,17 +21,18 @@ switchLocalStorageStatus();
 
 
 
-document.addEventListener('keydown', function(event) {
-    if (event.key === "5") {
-        // console.log(ProjectModule.getProjectObjects());
-        // console.log(TaskModule.getTodayTasks());
-        // console.log(TaskModule.getTomorrowTasks());
-        // console.log(TaskModule.getAllTasks());
-        // console.log(TaskModule.getProjectTasks('Math', TaskModule.getTodayTasks()));
-        // console.log(TaskModule.getActiveProject());
-        // console.log(TaskModule.getActiveView());
-    }
-})
+// console logs for testing
+// document.addEventListener('keydown', function(event) {
+//     if (event.key === "5") {
+//         console.log(ProjectModule.getProjectObjects());
+//         console.log(TaskModule.getTodayTasks());
+//         console.log(TaskModule.getTomorrowTasks());
+//         console.log(TaskModule.getAllTasks());
+//         console.log(TaskModule.getProjectTasks('Math', TaskModule.getTodayTasks()));
+//         console.log(TaskModule.getActiveProject());
+//         console.log(TaskModule.getActiveView());
+//     }
+// })
 
 
 
