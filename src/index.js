@@ -74,12 +74,18 @@ const ProjectModule = (function() {
         return project ? project.color : null;
     }
 
+    // Delete project
+    function deleteProject(projectId) {
+        projects = projects.filter((project) => project.id !== projectId);
+    }
+
     return {
         createProject,
         getProjectObjects,
         getProjectValues,
         findIdByName,
         findColorByName,
+        deleteProject,
     }
     
 })();
@@ -742,7 +748,6 @@ const DOMModule = (function () {
             createTaskDeleteDialog,
             createProjectDeleteDialog,
             handleCloseAnimation,
-            createProjectDeleteDialog,
         }
 
     })();
@@ -953,16 +958,18 @@ const DOMModule = (function () {
                     
                     const confirmProjectDeleteButton = document.querySelector('.project-delete > form > button[type="submit"]');
                     const cancelProjectDeleteButton = document.querySelector('.project-delete > form > button[type="close"]');
-
                     confirmProjectDeleteButton.addEventListener('click', () => {
                         // TaskModule.deleteTask(element.id);
                         // DOMModule.createDialogs.handleCloseAnimation(confirmTaskDeleteForm, confirmTaskDeleteDialog, 'submit', confirmTaskDeleteForm);
                         // DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
-                        console.log('mocking deletion of project');
+                        ProjectModule.deleteProject(element.id);
+                        DOMModule.createDialogs.handleCloseAnimation(confirmProjectDeleteForm, confirmProjectDeleteDialog, 'submit', confirmProjectDeleteForm);
+                        DOMModule.createLeftDiv.createProjects(ProjectModule.getProjectObjects());
+                        // DOMModule.createDialogs.newTaskDialogHandler();
                     })
 
                     cancelProjectDeleteButton.addEventListener('click', () => {
-                        DOMModule.createDialogs.handleCloseAnimation(confirmProjectDeleteForm, confirmProjectDeleteDialog, 'click', confirmProjectDeleteForm);
+                        DOMModule.createDialogs.handleCloseAnimation(confirmProjectDeleteForm, confirmProjectDeleteDialog, 'submit', confirmProjectDeleteForm);
                     })
                 })
 
@@ -1248,9 +1255,13 @@ const DOMModule = (function () {
                                 DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
                             })
 
-                            cancelTaskDeleteButton.addEventListener('click', () => {
-                                DOMModule.createDialogs.handleCloseAnimation(confirmTaskDeleteForm, confirmTaskDeleteDialog, 'click', confirmTaskDeleteForm);
-                            })
+
+                            function handleCancelTaskDelete() {
+                                DOMModule.createDialogs.handleCloseAnimation(confirmTaskDeleteForm, confirmTaskDeleteDialog, 'submit', confirmTaskDeleteForm);
+                                cancelTaskDeleteButton.removeEventListener('click', handleCancelTaskDelete);
+                            }
+
+                            cancelTaskDeleteButton.addEventListener('click', handleCancelTaskDelete);
                         })
                     }
 
@@ -1383,13 +1394,13 @@ DOMModule.createFooterDiv.createButtons();
 
 document.addEventListener('keydown', function(event) {
     if (event.key === "5") {
-        // console.log(ProjectModule.getProjectObjects());
+        console.log(ProjectModule.getProjectObjects());
         // console.log(TaskModule.getTodayTasks());
         // console.log(TaskModule.getTomorrowTasks());
         // console.log(TaskModule.getAllTasks());
         // console.log(TaskModule.getProjectTasks('Math', TaskModule.getTodayTasks()));
-        console.log(TaskModule.getActiveProject());
-        console.log(TaskModule.getActiveView());
+        // console.log(TaskModule.getActiveProject());
+        // console.log(TaskModule.getActiveView());
         // console.log(TaskModule.getActiveProject());
         // console.log(TaskModule.getActiveView());
     }
