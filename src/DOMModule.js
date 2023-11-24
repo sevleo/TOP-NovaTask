@@ -10,6 +10,38 @@ const DOMModule = (function () {
         const mainDiv = document.createElement('div');
         mainDiv.classList.add('main');
         body.append(mainDiv);
+
+        // Light/Dark mode switcher
+        const html = document.querySelector('html');
+        html.classList.add('light-mode');
+        const modeToggleButton = document.createElement('div');
+        modeToggleButton.setAttribute('id', 'toggle-mode-button');
+        modeToggleButton.classList.add('light');
+        mainDiv.append(modeToggleButton);
+
+        const modeToggleIcon = document.createElement('span');
+        modeToggleIcon.classList.add('material-symbols-outlined');
+        modeToggleIcon.innerHTML = "light_mode";
+        modeToggleButton.append(modeToggleIcon);
+
+        modeToggleButton.addEventListener('click', () => {
+            if (modeToggleButton.classList.contains('light')) {
+                modeToggleButton.classList.remove('light');
+                modeToggleButton.classList.add('dark');
+                modeToggleIcon.innerHTML = "dark_mode";
+                html.classList.remove('light-mode');
+                html.classList.add('dark-mode')
+            } else {
+                modeToggleButton.classList.remove('dark');
+                modeToggleButton.classList.add('light');
+                modeToggleIcon.innerHTML = "light_mode";
+                html.classList.remove('dark-mode');
+                html.classList.add('light-mode');
+            }
+        })
+
+        
+
     }
 
     const createDialogs = (function () {
