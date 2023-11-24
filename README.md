@@ -1,8 +1,7 @@
 
 # Nova Task
 
-Implemented my vision of the infamous todo list app under the name Nova Task. The app includes smooth animations and neat user experience. Users can create projects and under these projects they can create tasks. The view panel on the left allows users to filter tasks by time period (today, tomorrow, and all). In addition, it is possible to select a project to show the subset of tasks in that project. Projects and tasks can be added, deleted, and edited. Data is saved in local browser storage via Web Storage API.
-
+Reimagined as Nova Task, this project brings a fresh approach to the classic todo list app, boasting seamless animations and an intuitive user interface. Users can organize tasks within projects, filter them by time periods (today, tomorrow, or view all), and effortlessly manage projects and tasks by adding, deleting, or editing them. The application leverages the Web Storage API for local browser data storage, ensuring a smooth user experience.
 
 ![Home page screenshot](screenshot.png)
 
@@ -35,7 +34,7 @@ You can view the project at [Nova Task Demo](https://sevleo.github.io/nova_task/
 
 ## Contributing
 
- Contributions are welcome! If you'd like to contribute to this project, please follow these guidelines:
+ Contributions are enthusiastically welcomed! Whether you're keen on improving mobile responsiveness, enhancing UI/UX elements, or optimizing performance, follow these guidelines to contribute:
 
  1. Fork the repository.
  2. Create a new branch for your feature or bug fix.
