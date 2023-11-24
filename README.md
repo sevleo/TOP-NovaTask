@@ -1,7 +1,15 @@
 
 # Nova Task
 
-Reimagined as Nova Task, this project brings a fresh approach to the classic todo list app, boasting seamless animations and an intuitive user interface. Users can organize tasks within projects, filter them by time periods (today, tomorrow, or view all), and effortlessly manage projects and tasks by adding, deleting, or editing them. The application leverages the Web Storage API for local browser data storage, ensuring a smooth user experience.
+Nova Task reimagines the classic todo list app with a fresh perspective, offering seamless animations and an intuitive user interface.
+
+Features:
+- Task Organization: Arrange tasks within projects for better management.
+- Smart Filtering: Combine time and project filters to quickly find relevant tasks.
+- Effortless Task Management: Add, delete, or edit tasks with ease.
+- Web Storage API Integration: Ensures a smooth user experience by locally storing data in the browser.
+- Sleek animations: boasting seamless and an intuitive user interface.
+
 
 ![Home page screenshot](screenshot.png)
 
