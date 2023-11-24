@@ -120,6 +120,12 @@ const TaskModule = (function() {
         return active_project;
     }
 
+    // Retrieve the object that matches the provided ID
+    function findObjectById(taskId) {
+        const taskObject = tasks.find(task => task.id === taskId);
+        return taskObject ? taskObject : null;
+    }
+
     function deleteTaskById(taskId) {
         tasks = tasks.filter((task) => task.id !== taskId);
     }
@@ -418,6 +424,7 @@ const TaskModule = (function() {
         getTasksFromActiveView,
         deleteTaskById,
         deleteTaskByProjectId,
+        findObjectById,
     }
     
 })();
@@ -767,10 +774,11 @@ const DOMModule = (function () {
                 dialogName.classList.add('task-dialog-name');
                 dialogName.textContent = 'Edit Task';
                 editTaskDialogForm.append(dialogName);
+
+                const taskObject = TaskModule.findObjectById(taskId);
     
 
-                const today = new Date();
-                const formatteDate = today.toISOString().split('T')[0];
+                console.log(taskObject.projectName);
 
                 const newTaskDialogFieldsTemplate = [
                     {
@@ -782,6 +790,7 @@ const DOMModule = (function () {
                         textContent: 'Project',
                         select_options: ProjectModule.getProjectValues(),
                         cursor_style: 'pointer',
+                        value: "Math",
                     },
                     {
                         element_type: 'input',
@@ -792,6 +801,7 @@ const DOMModule = (function () {
                         textContent: 'Title',
                         text_placeholder: 'Read a book',
                         required: 'required',
+                        value: taskObject.title,
                     },
                     {
                         element_type: 'textarea',
@@ -801,18 +811,8 @@ const DOMModule = (function () {
                         label: 'Notes',
                         textContent: '',
                         text_placeholder: 'At least a page',
+                        value: taskObject.notes,
                     },
-                    // {
-                    //     element_type: 'select',
-                    //     div_class: 'task-priority-field-div',
-                    //     element_id: 'task-priority',
-                    //     input_type: '',
-                    //     label: 'Priority',
-                    //     textContent: 'Priority',
-                    //     select_options: ['High', 'Normal', 'Low'],
-                    //     select_default: 'Normal',
-                    //     cursor_style: 'pointer',
-                    // },
                     {
                         element_type: 'input',
                         div_class: 'task-date-field-div',
@@ -821,7 +821,7 @@ const DOMModule = (function () {
                         label: 'Date *',
                         textContent: 'Date',
                         required: 'required',
-                        value: formatteDate,
+                        value: taskObject.date,
                     },
                 ];
     
@@ -854,8 +854,8 @@ const DOMModule = (function () {
                             option.setAttribute('value', item);
                             option.textContent = item;
                             fieldInput.append(option);
-                            if (item === element.select_default) {
-                                option.setAttribute('selected', '');
+                            if (item === taskObject.projectName) {
+                                option.setAttribute('selected', 'selected');
                             }
                         })
 
@@ -904,8 +904,14 @@ const DOMModule = (function () {
                 event.preventDefault();
 
                 const projectName = document.querySelector('#project-name');
-
                 projectName.value = '';
+
+                const taskTitle = document.querySelector('#task-title');
+                taskTitle.value = '';
+
+                const taskNotes = document.querySelector('#task-notes');
+                taskNotes.value = '';
+
                 // form.reset();
                 closeDialog(dialog);
             });
