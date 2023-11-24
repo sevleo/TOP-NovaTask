@@ -29,10 +29,10 @@
     --dialog-close-button-active: rgb(108, 108, 108); /*used in dialog close button active*/
 
     /* Icons */
-    --icons-views: #BA181B; /*used in task delete and edit icons, project delete icon, and in views on the left*/
+    --icons-views: #811c1c; /*used in task delete and edit icons, project delete icon, and in views on the left*/
 
     /* Scroll bar and slider */
-    --scrollbar-slider: #E5383B; /*used scroll bar and slider animation*/
+    --scrollbar-slider: #4c1f1f; /*used scroll bar and slider animation*/
     --navigation-elements-hover: #7a7a7a28; /*used in navigation panel on the left hover*/
     --navigation-elements-active: #df1c1f28;
 
@@ -68,7 +68,7 @@
     --dialog-close-button-active: rgb(108, 108, 108); /*used in dialog close button active*/
 
     /* Icons */
-    --icons-views: #ffffff; /*used in task delete and edit icons, project delete icon, and in views on the left*/
+    --icons-views: #884040; /*used in task delete and edit icons, project delete icon, and in views on the left*/
 
     /* Scroll bar and slider */
     --scrollbar-slider: #ab3737; /*used scroll bar and slider animation*/
