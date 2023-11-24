@@ -777,9 +777,6 @@ const DOMModule = (function () {
 
                 const taskObject = TaskModule.findObjectById(taskId);
     
-
-                console.log(taskObject.projectName);
-
                 const newTaskDialogFieldsTemplate = [
                     {
                         element_type: 'select',
@@ -1047,12 +1044,6 @@ const DOMModule = (function () {
                         rightFirstHeader.textContent += " - " + TaskModule.getActiveProject();
                     }
                     
-                    // DOMModule.createRightDiv.createTasks(tasksFunction());
-                    // console.log(TaskModule.getActiveProject());
-                    // console.log(TaskModule.getProjectTasks(TaskModule.getActiveProject(), tasksFunction()));
-                    // console.log(tasksFunction());
-                    // console.log(TaskModule.getActiveProject());
-                    // console.log(TaskModule.getProjectTasks(TaskModule.getActiveProject(), tasksFunction()));
                 } )
             })
         
@@ -1576,7 +1567,6 @@ DOMModule.createDialogs.newProjectDialogHandler();
 DOMModule.createDialogs.newTaskDialogHandler();
 DOMModule.createDialogs.createProjectDeleteDialog();
 DOMModule.createDialogs.createTaskDeleteDialog();
-// DOMModule.createDialogs.editTaskDialogHandler();
 DOMModule.createDialogs.addEscEvenListener();
 DOMModule.createLeftDiv.createStructure();
 DOMModule.createLeftDiv.createProjects(ProjectModule.getProjectObjects());
@@ -1592,7 +1582,7 @@ document.addEventListener('keydown', function(event) {
         // console.log(TaskModule.getTomorrowTasks());
         // console.log(TaskModule.getAllTasks());
         // console.log(TaskModule.getProjectTasks('Math', TaskModule.getTodayTasks()));
-        console.log(TaskModule.getActiveProject());
+        // console.log(TaskModule.getActiveProject());
         // console.log(TaskModule.getActiveView());
     }
 })

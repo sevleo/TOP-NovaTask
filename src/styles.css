@@ -213,7 +213,7 @@ body {
 
 
 .right-first-section > .task:hover > .task-right-section > .task-title-field {
-    transform: translateX(-10px);
+    /* transform: translateX(-10px); */
 }
 
 .right-first-section > .task > .task-left-section {
@@ -334,27 +334,39 @@ body {
     transform: scale(0.7);
     transition: all 0.3s ease;
     opacity: 0;
-
+}
+.right-first-section > .task > .task-right-section > .task-edit-button {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    font-size: 12px;
+    justify-self: end;
+    transform: scale(0.7);
+    transition: all 0.3s ease;
+    opacity: 0;
 }
 
-.right-first-section > .task > .task-right-section:hover > .task-delete-button {
+.right-first-section > .task > .task-right-section:hover > .task-delete-button,
+.right-first-section > .task > .task-right-section:hover > .task-edit-button {
     /* transform: rotate(90deg); */
     opacity: 1;
 }
 
-.right-first-section > .task > .task-right-section > .task-delete-button span {
+.right-first-section > .task > .task-right-section > .task-delete-button span,
+.right-first-section > .task > .task-right-section > .task-edit-button span {
     color: var(--accent-color);
     background-color: var(--background-light);
 }
 
-.right-first-section > .task > .task-right-section:hover > .task-delete-button span {
+.right-first-section > .task > .task-right-section:hover > .task-delete-button span,
+.right-first-section > .task > .task-right-section:hover > .task-edit-button span {
     transition: all 0.3s ease;
     border-radius: 50%;
     color: var(--accent-color);
     background-color: var(--background-light);
 }
 
-.right-first-section > .task > .task-right-section:hover > .task-delete-button:hover span {
+.right-first-section > .task > .task-right-section:hover > .task-delete-button:hover span,
+.right-first-section > .task > .task-right-section:hover > .task-edit-button:hover span {
     /* transform: rotate(90deg); */
     background-color: var(--accent-color);
     color: var(--background-light);
@@ -766,35 +778,43 @@ dialog.displayed.new-project > form > .close-project-dialog {
 }
 
 
-dialog.displayed.new-task > form .task-dialog-name {
+dialog.displayed.new-task > form .task-dialog-name,
+dialog.displayed.edit-task > form .task-dialog-name {
     transition: opacity 300ms ease-in-out 200ms;
 }
 
-dialog.displayed.new-task > form > .task-project-field-div {
+dialog.displayed.new-task > form > .task-project-field-div,
+dialog.displayed.edit-task > form > .task-project-field-div {
     transition: opacity 300ms ease-in-out 250ms;
 }
 
-dialog.displayed.new-task > form > .task-title-field-div {
+dialog.displayed.new-task > form > .task-title-field-div,
+dialog.displayed.edit-task > form > .task-title-field-div {
     transition: opacity 300ms ease-in-out 300ms;
 }
 
-dialog.displayed.new-task > form > .task-notes-field-div {
+dialog.displayed.new-task > form > .task-notes-field-div,
+dialog.displayed.edit-task > form > .task-notes-field-div {
     transition: opacity 300ms ease-in-out 350ms;
 }
 
-dialog.displayed.new-task > form > .task-priority-field-div {
+dialog.displayed.new-task > form > .task-priority-field-div,
+dialog.displayed.edit-task > form > .task-priority-field-div {
     transition: opacity 300ms ease-in-out 400ms;
 }
 
-dialog.displayed.new-task > form > .task-date-field-div {
+dialog.displayed.new-task > form > .task-date-field-div,
+dialog.displayed.edit-task > form > .task-date-field-div {
     transition: opacity 300ms ease-in-out 450ms;
 }
 
-dialog.displayed.new-task > form > button {
+dialog.displayed.new-task > form > button,
+dialog.displayed.edit-task > form > button  {
     transition: opacity 300ms ease-in-out 500ms, background-color 0.3s ease, border-color 0.1s ease;
 }
 
-dialog.displayed.new-task > form > .close-task-dialog {
+dialog.displayed.new-task > form > .close-task-dialog,
+dialog.displayed.edit-task > form > .close-task-dialog {
     transition: opacity 300ms ease-in-out 550ms;
 }
 
@@ -826,6 +846,7 @@ li.project:hover > .delete-project-button {
 
 .new-project,
 .new-task,
+.edit-task,
 .task-delete,
 .project-delete {
     width: 400px;
@@ -833,7 +854,8 @@ li.project:hover > .delete-project-button {
 }
 
 .new-project > form,
-.new-task > form {
+.new-task > form,
+.edit-task > form {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -874,6 +896,11 @@ li.project:hover > .delete-project-button {
 .new-task > form > .task-notes-field-div,
 .new-task > form > .task-priority-field-div,
 .new-task > form > .task-date-field-div,
+.edit-task > form > .task-project-field-div,
+.edit-task > form > .task-title-field-div,
+.edit-task > form > .task-notes-field-div,
+.edit-task > form > .task-priority-field-div,
+.edit-task > form > .task-date-field-div,
 .new-project > form  .project-name-field-div,
 .new-project > form  .project-color-field-div {
     display: flex;
@@ -881,6 +908,7 @@ li.project:hover > .delete-project-button {
 }
 
 .new-task > form > .task-dialog-name,
+.edit-task > form > .task-dialog-name,
 .new-project > form > .project-dialog-name {
     align-self: center;
     font-size: 25px;
@@ -888,6 +916,7 @@ li.project:hover > .delete-project-button {
 }
 
 .new-task > form > button,
+.edit-task > form > button,
 .new-project > form > button {
     margin-top: 25px;
     height: 40px;
@@ -937,6 +966,7 @@ li.project:hover > .delete-project-button {
 }
 
 .new-task > form > button:focus,
+.edit-task > form > button:focus,
 .new-project > form > button:focus,
 .task-delete > form > button:focus,
 .project-delete > form > button:focus {
@@ -944,6 +974,7 @@ li.project:hover > .delete-project-button {
 }
 
 .new-task > form > button:hover,
+.edit-task > form > button:hover,
 .new-project > form > button:hover,
 .task-delete > form > button[type="submit"]:hover,
 .project-delete > form > button[type="submit"]:hover {
@@ -952,6 +983,7 @@ li.project:hover > .delete-project-button {
 }
 
 .new-task > form > button:active,
+.edit-task > form > button:active,
 .new-project > form > button:active,
 .task-delete > form > button[type="submit"]:active,
 .project-delete > form > button[type="submit"]:active {
@@ -959,6 +991,7 @@ li.project:hover > .delete-project-button {
 }
 
 .new-task > form > .close-task-dialog,
+.edit-task > form > .close-task-dialog,
 .new-project > form > .close-project-dialog {
     position: absolute;
     right: 10px;
@@ -966,6 +999,7 @@ li.project:hover > .delete-project-button {
 }
 
 .new-task > form > .close-task-dialog span,
+.edit-task > form > .close-task-dialog span,
 .new-project > form > .close-project-dialog span {
     transform: scale(1);
     opacity: 0.7;
@@ -974,6 +1008,7 @@ li.project:hover > .delete-project-button {
 }
 
 .new-task > form > .close-task-dialog:hover span,
+.edit-task > form > .close-task-dialog:hover span,
 .new-project > form > .close-project-dialog:hover span {
     transform: rotate(90deg) scale(1.1);
     opacity: 1;
@@ -985,6 +1020,9 @@ li.project:hover > .delete-project-button {
 .new-task > form input,
 .new-task > form select,
 .new-task > form textarea,
+.edit-task > form input,
+.edit-task > form select,
+.edit-task > form textarea,
 .new-project > form input,
 .new-project > form select,
 .new-project > form textarea {
@@ -998,6 +1036,9 @@ li.project:hover > .delete-project-button {
 .new-task > form input:hover,
 .new-task > form select:hover,
 .new-task > form textarea:hover,
+.edit-task > form input:hover,
+.edit-task > form select:hover,
+.edit-task > form textarea:hover,
 .new-project > form input:hover,
 .new-project > form select:hover,
 .new-project > form textarea:hover {
@@ -1009,6 +1050,9 @@ li.project:hover > .delete-project-button {
 .new-task > form input::placeholder,
 .new-task > form select::placeholder,
 .new-task > form textarea::placeholder,
+.edit-task > form input::placeholder,
+.edit-task > form select::placeholder,
+.edit-task > form textarea::placeholder,
 .new-project > form input::placeholder,
 .new-project > form select::placeholder,
 .new-project > form textarea::placeholder {
@@ -1017,6 +1061,7 @@ li.project:hover > .delete-project-button {
 }
 
 .new-task > form textarea,
+.edit-task > form textarea,
 .new-project > form textarea {
     resize: none;
 }
