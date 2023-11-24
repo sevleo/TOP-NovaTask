@@ -148,7 +148,7 @@ const TaskModule = (function() {
             title: 'Jogging in the park',
             notes: 'Aim for a 5 km run. Focus on breathing techniques.',
             priority: 'High',
-            date: '2023-11-25',
+            date: new Date(),
             completed: 'true',
         },
         {
@@ -454,15 +454,21 @@ const TaskModule = (function() {
     function getTodayTasks() {
         const today = new Date();        
         const tasksToReturn = [];
+        let taskDate = ''
         tasks.forEach((task) => {
             const dateString = task.date;
-            const dateParts = dateString.split("-");
+            if (task.date instanceof Date) {
+                taskDate = task.date;
+            } else {
+                const dateParts = dateString.split("-");
 
-            const year = parseInt(dateParts[0]);
-            const month = parseInt(dateParts[1]);
-            const date = parseInt(dateParts[2]);
+                const year = parseInt(dateParts[0]);
+                const month = parseInt(dateParts[1]);
+                const date = parseInt(dateParts[2]);
+    
+                taskDate = new Date(year, month - 1, date);
+            }
 
-            const taskDate = new Date(year, month - 1, date);
 
             const isSameYear = taskDate.getFullYear() === today.getFullYear();
             const isSameMonth = taskDate.getMonth() === today.getMonth();
@@ -483,15 +489,21 @@ const TaskModule = (function() {
 
         const tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);       
         const tasksToReturn = [];
+        let taskDate = '';
         tasks.forEach((task) => {
             const dateString = task.date;
-            const dateParts = dateString.split("-");
+            if (task.date instanceof Date) {
+                taskDate = task.date;
+            } else {
+                const dateParts = dateString.split("-");
 
-            const year = parseInt(dateParts[0]);
-            const month = parseInt(dateParts[1]);
-            const date = parseInt(dateParts[2]);
+                const year = parseInt(dateParts[0]);
+                const month = parseInt(dateParts[1]);
+                const date = parseInt(dateParts[2]);
+    
+                taskDate = new Date(year, month - 1, date);
+            }
 
-            const taskDate = new Date(year, month - 1, date);
 
             const isSameYear = taskDate.getFullYear() === tomorrow.getFullYear();
             const isSameMonth = taskDate.getMonth() === tomorrow.getMonth();
