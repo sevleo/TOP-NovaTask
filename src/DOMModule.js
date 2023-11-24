@@ -1,6 +1,7 @@
 import { ProjectModule } from "./ProjectModule";
 import { TaskModule } from "./TaskModule";
 import {format, parseISO} from 'date-fns';
+import { saveTaskToLocalStorage, deleteTaskFromLocalStorage } from "./LocalStorageModule";
 export {DOMModule};
 
 // DOM module
@@ -937,6 +938,8 @@ const DOMModule = (function () {
                         taskLineItemLeftSection.classList.add('unchecked');
                         element.completed = 'false';
                     }
+                    deleteTaskFromLocalStorage(element);
+                    saveTaskToLocalStorage(element);
                 })
 
                 taskLineItem.append(taskLineItemLeftSection);
