@@ -1,14 +1,4 @@
-fix carry over of field values in dialogs 
-    new task should not carry over
-    edit task should carry over
-
-
 add sort by dates in all view
-add task edit
 save data
 add responsive design
-remove clickability from an active view
-
-
-
-1268 event listener on pencil icon
+split js into several module files
