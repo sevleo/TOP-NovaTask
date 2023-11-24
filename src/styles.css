@@ -8,10 +8,10 @@
 
     /* Backgrounds */
     --background-light: #EDEDE9; /*used in backgrounds*/
-    --background-color: #F5EBE0; /*used in navigation panel on the left*/
+    --background-color: #3f1e093e; /*used in navigation panel on the left*/
 
     /* Borders */
-    --border-color: #D6CCC2; /*used in border colors*/
+    --border-color: #a9a9a9; /*used in border colors*/
     --border-dark: #999; /*used in border colors*/
 
     /* Buttons */
