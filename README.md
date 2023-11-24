@@ -3,26 +3,26 @@
 
 Nova Task reimagines the classic todo list app with a fresh perspective, offering seamless animations and an intuitive user interface.
 
-Features:
-- Task Organization: Arrange tasks within projects for better management.
-- Smart Filtering: Combine time and project filters to quickly find relevant tasks.
-- Effortless Task Management: Add, delete, or edit tasks with ease.
-- Web Storage API Integration: Ensures a smooth user experience by locally storing data in the browser.
-- Sleek Animations: Enjoy a visually engaging experience through seamless animations.
-- Day/Night Modes: Switch between light and dark themes for enhanced usability in different environments.
-
-
 ![Home page screenshot](screenshot.png)
 
 
 ## Table of Contents
 
+- [Features](#features)
 - [Demo](#demo)
 - [Technologies used](#technologies)
 - [Limitations](#limitations)
 - [Contributing](#contributing)
 - [License](#license)
 
+## Features
+
+- Task Organization: Arrange tasks within projects for better management.
+- Smart Filtering: Combine time and project filters to quickly find relevant tasks.
+- Effortless Task Management: Add, delete, or edit tasks with ease.
+- Web Storage API Integration: Ensures a smooth user experience by locally storing data in the browser.
+- Sleek Animations: Enjoy a visually engaging experience through seamless animations.
+- Day/Night Modes: Switch between light and dark themes for enhanced usability in different environments.
 
 ## Demo
 
