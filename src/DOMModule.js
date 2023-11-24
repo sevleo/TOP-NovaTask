@@ -13,15 +13,15 @@ const DOMModule = (function () {
 
         // Light/Dark mode switcher
         const html = document.querySelector('html');
-        html.classList.add('light-mode');
+        html.classList.add('dark-mode');
         const modeToggleButton = document.createElement('div');
         modeToggleButton.setAttribute('id', 'toggle-mode-button');
-        modeToggleButton.classList.add('light');
+        modeToggleButton.classList.add('dark');
         mainDiv.append(modeToggleButton);
 
         const modeToggleIcon = document.createElement('span');
         modeToggleIcon.classList.add('material-symbols-outlined');
-        modeToggleIcon.innerHTML = "light_mode";
+        modeToggleIcon.innerHTML = "dark_mode";
         modeToggleButton.append(modeToggleIcon);
 
         modeToggleButton.addEventListener('click', () => {

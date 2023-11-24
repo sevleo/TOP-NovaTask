@@ -1,5 +1,5 @@
 
-# Restaurant Page
+# Nova Task
 
 Implemented my vision of the infamous todo list app under the name Nova Task. The app includes smooth animations and neat user experience. Users can create projects and under these projects they can create tasks. The view panel on the left allows users to filter tasks by time period (today, tomorrow, and all). In addition, it is possible to select a project to show the subset of tasks in that project. Projects and tasks can be added, deleted, and edited. Data is saved in local browser storage via Web Storage API.
 
