@@ -120,8 +120,12 @@ const TaskModule = (function() {
         return active_project;
     }
 
-    function deleteTask(taskId) {
+    function deleteTaskById(taskId) {
         tasks = tasks.filter((task) => task.id !== taskId);
+    }
+
+    function deleteTaskByProjectId(projectId) {
+        tasks = tasks.filter((task) => task.projectId !== projectId);
     }
 
 
@@ -138,7 +142,7 @@ const TaskModule = (function() {
             title: 'Complete Exercise 1',
             notes: 'Remember to focus on the key concepts',
             priority: 'High',
-            date: '2023-11-22',
+            date: '2023-11-25',
             completed: 'true',
         },
         {
@@ -182,7 +186,7 @@ const TaskModule = (function() {
             title: 'Read "The Great Gatsby"',
             notes: 'Complete chapters 1-3 by the end of the week',
             priority: 'Medium',
-            date: '2023-11-23',
+            date: '2023-11-25',
             completed: 'true',
         },
         {
@@ -193,7 +197,7 @@ const TaskModule = (function() {
             title: 'Prepare presentation slides',
             notes: 'Incorporate feedback from team members',
             priority: 'High',
-            date: '2023-11-23',
+            date: '2023-11-25',
             completed: 'false',
         },
         {
@@ -392,7 +396,8 @@ const TaskModule = (function() {
         getActiveProject,
         getProjectTasks,
         getTasksFromActiveView,
-        deleteTask,
+        deleteTaskById,
+        deleteTaskByProjectId,
     }
     
 })();
@@ -965,24 +970,24 @@ const DOMModule = (function () {
                         ProjectModule.deleteProject(element.id);
                         DOMModule.createDialogs.handleCloseAnimation(confirmProjectDeleteForm, confirmProjectDeleteDialog, 'submit', confirmProjectDeleteForm);
                         DOMModule.createLeftDiv.createProjects(ProjectModule.getProjectObjects());
+                        TaskModule.deleteTaskByProjectId(element.id);
+
+                        
+                        
+                        if (TaskModule.getActiveProject() === element.name) {
+                            TaskModule.changeActiveProject('');
+                            const rightFirstHeader = document.querySelector('.right-first-header');
+                            rightFirstHeader.textContent = TaskModule.getActiveView().charAt(0).toUpperCase() + TaskModule.getActiveView().slice(1);
+                        }
                         // DOMModule.createDialogs.newTaskDialogHandler();
+                        DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
+
                     })
 
                     cancelProjectDeleteButton.addEventListener('click', () => {
                         DOMModule.createDialogs.handleCloseAnimation(confirmProjectDeleteForm, confirmProjectDeleteDialog, 'submit', confirmProjectDeleteForm);
                     })
                 })
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -997,16 +1002,7 @@ const DOMModule = (function () {
                     projectLineItem.classList.remove('hovered-delete');
                 }) 
 
-                projectLineItemDeleteButton.addEventListener('click', () => {
-                    
-                    console.log(projectLineItemDeleteButton);
-                })
-
-
-
                 projectLineItem.addEventListener('click', () => {
-                    
-
                     const deleteHovered = document.querySelector('.delete-project-button.hovered');
                     if (!deleteHovered) {
                         if (TaskModule.getActiveProject() === projectLineItemName.textContent) {
@@ -1023,8 +1019,6 @@ const DOMModule = (function () {
                             rightFirstHeader.textContent += " - " + TaskModule.getActiveProject();
                         }
                     }
-
-
                 })
             });
 
@@ -1250,7 +1244,7 @@ const DOMModule = (function () {
                             const cancelTaskDeleteButton = document.querySelector('.task-delete > form > button[type="close"]');
 
                             confirmTaskDeleteButton.addEventListener('click', () => {
-                                TaskModule.deleteTask(element.id);
+                                TaskModule.deleteTaskById(element.id);
                                 DOMModule.createDialogs.handleCloseAnimation(confirmTaskDeleteForm, confirmTaskDeleteDialog, 'submit', confirmTaskDeleteForm);
                                 DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
                             })
@@ -1394,14 +1388,12 @@ DOMModule.createFooterDiv.createButtons();
 
 document.addEventListener('keydown', function(event) {
     if (event.key === "5") {
-        console.log(ProjectModule.getProjectObjects());
+        // console.log(ProjectModule.getProjectObjects());
         // console.log(TaskModule.getTodayTasks());
         // console.log(TaskModule.getTomorrowTasks());
         // console.log(TaskModule.getAllTasks());
         // console.log(TaskModule.getProjectTasks('Math', TaskModule.getTodayTasks()));
-        // console.log(TaskModule.getActiveProject());
-        // console.log(TaskModule.getActiveView());
-        // console.log(TaskModule.getActiveProject());
+        console.log(TaskModule.getActiveProject());
         // console.log(TaskModule.getActiveView());
     }
 })
