@@ -290,6 +290,25 @@ const TaskModule = (function() {
         return task;
     }
 
+    // Update an existing task object
+    function updateTask(projectName, title, notes, date, taskId) {
+        const task = {};
+        tasks.forEach((task) => {
+            if (task.id === taskId) {
+                task.projectName = projectName;
+                task.projectId = ProjectModule.findIdByName(projectName);
+                task.projectColor = ProjectModule.findColorByName(projectName);
+                task.title = title;
+                task.notes = notes;
+                task.date = date;
+                return task;
+            }
+        })
+
+    
+
+    }
+
     // Retrieve all tasks
     function getAllTasks() {
         changeActiveView('all');
@@ -387,6 +406,7 @@ const TaskModule = (function() {
 
     return {
         createTask,
+        updateTask,
         getAllTasks,
         getTodayTasks,
         getTomorrowTasks,
@@ -707,6 +727,161 @@ const DOMModule = (function () {
                 handleCloseAnimation(closeTaskDialogSpan, newTaskDialog, 'click', newTaskDialogForm);
             }   
         }
+
+        function editTaskDialogHandler(taskId) {
+            const existingTaskDialog = document.querySelector('.edit-task');
+            if (existingTaskDialog) {
+                existingTaskDialog.remove();
+            }
+
+            const editTaskDialog = createEditTaskDialog();
+            const editTaskDialogForm = createEditTaskDialogForm();
+
+            function createEditTaskDialog() {
+                const newTaskDialog = document.createElement('dialog');
+                newTaskDialog.classList.add('edit-task', 'hidden');
+                body.append(newTaskDialog);
+                return newTaskDialog;
+            }
+
+            function createEditTaskDialogForm() {
+                const existingTaskDialogForm = document.querySelector('.edit-task > form');
+                if (existingTaskDialogForm) {
+                    existingTaskDialogForm.remove();
+                }
+                const editTaskDialogForm = document.createElement('form');
+                editTaskDialog.append(editTaskDialogForm);
+                
+                editTaskDialogForm.addEventListener('submit', () => {
+                    const taskProject = document.querySelector('dialog.edit-task > form #task-project');
+                    const taskTitle = document.querySelector('dialog.edit-task > form #task-title');
+                    const taskNotes = document.querySelector('dialog.edit-task > form #task-notes');
+                    // const taskPriority = document.querySelector('dialog.new-task > form #task-priority');
+                    const taskDate = document.querySelector('dialog.edit-task > form #task-date');
+                    TaskModule.updateTask(taskProject.value, taskTitle.value, taskNotes.value, taskDate.value, taskId);
+
+                    DOMModule.createRightDiv.createTasks(TaskModule.getProjectTasks(TaskModule.getActiveProject(), TaskModule.getTasksFromActiveView()));
+                })
+
+                const dialogName = document.createElement('div');
+                dialogName.classList.add('task-dialog-name');
+                dialogName.textContent = 'Edit Task';
+                editTaskDialogForm.append(dialogName);
+    
+
+                const today = new Date();
+                const formatteDate = today.toISOString().split('T')[0];
+
+                const newTaskDialogFieldsTemplate = [
+                    {
+                        element_type: 'select',
+                        div_class: 'task-project-field-div',
+                        element_id: 'task-project',
+                        input_type: 'text',
+                        label: 'Project',
+                        textContent: 'Project',
+                        select_options: ProjectModule.getProjectValues(),
+                        cursor_style: 'pointer',
+                    },
+                    {
+                        element_type: 'input',
+                        div_class: 'task-title-field-div',
+                        element_id: 'task-title',
+                        input_type: 'text',
+                        label: 'Title *',
+                        textContent: 'Title',
+                        text_placeholder: 'Read a book',
+                        required: 'required',
+                    },
+                    {
+                        element_type: 'textarea',
+                        div_class: 'task-notes-field-div',
+                        element_id: 'task-notes',
+                        input_type: '',
+                        label: 'Notes',
+                        textContent: '',
+                        text_placeholder: 'At least a page',
+                    },
+                    // {
+                    //     element_type: 'select',
+                    //     div_class: 'task-priority-field-div',
+                    //     element_id: 'task-priority',
+                    //     input_type: '',
+                    //     label: 'Priority',
+                    //     textContent: 'Priority',
+                    //     select_options: ['High', 'Normal', 'Low'],
+                    //     select_default: 'Normal',
+                    //     cursor_style: 'pointer',
+                    // },
+                    {
+                        element_type: 'input',
+                        div_class: 'task-date-field-div',
+                        element_id: 'task-date',
+                        input_type: 'date',
+                        label: 'Date *',
+                        textContent: 'Date',
+                        required: 'required',
+                        value: formatteDate,
+                    },
+                ];
+    
+                newTaskDialogFieldsTemplate.forEach(element => {
+                    const fieldDiv = document.createElement('div');
+                    fieldDiv.classList.add(element.div_class);
+                    editTaskDialogForm.append(fieldDiv);
+    
+                    const fieldLabel = document.createElement('label');
+                    fieldLabel.textContent = element.label;
+                    fieldLabel.setAttribute('for', element.element_id);
+                    fieldDiv.append(fieldLabel);
+    
+                    const fieldInput = document.createElement(element.element_type);
+                    fieldInput.textContent = element.textContent;
+                    fieldInput.setAttribute('type', element.input_type);
+                    fieldInput.setAttribute('id', element.element_id);
+                    fieldInput.setAttribute('placeholder', element.text_placeholder);
+                    fieldInput.setAttribute(element.required, element.required);
+                    if (element.value) {
+                        fieldInput.value = element.value;
+                    }
+                    fieldInput.style.cursor = element.cursor_style;
+                    fieldDiv.append(fieldInput);
+
+
+                    if (element.element_type === 'select') {
+                        element.select_options.forEach((item) => {
+                            const option = document.createElement('option');
+                            option.setAttribute('value', item);
+                            option.textContent = item;
+                            fieldInput.append(option);
+                            if (item === element.select_default) {
+                                option.setAttribute('selected', '');
+                            }
+                        })
+
+                    }
+
+                })
+    
+                const submitTaskButton = document.createElement('button');
+                submitTaskButton.setAttribute('type', 'submit');
+                submitTaskButton.textContent = 'Save';
+                editTaskDialogForm.append(submitTaskButton);
+    
+                const closeTaskDialogDiv = document.createElement('div');
+                closeTaskDialogDiv.classList.add('close-task-dialog');
+                editTaskDialogForm.append(closeTaskDialogDiv);
+    
+                const closeTaskDialogSpan = document.createElement('span');
+                closeTaskDialogSpan.classList.add('material-symbols-outlined');
+                closeTaskDialogSpan.textContent = 'close';
+                closeTaskDialogDiv.append(closeTaskDialogSpan);
+    
+                // Add close animation on Save and Close
+                handleCloseAnimation(editTaskDialogForm, editTaskDialog, 'submit', editTaskDialogForm);
+                handleCloseAnimation(closeTaskDialogSpan, editTaskDialog, 'click', editTaskDialogForm);
+            }   
+        }
         
         // Close animation on ESC
         function addEscEvenListener() {
@@ -753,6 +928,7 @@ const DOMModule = (function () {
             createTaskDeleteDialog,
             createProjectDeleteDialog,
             handleCloseAnimation,
+            editTaskDialogHandler,
         }
 
     })();
@@ -1218,6 +1394,10 @@ const DOMModule = (function () {
                         div_class: 'task-delete-button',
                         innerHTML: `<span class="material-symbols-outlined">close</span>`,
                     },
+                    {
+                        div_class: 'task-edit-button',
+                        innerHTML: `<span class="material-symbols-outlined">edit</span>`,
+                    },
                 ];
                 
 
@@ -1256,6 +1436,18 @@ const DOMModule = (function () {
                             }
 
                             cancelTaskDeleteButton.addEventListener('click', handleCancelTaskDelete);
+                        })
+                    }
+
+                    if (field.div_class == 'task-edit-button') {
+                        taskField.addEventListener('click', function() {
+
+                            DOMModule.createDialogs.editTaskDialogHandler(element.id);
+                            const editTaskDialog = document.querySelector('.edit-task');
+                            editTaskDialog.showModal();
+                            editTaskDialog.classList.add('displayed');
+                            editTaskDialog.classList.remove('hidden');
+
                         })
                     }
 
@@ -1378,6 +1570,7 @@ DOMModule.createDialogs.newProjectDialogHandler();
 DOMModule.createDialogs.newTaskDialogHandler();
 DOMModule.createDialogs.createProjectDeleteDialog();
 DOMModule.createDialogs.createTaskDeleteDialog();
+// DOMModule.createDialogs.editTaskDialogHandler();
 DOMModule.createDialogs.addEscEvenListener();
 DOMModule.createLeftDiv.createStructure();
 DOMModule.createLeftDiv.createProjects(ProjectModule.getProjectObjects());
