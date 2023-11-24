@@ -1,4 +1,5 @@
 import './styles.css';
+import {format, parseISO} from 'date-fns';
 
 
 // Project module 
@@ -148,7 +149,7 @@ const TaskModule = (function() {
             title: 'Jogging in the park',
             notes: 'Aim for a 5 km run. Focus on breathing techniques.',
             priority: 'High',
-            date: new Date(),
+            date: format(new Date(), 'yyyy-MM-dd'),
             completed: 'true',
         },
         {
@@ -159,7 +160,7 @@ const TaskModule = (function() {
             title: 'Solving Linear Equations',
             notes: 'Work through exercises 3.1 to 3.5 in the textbook.',
             priority: 'Medium',
-            date: '2023-11-22',
+            date: format(new Date(), 'yyyy-MM-dd'),
             completed: 'false',
         },    
         {
@@ -170,7 +171,7 @@ const TaskModule = (function() {
             title: 'Algorithm Optimization',
             notes: 'Refactor code for efficiency. Focus on reducing time complexity.',
             priority: 'Medium',
-            date: '2023-11-24',
+            date: format(new Date(), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -181,7 +182,7 @@ const TaskModule = (function() {
             title: 'Painting a Scenery',
             notes: 'Gather art supplies and start painting a landscape.',
             priority: 'Low',
-            date: '2023-11-26',
+            date: format(new Date(), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -192,7 +193,7 @@ const TaskModule = (function() {
             title: 'Morning Yoga Session',
             notes: 'Practice sun salutations and meditation for 20 minutes.',
             priority: 'Medium',
-            date: '2023-11-27',
+            date: format(new Date(new Date().getTime() + 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -203,7 +204,7 @@ const TaskModule = (function() {
             title: 'Understanding Calculus Concepts',
             notes: 'Review derivatives and integrals to grasp fundamental concepts.',
             priority: 'High',
-            date: '2023-11-26',
+            date: format(new Date(new Date().getTime() + 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -214,7 +215,7 @@ const TaskModule = (function() {
             title: 'Debugging Complex Functions',
             notes: 'Identify and fix bugs in the core functionalities of the application.',
             priority: 'High',
-            date: '2023-11-25',
+            date: format(new Date(new Date().getTime() + 48 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -225,7 +226,7 @@ const TaskModule = (function() {
             title: 'Cooking a New Recipe',
             notes: 'Try out a new recipe for a three-course meal.',
             priority: 'Medium',
-            date: '2023-11-25',
+            date: format(new Date(new Date().getTime() + 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -236,7 +237,7 @@ const TaskModule = (function() {
             title: 'Swimming Practice',
             notes: 'Focus on improving stroke techniques and endurance in the pool.',
             priority: 'High',
-            date: '2023-11-28',
+            date: format(new Date(new Date().getTime() + 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -247,7 +248,7 @@ const TaskModule = (function() {
             title: 'Mathematics Problem Solving',
             notes: 'Solve complex mathematical problems involving algebra and geometry.',
             priority: 'Medium',
-            date: '2023-11-27',
+            date: format(new Date(new Date().getTime() + 48 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -258,7 +259,7 @@ const TaskModule = (function() {
             title: 'Learning New Coding Languages',
             notes: 'Start learning Python and its libraries for data analysis.',
             priority: 'High',
-            date: '2023-11-26',
+            date: format(new Date(new Date().getTime() + 48 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -269,7 +270,7 @@ const TaskModule = (function() {
             title: 'Gardening Day',
             notes: 'Plant new flowers and herbs in the garden.',
             priority: 'Low',
-            date: '2023-11-27',
+            date: format(new Date(), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -280,7 +281,7 @@ const TaskModule = (function() {
             title: 'Cycling Adventure',
             notes: 'Plan and embark on a scenic cycling route around the city outskirts.',
             priority: 'Medium',
-            date: '2023-11-29',
+            date: format(new Date(new Date().getTime() + 48 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -291,7 +292,7 @@ const TaskModule = (function() {
             title: 'Mathematics Quiz Prep',
             notes: 'Prepare for the upcoming quiz by revising previous chapters.',
             priority: 'High',
-            date: '2023-11-28',
+            date: format(new Date(new Date().getTime() + 72 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -302,7 +303,7 @@ const TaskModule = (function() {
             title: 'Creating Interactive Web Design',
             notes: 'Implement CSS animations and JavaScript interactivity on a webpage.',
             priority: 'High',
-            date: '2023-11-27',
+            date: format(new Date(new Date().getTime() + 72 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -313,7 +314,7 @@ const TaskModule = (function() {
             title: 'Book Reading Time',
             notes: 'Start a new novel and aim to finish the first five chapters.',
             priority: 'Medium',
-            date: '2023-11-28',
+            date: format(new Date(new Date().getTime() + 72 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -324,7 +325,7 @@ const TaskModule = (function() {
             title: 'Basketball Skills Practice',
             notes: 'Work on dribbling, shooting, and defensive techniques.',
             priority: 'High',
-            date: '2023-11-30',
+            date: format(new Date(new Date().getTime() + 72 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -335,7 +336,7 @@ const TaskModule = (function() {
             title: 'Understanding Trigonometry',
             notes: 'Study trigonometric functions and their applications.',
             priority: 'Medium',
-            date: '2023-11-29',
+            date: format(new Date(new Date().getTime() + 72 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -346,7 +347,7 @@ const TaskModule = (function() {
             title: 'Database Optimization',
             notes: 'Optimize database queries for faster response times.',
             priority: 'High',
-            date: '2023-11-28',
+            date: format(new Date(new Date().getTime() + 96 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -357,7 +358,7 @@ const TaskModule = (function() {
             title: 'Photography Walk',
             notes: 'Capture interesting shots around the neighborhood.',
             priority: 'Low',
-            date: '2023-11-29',
+            date: format(new Date(new Date().getTime() + 96 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -368,7 +369,7 @@ const TaskModule = (function() {
             title: 'Hiking Trail Exploration',
             notes: 'Discover and explore new hiking trails in the nearby forest.',
             priority: 'Medium',
-            date: '2023-12-01',
+            date: format(new Date(new Date().getTime() + 96 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -379,7 +380,7 @@ const TaskModule = (function() {
             title: 'Advanced Algebra Revision',
             notes: 'Review advanced algebraic concepts like matrices and determinants.',
             priority: 'High',
-            date: '2023-11-30',
+            date: format(new Date(new Date().getTime() + 96 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -390,7 +391,7 @@ const TaskModule = (function() {
             title: 'Implementing Data Structures',
             notes: 'Code different data structures - stacks, queues, and linked lists.',
             priority: 'High',
-            date: '2023-11-29',
+            date: format(new Date(new Date().getTime() + 96 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
         {
@@ -401,7 +402,7 @@ const TaskModule = (function() {
             title: 'DIY Craft Day',
             notes: 'Create handmade crafts using recycled materials.',
             priority: 'Low',
-            date: '2023-11-30',
+            date: format(new Date(new Date().getTime() + 120 * 60 * 60 * 1000), 'yyyy-MM-dd'),
             completed: 'false',
         },
     ];
@@ -447,7 +448,10 @@ const TaskModule = (function() {
     // Retrieve all tasks
     function getAllTasks() {
         changeActiveView('all');
-        return tasks.slice();
+        const sortedTasks = tasks.slice().sort((a, b) => {
+            return new Date(a.date) - new Date(b.date);
+        });
+        return sortedTasks;
     }
 
     // Retrieve today's tasks
@@ -1526,7 +1530,7 @@ const DOMModule = (function () {
                     // },
                     {
                         div_class: 'task-date-field',
-                        textContent: element.date,
+                        textContent: format(parseISO(element.date), "EEE, do MMM, yy"),
                     },
                     {
                         div_class: 'task-delete-button',

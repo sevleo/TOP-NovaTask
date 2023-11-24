@@ -1,4 +1,3 @@
-add sort by dates in all view
 save data
 add responsive design
 split js into several module files
