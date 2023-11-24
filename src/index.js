@@ -1530,7 +1530,7 @@ const DOMModule = (function () {
                     // },
                     {
                         div_class: 'task-date-field',
-                        textContent: format(parseISO(element.date), "EEE, do MMM, yy"),
+                        textContent: format(parseISO(element.date), "EEE, do MMM"),
                     },
                     {
                         div_class: 'task-delete-button',

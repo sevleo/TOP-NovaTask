@@ -375,9 +375,11 @@ body {
 
 
 .right-first-section > .task > .task-right-section > .task-date-field::before {
-    content: "Due: ";
+    content: "\1F3AF";
+    display: inline-block;
+    font-family: 'Segoe UI', sans-serif;
+    margin-right: 5px;
 }
-
 
 
 .right-first-section > .task-divider {
