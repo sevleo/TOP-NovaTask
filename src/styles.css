@@ -1134,3 +1134,31 @@ li.project:hover > .delete-project-button {
 #toggle-mode-button span {
     transform: scale(1.2);
 }
+
+dialog.new-task, 
+dialog.edit-task {
+    height: 460px;
+}
+
+dialog.new-task > form > button[type="submit"], 
+dialog.edit-task > form > button[type="submit"] {
+    margin-top: auto;
+}
+
+dialog.new-project {
+    height: 250px;
+}
+
+dialog.new-project > form > button[type="submit"] {
+    margin-top: auto;
+}
+
+dialog.task-delete,
+dialog.project-delete {
+    height: 200px;
+}
+
+dialog.task-delete > form > button,
+dialog.project-delete > form > button {
+    margin-top: auto;
+}
