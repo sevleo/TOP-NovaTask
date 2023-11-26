@@ -1,9 +1,8 @@
-import './styles.css';
-import { DOMModule } from './DOMModule';
-import { ProjectModule } from './ProjectModule';
-import { TaskModule } from './TaskModule';
-import { switchLocalStorageStatus } from './LocalStorageModule';
-
+import "./styles.css";
+import { DOMModule } from "./DOMModule";
+import { ProjectModule } from "./ProjectModule";
+import { TaskModule } from "./TaskModule";
+import { switchLocalStorageStatus } from "./LocalStorageModule";
 
 DOMModule.createMainDiv();
 DOMModule.createDialogs.newProjectDialogHandler();
@@ -18,21 +17,3 @@ DOMModule.createRightDiv.createTasks(TaskModule.getTodayTasks());
 DOMModule.createFooterDiv.createStructure();
 DOMModule.createFooterDiv.createButtons();
 switchLocalStorageStatus();
-
-
-
-// console logs for testing
-// document.addEventListener('keydown', function(event) {
-//     if (event.key === "5") {
-//         console.log(ProjectModule.getProjectObjects());
-//         console.log(TaskModule.getTodayTasks());
-//         console.log(TaskModule.getTomorrowTasks());
-//         console.log(TaskModule.getAllTasks());
-//         console.log(TaskModule.getProjectTasks('Math', TaskModule.getTodayTasks()));
-//         console.log(TaskModule.getActiveProject());
-//         console.log(TaskModule.getActiveView());
-//     }
-// })
-
-
-

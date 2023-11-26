@@ -1,8 +1,6 @@
-
 # Nova Task
 
 Nova Task reimagines the classic todo list app with a fresh perspective, offering seamless animations and an intuitive user interface.
-
 
 ## Table of Contents
 
@@ -28,7 +26,6 @@ You can view the project at [Nova Task Demo](https://sevleo.github.io/nova_task/
 
 ![Home page screenshot](screenshot.png)
 
-
 ## Technologies
 
 - Vanilla JS
@@ -39,19 +36,19 @@ You can view the project at [Nova Task Demo](https://sevleo.github.io/nova_task/
 - date-fns
 
 ## Limitations
+
 - Mobile experience not fully supported
 
 ## Contributing
 
- Contributions are enthusiastically welcomed! Whether you're keen on improving mobile responsiveness, enhancing UI/UX elements, or optimizing performance, follow these guidelines to contribute:
+Contributions are enthusiastically welcomed! Whether you're keen on improving mobile responsiveness, enhancing UI/UX elements, or optimizing performance, follow these guidelines to contribute:
 
- 1. Fork the repository.
- 2. Create a new branch for your feature or bug fix.
- 3. Make your changes and commit them.
- 4. Push your changes to your fork.
- 5. Create a pull request.
-
+1.  Fork the repository.
+2.  Create a new branch for your feature or bug fix.
+3.  Make your changes and commit them.
+4.  Push your changes to your fork.
+5.  Create a pull request.
 
 ## License
 
- This project is licensed under the [MIT LICENSE](./LICENSE)
+This project is licensed under the [MIT LICENSE](./LICENSE)

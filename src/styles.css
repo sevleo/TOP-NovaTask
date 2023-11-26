@@ -1,865 +1,882 @@
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Lato:wght@300&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&family=Roboto:wght@100&family=Rubik:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Lato:wght@300&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&family=Roboto:wght@100&family=Rubik:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
 
 :root.light-mode {
-    /* Font */
-    --font-color: #333; /*used in font*/
+  /* Font */
+  --font-color: #333; /*used in font*/
 
-    /* Backgrounds */
-    --background-light: #EDEDE9; /*used in backgrounds*/
-    --background-color: #3f1e093e; /*used in navigation panel on the left*/
+  /* Backgrounds */
+  --background-light: #edede9; /*used in backgrounds*/
+  --background-color: #3f1e093e; /*used in navigation panel on the left*/
 
-    /* Borders */
-    --border-color: #a9a9a9; /*used in border colors*/
-    --border-dark: #999; /*used in border colors*/
+  /* Borders */
+  --border-color: #a9a9a9; /*used in border colors*/
+  --border-dark: #999; /*used in border colors*/
 
-    /* Buttons */
-    --submit-button-hover: #2ecc71; /*used in Submit button hover*/
-    --submit-button-active: #27ae60; /*used in Submit button active*/
-    --submit-button: #c8e6c9; /*used in Submit button*/
+  /* Buttons */
+  --submit-button-hover: #2ecc71; /*used in Submit button hover*/
+  --submit-button-active: #27ae60; /*used in Submit button active*/
+  --submit-button: #c8e6c9; /*used in Submit button*/
 
-    --new-task-button: #4e4e4e47;
-    --new-task-button-hover: #4e4e4e47; /*used in new task button hover*/
-    --new-task-button-active: #8e8e8e; /*used in new task button active*/
-    --new-task-button-border: black;
+  --new-task-button: #4e4e4e47;
+  --new-task-button-hover: #4e4e4e47; /*used in new task button hover*/
+  --new-task-button-active: #8e8e8e; /*used in new task button active*/
+  --new-task-button-border: black;
 
-    --dialog-close-button: rgb(169, 169, 169); /*used in dialog close button*/
-    --dialog-close-button-hover: rgb(136, 136, 136); /*used in dialog close button hover*/
-    --dialog-close-button-active: rgb(108, 108, 108); /*used in dialog close button active*/
+  --dialog-close-button: rgb(169, 169, 169); /*used in dialog close button*/
+  --dialog-close-button-hover: rgb(
+    136,
+    136,
+    136
+  ); /*used in dialog close button hover*/
+  --dialog-close-button-active: rgb(
+    108,
+    108,
+    108
+  ); /*used in dialog close button active*/
 
-    /* Icons */
-    --icons-views: #811c1c; /*used in task delete and edit icons, project delete icon, and in views on the left*/
+  /* Icons */
+  --icons-views: #811c1c; /*used in task delete and edit icons, project delete icon, and in views on the left*/
 
-    /* Scroll bar and slider */
-    --scrollbar-slider: #4c1f1f; /*used scroll bar and slider animation*/
-    --navigation-elements-hover: #7a7a7a28; /*used in navigation panel on the left hover*/
-    --navigation-elements-active: #df1c1f28;
+  /* Scroll bar and slider */
+  --scrollbar-slider: #4c1f1f; /*used scroll bar and slider animation*/
+  --navigation-elements-hover: #7a7a7a28; /*used in navigation panel on the left hover*/
+  --navigation-elements-active: #df1c1f28;
 
-    /* Input placeholder and checkboxes */
-    --input-placeholders-and-checkbox: #888; /*used input placeholders and in checkbox icon */
-    --checkbox: green; /*used in checkbox*/
+  /* Input placeholder and checkboxes */
+  --input-placeholders-and-checkbox: #888; /*used input placeholders and in checkbox icon */
+  --checkbox: green; /*used in checkbox*/
 }
 
 :root.dark-mode {
-    /* Font */
-    --font-color: #F2ECFF; /*used in font*/
+  /* Font */
+  --font-color: #f2ecff; /*used in font*/
 
-    /* Backgrounds */
-    --background-light: #3E3E3E; /*used in backgrounds*/
-    --background-color: #272727; /*used in navigation panel on the left*/
+  /* Backgrounds */
+  --background-light: #3e3e3e; /*used in backgrounds*/
+  --background-color: #272727; /*used in navigation panel on the left*/
 
-    /* Borders */
-    --border-color: black; /*used in border colors*/
-    --border-dark: #999; /*used in border colors*/
+  /* Borders */
+  --border-color: black; /*used in border colors*/
+  --border-dark: #999; /*used in border colors*/
 
-    /* Buttons */
-    --submit-button-hover: #d51c1f28; /*used in Submit button hover*/
-    --submit-button-active: #ba181b5b; /*used in Submit button active*/
-    --submit-button: #ba181b28; /*used in Submit button*/
+  /* Buttons */
+  --submit-button-hover: #d51c1f28; /*used in Submit button hover*/
+  --submit-button-active: #ba181b5b; /*used in Submit button active*/
+  --submit-button: #ba181b28; /*used in Submit button*/
 
-    --new-task-button: #ba181b28;
-    --new-task-button-hover: #ba181b28; /*used in new task button hover*/
-    --new-task-button-active: #ba181b5b; /*used in new task button active*/
-    --new-task-button-border: black;
+  --new-task-button: #ba181b28;
+  --new-task-button-hover: #ba181b28; /*used in new task button hover*/
+  --new-task-button-active: #ba181b5b; /*used in new task button active*/
+  --new-task-button-border: black;
 
-    --dialog-close-button: rgb(169, 169, 169); /*used in dialog close button*/
-    --dialog-close-button-hover: rgb(136, 136, 136); /*used in dialog close button hover*/
-    --dialog-close-button-active: rgb(108, 108, 108); /*used in dialog close button active*/
+  --dialog-close-button: rgb(169, 169, 169); /*used in dialog close button*/
+  --dialog-close-button-hover: rgb(
+    136,
+    136,
+    136
+  ); /*used in dialog close button hover*/
+  --dialog-close-button-active: rgb(
+    108,
+    108,
+    108
+  ); /*used in dialog close button active*/
 
-    /* Icons */
-    --icons-views: #884040; /*used in task delete and edit icons, project delete icon, and in views on the left*/
+  /* Icons */
+  --icons-views: #884040; /*used in task delete and edit icons, project delete icon, and in views on the left*/
 
-    /* Scroll bar and slider */
-    --scrollbar-slider: #ab3737; /*used scroll bar and slider animation*/
-    --navigation-elements-hover: #7a7a7a28; /*used in navigation panel on the left hover*/
-    --navigation-elements-active: #df1c1f28;
+  /* Scroll bar and slider */
+  --scrollbar-slider: #ab3737; /*used scroll bar and slider animation*/
+  --navigation-elements-hover: #7a7a7a28; /*used in navigation panel on the left hover*/
+  --navigation-elements-active: #df1c1f28;
 
-    /* Input placeholder and checkboxes */
-    --input-placeholders-and-checkbox: #888; /*used input placeholders and in checkbox icon */
-    --checkbox: green; /*used in checkbox*/
+  /* Input placeholder and checkboxes */
+  --input-placeholders-and-checkbox: #888; /*used input placeholders and in checkbox icon */
+  --checkbox: green; /*used in checkbox*/
 }
 
-
 ::-webkit-scrollbar {
-    width: 4px;
-    border-radius: 5px;
-    z-index: 9999;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-      background: var(--scrollbar-slider); /* Change the color to your preference */
-      border-radius: 6px;
-      z-index: 9999;
-  }
-  
-  ::-webkit-scrollbar:hover {
-      background: var(--background-light); /* Change the color to your preference */
-      z-index: 9999;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-      background: var(--accent-dark); /* Change the color to your preference */
-      z-index: 9999;    
-  }
+  width: 4px;
+  border-radius: 5px;
+  z-index: 9999;
+}
 
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-slider); /* Change the color to your preference */
+  border-radius: 6px;
+  z-index: 9999;
+}
+
+::-webkit-scrollbar:hover {
+  background: var(--background-light); /* Change the color to your preference */
+  z-index: 9999;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-dark); /* Change the color to your preference */
+  z-index: 9999;
+}
 
 ::backdrop {
-    background-color: #00000088;
-    backdrop-filter: blur(3px);
+  background-color: #00000088;
+  backdrop-filter: blur(3px);
 }
 
 .material-symbols-outlined {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
 }
-
 
 /* General layout */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: var(--font-color);
-    font-family: 'Nunito', sans-serif;
-    font-weight: 300;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--font-color);
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
 }
 
 body {
-    background-color: var(--background-light);
-    height: 100vh;
-    width: 100vw;
-    overflow-x: hidden;
+  background-color: var(--background-light);
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 .main {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: minmax(200px, 1fr) 3fr;
-    position: relative;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) 3fr;
+  position: relative;
 }
 
 .main > .left {
-    border-right: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    background-color: var(--background-color);
-    flex: 0 0 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    /* height: calc(100% - 100px); */
-    height: 100%;
-    /* overflow: auto; */
-    grid-column: 1 / 2;
-    /* position: sticky; */
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  /* height: calc(100% - 100px); */
+  height: 100%;
+  /* overflow: auto; */
+  grid-column: 1 / 2;
+  /* position: sticky; */
 }
 
 .main > .right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    height: calc(100% - 100px);
-    grid-column: 2 / 3;
-    position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: calc(100% - 100px);
+  grid-column: 2 / 3;
+  position: relative;
 }
 
 .footer {
-    display: flex;
-    /* height: 100px; */
-    /* border-top: 1px solid var(--border-color); */
-    position: fixed;
-    bottom: 20px;
-    /* width: 100%; */
-    left: 50%;
-    box-shadow: 0px -50px 24px -20px var(--background-light);
-    /* box-shadow: -150px -40px 21px -30px black; */
-
+  display: flex;
+  /* height: 100px; */
+  /* border-top: 1px solid var(--border-color); */
+  position: fixed;
+  bottom: 20px;
+  /* width: 100%; */
+  left: 50%;
+  box-shadow: 0px -50px 24px -20px var(--background-light);
+  /* box-shadow: -150px -40px 21px -30px black; */
 }
 
 .footer > .footer-left {
-    flex: 0 0 300px;
-    background-color: var(--background-color);
-    border-right: 1px solid var(--border-color);
+  flex: 0 0 300px;
+  background-color: var(--background-color);
+  border-right: 1px solid var(--border-color);
 }
 
 .footer > .footer-right {
-    flex: 1;
-    background-color: var(--background-light);
+  flex: 1;
+  background-color: var(--background-light);
 }
 
 .right-first-header {
-    padding-top: 20px;
-    padding-left: 10px;
-    margin-left: 30px;
-    font-size: 25px;
-    /* border-bottom: 1px solid var(--border-dark); */
-    width: clamp(300px, 70%, 700px);
+  padding-top: 20px;
+  padding-left: 10px;
+  margin-left: 30px;
+  font-size: 25px;
+  /* border-bottom: 1px solid var(--border-dark); */
+  width: clamp(300px, 70%, 700px);
 }
 
 .right-first-section {
-    padding-right: clamp(10px, 9%, 100px);
-    padding-left: clamp(10px, 9%, 100px);
-    /* padding-left: minmax(10px, 100px); */
-    padding-top: 50px;
-    height: 100%;
-    width: 100%;
-    /* background-color: black; */
-    /* overflow: auto; */
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    /* align-items: center; */
-    position: relative;
-    margin-bottom: 150px;
+  padding-right: clamp(10px, 9%, 100px);
+  padding-left: clamp(10px, 9%, 100px);
+  /* padding-left: minmax(10px, 100px); */
+  padding-top: 50px;
+  height: 100%;
+  width: 100%;
+  /* background-color: black; */
+  /* overflow: auto; */
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  /* align-items: center; */
+  position: relative;
+  margin-bottom: 150px;
 }
 
 .right-first-section > .task {
-    /* border: 1px solid var(--border-color); */
-    /* border-radius: 5px; */
-    width: 100%;
-    padding-left: 5px;
-    padding-bottom: 5px;
-    padding-top: 5px;
+  /* border: 1px solid var(--border-color); */
+  /* border-radius: 5px; */
+  width: 100%;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  padding-top: 5px;
 
-    flex: 0;
-    /* width: clamp(200px, 60%, 800px); */
-    opacity: 1;
-    transition: all 175ms ease-in;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-    gap: clamp(20px, 5%, 40px);
-    min-width: 300px;
+  flex: 0;
+  /* width: clamp(200px, 60%, 800px); */
+  opacity: 1;
+  transition: all 175ms ease-in;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  gap: clamp(20px, 5%, 40px);
+  min-width: 300px;
 }
 
 .right-first-section > .task > .task-left-section {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    transition: transform 0.1s ease;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
 }
 
 .right-first-section > .task > .task-left-section.checked svg path,
 .right-first-section > .task > .task-left-section.checked svg circle {
-    transition: all 0.3s ease;
-    stroke: var(--checkbox);
-    stroke-width: 1px;
+  transition: all 0.3s ease;
+  stroke: var(--checkbox);
+  stroke-width: 1px;
 }
 
 .right-first-section > .task > .task-left-section.checked {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .right-first-section > .task > .task-left-section.unchecked svg path {
-    opacity: 0;
+  opacity: 0;
 }
-
 
 .right-first-section > .task:hover > .task-left-section {
-    transform: scale(1.1);
-    transition: transform 0.1s ease;
+  transform: scale(1.1);
+  transition: transform 0.1s ease;
 }
 
 .right-first-section > .task:hover > .task-left-section circle {
-    stroke: var(--checkbox);
+  stroke: var(--checkbox);
 }
 
-.right-first-section > .task:hover > .task-left-section path, 
+.right-first-section > .task:hover > .task-left-section path,
 .right-first-section > .task:hover > .task-left-section circle {
-    transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .right-first-section > .task > .task-left-section > svg circle {
-    fill: none;
-    stroke: var(--input-placeholders-and-checkbox);
+  fill: none;
+  stroke: var(--input-placeholders-and-checkbox);
 }
 
 .right-first-section > .task > .task-left-section > svg path {
-    fill: none;
-    stroke: var(--input-placeholders-and-checkbox);
+  fill: none;
+  stroke: var(--input-placeholders-and-checkbox);
 }
 
 .right-first-section > .task > .task-right-section {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    align-items: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  align-items: center;
 }
-
 
 .right-first-section > .task > .task-right-section:hover {
-    transition: all 1s ease;
+  transition: all 1s ease;
 }
 
-
-
 .right-first-section > .task > .task-right-section > .task-project > * {
-    padding: 1px 5px 1px 5px;
-    border-radius: 5px;
-    border: 1px solid var(--border-dark);
-    font-size: 12px;
-    font-weight: 400;
+  padding: 1px 5px 1px 5px;
+  border-radius: 5px;
+  border: 1px solid var(--border-dark);
+  font-size: 12px;
+  font-weight: 400;
 }
 
 .right-first-section > .task > .task-right-section > .task-project {
-    grid-column: 1 / 9;
-    grid-row: 1 / 2;
+  grid-column: 1 / 9;
+  grid-row: 1 / 2;
 
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .right-first-section > .task > .task-right-section > .task-title-field {
-    grid-column: 1 / 9;
-    grid-row: 2 / 3;
-    font-size: 18px;
+  grid-column: 1 / 9;
+  grid-row: 2 / 3;
+  font-size: 18px;
 }
 
 .right-first-section > .task > .task-right-section > .task-date-field {
-    grid-column: 1 / 9;
-    grid-row: 4 / 5;
-    font-size: 12px;
+  grid-column: 1 / 9;
+  grid-row: 4 / 5;
+  font-size: 12px;
 }
 
 .right-first-section > .task > .task-right-section > .task-notes-field {
-    grid-column: 1 / 9;
-    grid-row: 3 / 4;
-    font-size: 12px;
+  grid-column: 1 / 9;
+  grid-row: 3 / 4;
+  font-size: 12px;
 }
 
 .right-first-section > .task > .task-right-section > .task-delete-button {
-    grid-column: 8 / 9;
-    grid-row: 2 / 4;
-    font-size: 12px;
-    justify-self: center;
-    transform: scale(1);
-    transition: all 0.3s ease;
-    opacity: 0;
+  grid-column: 8 / 9;
+  grid-row: 2 / 4;
+  font-size: 12px;
+  justify-self: center;
+  transform: scale(1);
+  transition: all 0.3s ease;
+  opacity: 0;
 }
 .right-first-section > .task > .task-right-section > .task-edit-button {
-    grid-column: 7 / 8;
-    grid-row: 2 / 4;
-    font-size: 12px;
-    justify-self: center;
-    transform: scale(1);
-    transition: all 0.3s ease;
-    opacity: 0;
+  grid-column: 7 / 8;
+  grid-row: 2 / 4;
+  font-size: 12px;
+  justify-self: center;
+  transform: scale(1);
+  transition: all 0.3s ease;
+  opacity: 0;
 }
 
 .right-first-section > .task > .task-right-section:hover > .task-delete-button,
 .right-first-section > .task > .task-right-section:hover > .task-edit-button {
-    opacity: 1;
+  opacity: 1;
 }
 
 .right-first-section > .task > .task-right-section > .task-delete-button span,
 .right-first-section > .task > .task-right-section > .task-edit-button span {
-    color: var(--icons-views);
-    background-color: var(--background-light);
+  color: var(--icons-views);
+  background-color: var(--background-light);
 }
 
-.right-first-section > .task > .task-right-section:hover > .task-delete-button span,
-.right-first-section > .task > .task-right-section:hover > .task-edit-button span {
-    transition: all 0.3s ease;
-    border-radius: 50%;
-    color: var(--icons-views);
-    background-color: var(--background-light);
+.right-first-section
+  > .task
+  > .task-right-section:hover
+  > .task-delete-button
+  span,
+.right-first-section
+  > .task
+  > .task-right-section:hover
+  > .task-edit-button
+  span {
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  color: var(--icons-views);
+  background-color: var(--background-light);
 }
 
-.right-first-section > .task > .task-right-section:hover > .task-delete-button:hover span,
-.right-first-section > .task > .task-right-section:hover > .task-edit-button:hover span {
-    background-color: var(--icons-views);
-    color: var(--background-light);
-
+.right-first-section
+  > .task
+  > .task-right-section:hover
+  > .task-delete-button:hover
+  span,
+.right-first-section
+  > .task
+  > .task-right-section:hover
+  > .task-edit-button:hover
+  span {
+  background-color: var(--icons-views);
+  color: var(--background-light);
 }
 
 .right-first-section > .task > .task-right-section > .task-date-field::before {
-    content: "\1F3AF";
-    display: inline-block;
-    font-family: 'Segoe UI', sans-serif;
-    margin-right: 5px;
+  content: "\1F3AF";
+  display: inline-block;
+  font-family: "Segoe UI", sans-serif;
+  margin-right: 5px;
 }
 
-
 .right-first-section > .task-divider {
-    min-height: 1px;
-    width: 100%;
-    background-color: var(--border-color);
-    transition: all 175ms ease-in;
-    opacity: 1;
-    min-width: 300px;
+  min-height: 1px;
+  width: 100%;
+  background-color: var(--border-color);
+  transition: all 175ms ease-in;
+  opacity: 1;
+  min-width: 300px;
 }
 
 .right-first-section > .task.hidden,
 .right-first-section > .task-divider.hidden {
-    transition: all 175ms ease-in;
-    opacity: 0;
+  transition: all 175ms ease-in;
+  opacity: 0;
 }
 
 .right-first-section > .task > div > div {
-    opacity: 1;
-    transition: all 175ms ease-in;
+  opacity: 1;
+  transition: all 175ms ease-in;
 }
 
 .right-first-section > .task > div > div.hidden {
-    opacity: 0;
+  opacity: 0;
 }
 
 .task-project-color {
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-    border: 0.5px solid var(--input-placeholders-and-checkbox);
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  border: 0.5px solid var(--input-placeholders-and-checkbox);
 }
-
-
-
 
 /* Left div layout */
 
 .left > .left-first-section {
-    margin-top: 20px;
-    /* overflow: auto; */
-    flex: 0 0 200px;
-    /* margin-left: 10px; */
+  margin-top: 20px;
+  /* overflow: auto; */
+  flex: 0 0 200px;
+  /* margin-left: 10px; */
 }
 
 .left > .left-second-section {
-    margin-top: 20px;
-    /* overflow: auto; */
-    flex: 1 0 200px;
-    /* margin-left: 10px; */
+  margin-top: 20px;
+  /* overflow: auto; */
+  flex: 1 0 200px;
+  /* margin-left: 10px; */
 }
 
-
-
 .left > .left-first-section > p {
-    padding-left: 20px;
-    font-style: italic;
-    font-weight: 200;
-    height: 50px;
-    display: flex;
-    align-items: center;
+  padding-left: 20px;
+  font-style: italic;
+  font-weight: 200;
+  height: 50px;
+  display: flex;
+  align-items: center;
 }
 
 .left > .left-first-section ul,
 .left > .left-second-section ul {
-    position: relative;
+  position: relative;
 }
 
 .left > .left-first-section li {
-    padding-left: 30px;
-    list-style: none;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    z-index: 1;
-    position: relative;
-    cursor: pointer;
-    gap: 10px;
+  padding-left: 30px;
+  list-style: none;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  position: relative;
+  cursor: pointer;
+  gap: 10px;
 }
 
 .left > .left-second-section li {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .left > .left-first-section li > .image {
-    height: 20px;
-    width: 20px;
-
+  height: 20px;
+  width: 20px;
 }
-
 
 /* Slider on views */
 
 .left > .left-first-section .task-animation,
-.left > .left-second-section li[data-active='true']~.task-animation {
-    position: absolute;
-    /* top: 0; */
-    height: 50px;
-    border-left: 6px solid var(--scrollbar-slider);
-    z-index: 0;
-    transition: all 0.3s ease;
-    opacity: 0;
+.left > .left-second-section li[data-active="true"] ~ .task-animation {
+  position: absolute;
+  /* top: 0; */
+  height: 50px;
+  border-left: 6px solid var(--scrollbar-slider);
+  z-index: 0;
+  transition: all 0.3s ease;
+  opacity: 0;
 }
 
-
-.views > li:nth-child(1)[data-active='true']~.task-animation {
-    width: 100%;
-    top: 0;
-    opacity: 1;
+.views > li:nth-child(1)[data-active="true"] ~ .task-animation {
+  width: 100%;
+  top: 0;
+  opacity: 1;
 }
 
-.views > li:nth-child(2)[data-active='true']~.task-animation {
-    width: 100%;
-    top: 50px;
-    opacity: 1;
+.views > li:nth-child(2)[data-active="true"] ~ .task-animation {
+  width: 100%;
+  top: 50px;
+  opacity: 1;
 }
 
-.views > li:nth-child(3)[data-active='true']~.task-animation {
-    width: 100%;
-    top: 100px;
-    opacity: 1;
+.views > li:nth-child(3)[data-active="true"] ~ .task-animation {
+  width: 100%;
+  top: 100px;
+  opacity: 1;
 }
-
 
 /* Views styles */
 
-.left > .left-first-section li[data-active='false']:hover,
+.left > .left-first-section li[data-active="false"]:hover,
 .left > .left-second-section li:hover {
-    background-color: var(--navigation-elements-hover);
+  background-color: var(--navigation-elements-hover);
 }
 
-.left > .left-first-section li[data-active='true'] > div > svg {
-    fill: var(--icons-views);
+.left > .left-first-section li[data-active="true"] > div > svg {
+  fill: var(--icons-views);
 }
 
-.left > .left-first-section li[data-active='false'] > div > svg {
-    fill: var(--font-color);
+.left > .left-first-section li[data-active="false"] > div > svg {
+  fill: var(--font-color);
 }
 
-.left > .left-first-section li[data-active='true'] > p {
-    color: var(--icons-views);
+.left > .left-first-section li[data-active="true"] > p {
+  color: var(--icons-views);
 }
 
 .left > .left-second-section li.font-accent > div {
-    color: var(--icons-views);
+  color: var(--icons-views);
 }
 
-.left > .left-first-section li[data-active='false']:active,
+.left > .left-first-section li[data-active="false"]:active,
 .left > .left-second-section li:active:not(.hovered-delete) {
-    background-color: var(--navigation-elements-active);
+  background-color: var(--navigation-elements-active);
 }
-
-
-
 
 /* Slider on projects */
 
-.second-section-list > li:nth-child(1)[data-active='true']~.task-animation {
-    /* width: 100%; */
-    top: 0;
-    opacity: 1;
+.second-section-list > li:nth-child(1)[data-active="true"] ~ .task-animation {
+  /* width: 100%; */
+  top: 0;
+  opacity: 1;
 }
 
-.second-section-list > li:nth-child(2)[data-active='true']~.task-animation {
-    /* width: 100%; */
-    top: 50px;
-    opacity: 1;
+.second-section-list > li:nth-child(2)[data-active="true"] ~ .task-animation {
+  /* width: 100%; */
+  top: 50px;
+  opacity: 1;
 }
 
-.second-section-list > li:nth-child(3)[data-active='true']~.task-animation {
-    /* width: 100%; */
-    top: 100px;
-    opacity: 1;
+.second-section-list > li:nth-child(3)[data-active="true"] ~ .task-animation {
+  /* width: 100%; */
+  top: 100px;
+  opacity: 1;
 }
 
-.second-section-list > li:nth-child(4)[data-active='true']~.task-animation {
-    /* width: 100%; */
-    top: 150px;
-    opacity: 1;
+.second-section-list > li:nth-child(4)[data-active="true"] ~ .task-animation {
+  /* width: 100%; */
+  top: 150px;
+  opacity: 1;
 }
 
-.second-section-list > li:nth-child(5)[data-active='true']~.task-animation {
-    /* width: 100%; */
-    top: 200px;
-    opacity: 1;
+.second-section-list > li:nth-child(5)[data-active="true"] ~ .task-animation {
+  /* width: 100%; */
+  top: 200px;
+  opacity: 1;
 }
 
-.second-section-list > li:nth-child(6)[data-active='true']~.task-animation {
-    /* width: 100%; */
-    top: 250px;
-    opacity: 1;
+.second-section-list > li:nth-child(6)[data-active="true"] ~ .task-animation {
+  /* width: 100%; */
+  top: 250px;
+  opacity: 1;
 }
 
-.second-section-list > li:nth-child(7)[data-active='true']~.task-animation {
-    /* width: 100%; */
-    top: 300px;
-    opacity: 1;
+.second-section-list > li:nth-child(7)[data-active="true"] ~ .task-animation {
+  /* width: 100%; */
+  top: 300px;
+  opacity: 1;
 }
 
-.second-section-list > li:nth-child(8)[data-active='true']~.task-animation {
-    /* width: 100%; */
-    top: 350px;
-    opacity: 1;
+.second-section-list > li:nth-child(8)[data-active="true"] ~ .task-animation {
+  /* width: 100%; */
+  top: 350px;
+  opacity: 1;
 }
 
-.second-section-list > li:nth-child(9)[data-active='true']~.task-animation {
-    /* width: 100%; */
-    top: 400px;
-    opacity: 1;
+.second-section-list > li:nth-child(9)[data-active="true"] ~ .task-animation {
+  /* width: 100%; */
+  top: 400px;
+  opacity: 1;
 }
 
-.second-section-list > li:nth-child(10)[data-active='true']~.task-animation {
-    /* width: 100%; */
-    top: 450px;
-    opacity: 1;
+.second-section-list > li:nth-child(10)[data-active="true"] ~ .task-animation {
+  /* width: 100%; */
+  top: 450px;
+  opacity: 1;
 }
 
-.second-section-list > li:nth-child(11)[data-active='true']~.task-animation {
-    /* width: 100%; */
-    top: 500px;
-    opacity: 1;
+.second-section-list > li:nth-child(11)[data-active="true"] ~ .task-animation {
+  /* width: 100%; */
+  top: 500px;
+  opacity: 1;
 }
 
-.second-section-list > li:nth-child(12)[data-active='true']~.task-animation {
-    /* width: 100%; */
-    top: 550px;
-    opacity: 1;
+.second-section-list > li:nth-child(12)[data-active="true"] ~ .task-animation {
+  /* width: 100%; */
+  top: 550px;
+  opacity: 1;
 }
 
 .left > .left-second-section > p {
-    padding-left: 20px;
-    font-style: italic;
-    font-weight: 200;
-    height: 50px;
-    display: flex;
-    align-items: center;
+  padding-left: 20px;
+  font-style: italic;
+  font-weight: 200;
+  height: 50px;
+  display: flex;
+  align-items: center;
 }
 
 .left > .left-second-section li {
-    padding-left: 30px;
-    list-style: none;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  padding-left: 30px;
+  list-style: none;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .left > .left-second-section .create-project {
-    /* margin-left: 50px; */
-    margin-top: 20px;
-    padding-left: 30px;
-    height: 50px;
-    display: flex;
-    width: 100%;
-    align-items: center;
-    gap: 10px;
-    /* justify-content: center; */
-    cursor: pointer;
+  /* margin-left: 50px; */
+  margin-top: 20px;
+  padding-left: 30px;
+  height: 50px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+  /* justify-content: center; */
+  cursor: pointer;
 }
 
 .left > .left-second-section .create-project div {
-    /* font-style: italic; */
-    font-size: 15px;
+  /* font-style: italic; */
+  font-size: 15px;
 }
 
 .left > .left-second-section .create-project:hover {
-    background-color: #ba181b28;
+  background-color: #ba181b28;
 }
 
 .left > .left-second-section .create-project:active {
-    background-color: #ba181b5b
+  background-color: #ba181b5b;
 }
 
-.left > .left-second-section .create-project > div:first-child{
-    height: 15px;
-    width: 15px;
+.left > .left-second-section .create-project > div:first-child {
+  height: 15px;
+  width: 15px;
 }
-
 
 /* Footer add new task button */
 
 .footer > .footer-right > .create-task {
-    /* height: 100%; */
-    /* width: calc(100% - 300px); */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    justify-content: center;
+  /* height: 100%; */
+  /* width: calc(100% - 300px); */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  justify-content: center;
 }
 
 .footer > .footer-right > .create-task > .create-task-container {
-    width: 150px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    /* border-radius: 10px; */
-    /* border: 0.5px solid var(--border-dark); */
-    box-shadow: 0px 0px 5px 2px var(--new-task-button-border);
-    transition: all 0.1s ease-in-out;
+  width: 150px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  /* border-radius: 10px; */
+  /* border: 0.5px solid var(--border-dark); */
+  box-shadow: 0px 0px 5px 2px var(--new-task-button-border);
+  transition: all 0.1s ease-in-out;
 
-
-    border-radius: 5px;
-    background: var(--new-task-button);
-    /* box-shadow:  8px 8px 16px #9f9f9f,
+  border-radius: 5px;
+  background: var(--new-task-button);
+  /* box-shadow:  8px 8px 16px #9f9f9f,
                  -8px -8px 16px #ffffff; */
 }
 
-
-
-.footer > .footer-right > .create-task > .create-task-container div:nth-child(2) {
-    font-size: 20px;
+.footer
+  > .footer-right
+  > .create-task
+  > .create-task-container
+  div:nth-child(2) {
+  font-size: 20px;
 }
 
-.footer > .footer-right > .create-task > .create-task-container > div:first-child {
-    height: 20px;
-    width: 20px;
+.footer
+  > .footer-right
+  > .create-task
+  > .create-task-container
+  > div:first-child {
+  height: 20px;
+  width: 20px;
 }
 
 .footer > .footer-right > .create-task > .create-task-container:hover {
-    background-color: var(--new-task-button-hover);
-    transform: scale(1.1);
-
+  background-color: var(--new-task-button-hover);
+  transform: scale(1.1);
 }
 
 .footer > .footer-right > .create-task > .create-task-container:active {
-    background-color: var(--new-task-button-active)
+  background-color: var(--new-task-button-active);
 }
-
 
 /* Dialog layout and animations */
 
 dialog {
-    position: absolute;
-    margin: auto;
-    padding-left: 35px;
-    padding-right: 35px;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    /* padding-left: 35px; */
-    border-radius: 5px;
-    border: 0.5px solid var(--border-color);
+  position: absolute;
+  margin: auto;
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  /* padding-left: 35px; */
+  border-radius: 5px;
+  border: 0.5px solid var(--border-color);
 }
 
 dialog:focus {
-    outline: none;
+  outline: none;
 }
 
 dialog.hidden {
-    opacity: 0;
-    top: -200%;
-    transform: scale(0.5);
-    transition: opacity 300ms ease-in-out, 
-                top 1000ms ease-in-out,
-                transform 1000ms ease-in-out;
+  opacity: 0;
+  top: -200%;
+  transform: scale(0.5);
+  transition:
+    opacity 300ms ease-in-out,
+    top 1000ms ease-in-out,
+    transform 1000ms ease-in-out;
 }
 
 dialog.hidden > form > * {
-    position: relative;
-    top: 10px;
-    opacity: 0;
+  position: relative;
+  top: 10px;
+  opacity: 0;
 }
 
 dialog.displayed {
-    opacity: 1;
-    top: 0%;
-    transform: scale(1);
-    transition: transform 300ms cubic-bezier(0.18,0.89,0.43,1.19);
-    /* transition: transform 300ms ease; */
+  opacity: 1;
+  top: 0%;
+  transform: scale(1);
+  transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+  /* transition: transform 300ms ease; */
 }
 
 dialog.displayed > form > * {
-    top: 0px;
-    opacity: 1;
-    /* background-color: black; */
+  top: 0px;
+  opacity: 1;
+  /* background-color: black; */
 }
 
 dialog.displayed.new-project > form .project-dialog-name {
-    transition: opacity 300ms ease-in-out 200ms;
-    border-bottom: 1px solid var(--border-dark);
-    width: 100%;
+  transition: opacity 300ms ease-in-out 200ms;
+  border-bottom: 1px solid var(--border-dark);
+  width: 100%;
 }
 
 dialog.displayed.new-project > form .input-container {
-    transition: opacity 300ms ease-in-out 250ms;
+  transition: opacity 300ms ease-in-out 250ms;
 }
 
 dialog.displayed.new-project > form .project-name-field-div {
-    transition: opacity 300ms ease-in-out 300ms;
+  transition: opacity 300ms ease-in-out 300ms;
 }
 
 dialog.displayed.new-project > form .project-color-field-div {
-    transition: opacity 300ms ease-in-out 350ms;
+  transition: opacity 300ms ease-in-out 350ms;
 }
 
 dialog.displayed.new-project > form > button {
-    transition: opacity 300ms ease-in-out 400ms;
+  transition: opacity 300ms ease-in-out 400ms;
 }
 
 dialog.displayed.new-project > form > .close-project-dialog {
-    transition: opacity 300ms ease-in-out 450ms;
+  transition: opacity 300ms ease-in-out 450ms;
 }
-
 
 dialog.displayed.new-task > form .task-dialog-name,
 dialog.displayed.edit-task > form .task-dialog-name {
-    transition: opacity 300ms ease-in-out 200ms;
-    border-bottom: 1px solid var(--border-dark);
-    width: 100%;
+  transition: opacity 300ms ease-in-out 200ms;
+  border-bottom: 1px solid var(--border-dark);
+  width: 100%;
 }
 
 dialog.displayed.new-task > form > .task-project-field-div,
 dialog.displayed.edit-task > form > .task-project-field-div {
-    transition: opacity 300ms ease-in-out 250ms;
+  transition: opacity 300ms ease-in-out 250ms;
 }
 
 dialog.displayed.new-task > form > .task-title-field-div,
 dialog.displayed.edit-task > form > .task-title-field-div {
-    transition: opacity 300ms ease-in-out 300ms;
+  transition: opacity 300ms ease-in-out 300ms;
 }
 
 dialog.displayed.new-task > form > .task-notes-field-div,
 dialog.displayed.edit-task > form > .task-notes-field-div {
-    transition: opacity 300ms ease-in-out 350ms;
+  transition: opacity 300ms ease-in-out 350ms;
 }
 
 dialog.displayed.new-task > form > .task-priority-field-div,
 dialog.displayed.edit-task > form > .task-priority-field-div {
-    transition: opacity 300ms ease-in-out 400ms;
+  transition: opacity 300ms ease-in-out 400ms;
 }
 
 dialog.displayed.new-task > form > .task-date-field-div,
 dialog.displayed.edit-task > form > .task-date-field-div {
-    transition: opacity 300ms ease-in-out 450ms;
+  transition: opacity 300ms ease-in-out 450ms;
 }
 
 dialog.displayed.new-task > form > button,
-dialog.displayed.edit-task > form > button  {
-    transition: opacity 300ms ease-in-out 500ms, background-color 0.3s ease, border-color 0.1s ease;
+dialog.displayed.edit-task > form > button {
+  transition:
+    opacity 300ms ease-in-out 500ms,
+    background-color 0.3s ease,
+    border-color 0.1s ease;
 }
 
 dialog.displayed.new-task > form > .close-task-dialog,
 dialog.displayed.edit-task > form > .close-task-dialog {
-    transition: opacity 300ms ease-in-out 550ms;
+  transition: opacity 300ms ease-in-out 550ms;
 }
 
 dialog.displayed.task-delete > form > button,
 dialog.displayed.project-delete > form > button {
-    transition: opacity 100ms ease-in-out 200ms, background-color 0.3s ease, border-color 0.1s ease;
+  transition:
+    opacity 100ms ease-in-out 200ms,
+    background-color 0.3s ease,
+    border-color 0.1s ease;
 }
 
-
 .delete-project-button {
-    width: 20px;
-    height: 20px;
-    margin-left: auto;
-    margin-right: 20px;
-    opacity: 0;
-    border-radius: 50%;
-    fill: var(--icons-views);
-    transition: all 0.3s ease;
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: 20px;
+  opacity: 0;
+  border-radius: 50%;
+  fill: var(--icons-views);
+  transition: all 0.3s ease;
 }
 
 .delete-project-button:hover {
-    fill: var(--background-light);
-    background-color: var(--icons-views);
+  fill: var(--background-light);
+  background-color: var(--icons-views);
 }
 
 li.project:hover > .delete-project-button {
-    opacity: 1;
+  opacity: 1;
 }
 
 .new-project,
@@ -867,47 +884,46 @@ li.project:hover > .delete-project-button {
 .edit-task,
 .task-delete,
 .project-delete {
-    width: 400px;
-    background-color: var(--background-light);
+  width: 400px;
+  background-color: var(--background-light);
 }
 
 .new-project > form,
 .new-task > form,
 .edit-task > form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
 }
 
 .task-delete > form,
 .project-delete > form {
-    display: grid;
-    gap: 10px;
-    height: 100%;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+  display: grid;
+  gap: 10px;
+  height: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
 }
 
 .task-delete > form > div,
 .project-delete > form > div {
-    grid-column: 1 / 3;
-    grid-row: 1 / 2;
-    justify-self: center;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  justify-self: center;
 }
 
 .task-delete > form > button:nth-child(1),
 .project-delete > form > button:nth-child(1) {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
 }
 
 .task-delete > form > button:nth-child(2),
 .project-delete > form > button:nth-child(2) {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
 }
-
 
 .new-task > form > .task-project-field-div,
 .new-task > form > .task-title-field-div,
@@ -919,68 +935,67 @@ li.project:hover > .delete-project-button {
 .edit-task > form > .task-notes-field-div,
 .edit-task > form > .task-priority-field-div,
 .edit-task > form > .task-date-field-div,
-.new-project > form  .project-name-field-div,
-.new-project > form  .project-color-field-div {
-    display: flex;
-    flex-direction: column;
+.new-project > form .project-name-field-div,
+.new-project > form .project-color-field-div {
+  display: flex;
+  flex-direction: column;
 }
 
 .new-task > form > .task-dialog-name,
 .edit-task > form > .task-dialog-name,
 .new-project > form > .project-dialog-name {
-    align-self: center;
-    font-size: 25px;
-    margin-bottom: 15px;
+  align-self: center;
+  font-size: 25px;
+  margin-bottom: 15px;
 }
 
 .new-task > form > button,
 .edit-task > form > button,
 .new-project > form > button {
-    margin-top: 25px;
-    height: 40px;
-    width: 50%;
-    align-self: center;
-    border-radius: 5px;
-    border: 0.5px solid var(--border-dark);
-    transition: background-color 1s ease;
-    background-color: var(--submit-button);
-    cursor: pointer;
+  margin-top: 25px;
+  height: 40px;
+  width: 50%;
+  align-self: center;
+  border-radius: 5px;
+  border: 0.5px solid var(--border-dark);
+  transition: background-color 1s ease;
+  background-color: var(--submit-button);
+  cursor: pointer;
 }
 
-
-.task-delete > form > button[type='submit'],
-.task-delete > form > button[type='close'],
-.project-delete > form > button[type='submit'],
-.project-delete > form > button[type='close'] {
-    margin-top: 25px;
-    height: 40px;
-    width: 100%;
-    align-self: center;
-    border-radius: 5px;
-    border: 0.5px solid var(--border-dark);
-    transition: background-color 1s ease;
-    background-color: var(--submit-button);
-    cursor: pointer;
+.task-delete > form > button[type="submit"],
+.task-delete > form > button[type="close"],
+.project-delete > form > button[type="submit"],
+.project-delete > form > button[type="close"] {
+  margin-top: 25px;
+  height: 40px;
+  width: 100%;
+  align-self: center;
+  border-radius: 5px;
+  border: 0.5px solid var(--border-dark);
+  transition: background-color 1s ease;
+  background-color: var(--submit-button);
+  cursor: pointer;
 }
 
-.task-delete > form > button[type='submit'],
-.project-delete > form > button[type='submit'] {
-    background-color: var(--submit-button);
+.task-delete > form > button[type="submit"],
+.project-delete > form > button[type="submit"] {
+  background-color: var(--submit-button);
 }
 
-.task-delete > form > button[type='close'],
-.project-delete > form > button[type='close'] {
-    background-color: var(--dialog-close-button);
+.task-delete > form > button[type="close"],
+.project-delete > form > button[type="close"] {
+  background-color: var(--dialog-close-button);
 }
 
 .task-delete > form > button[type="close"]:hover,
 .project-delete > form > button[type="close"]:hover {
-    background-color: var(--dialog-close-button-hover);
+  background-color: var(--dialog-close-button-hover);
 }
 
 .task-delete > form > button[type="close"]:active,
 .project-delete > form > button[type="close"]:active {
-    background-color: var(--dialog-close-button-active);
+  background-color: var(--dialog-close-button-active);
 }
 
 .new-task > form > button:focus,
@@ -988,7 +1003,7 @@ li.project:hover > .delete-project-button {
 .new-project > form > button:focus,
 .task-delete > form > button:focus,
 .project-delete > form > button:focus {
-    outline: none;
+  outline: none;
 }
 
 .new-task > form > button:hover,
@@ -996,8 +1011,8 @@ li.project:hover > .delete-project-button {
 .new-project > form > button:hover,
 .task-delete > form > button[type="submit"]:hover,
 .project-delete > form > button[type="submit"]:hover {
-    border: 0.5px solid black;
-    background-color: var(--submit-button-hover);
+  border: 0.5px solid black;
+  background-color: var(--submit-button-hover);
 }
 
 .new-task > form > button:active,
@@ -1005,32 +1020,34 @@ li.project:hover > .delete-project-button {
 .new-project > form > button:active,
 .task-delete > form > button[type="submit"]:active,
 .project-delete > form > button[type="submit"]:active {
-    background-color: var(--submit-button-active);
+  background-color: var(--submit-button-active);
 }
 
 .new-task > form > .close-task-dialog,
 .edit-task > form > .close-task-dialog,
 .new-project > form > .close-project-dialog {
-    position: absolute;
-    right: 10px;
-    top: 10px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 .new-task > form > .close-task-dialog span,
 .edit-task > form > .close-task-dialog span,
 .new-project > form > .close-project-dialog span {
-    transform: scale(1);
-    opacity: 0.7;
-    cursor: pointer;
-    transition: transform 0.25s, opacity 0.25s;
+  transform: scale(1);
+  opacity: 0.7;
+  cursor: pointer;
+  transition:
+    transform 0.25s,
+    opacity 0.25s;
 }
 
 .new-task > form > .close-task-dialog:hover span,
 .edit-task > form > .close-task-dialog:hover span,
 .new-project > form > .close-project-dialog:hover span {
-    transform: rotate(90deg) scale(1.1);
-    opacity: 1;
-    cursor: pointer;
+  transform: rotate(90deg) scale(1.1);
+  opacity: 1;
+  cursor: pointer;
 }
 
 /* Dialog input styles */
@@ -1044,12 +1061,12 @@ li.project:hover > .delete-project-button {
 .new-project > form input,
 .new-project > form select,
 .new-project > form textarea {
-    outline: none;
-    padding: 10px;
-    border: 0.5px solid var(--border-color);
-    transition: all 0.25s ease;
-    border-radius: 5px;
-    color: black;
+  outline: none;
+  padding: 10px;
+  border: 0.5px solid var(--border-color);
+  transition: all 0.25s ease;
+  border-radius: 5px;
+  color: black;
 }
 
 .new-task > form input:hover,
@@ -1061,9 +1078,9 @@ li.project:hover > .delete-project-button {
 .new-project > form input:hover,
 .new-project > form select:hover,
 .new-project > form textarea:hover {
-    outline: none;
-    padding: 10px;
-    border: 0.5px solid black;
+  outline: none;
+  padding: 10px;
+  border: 0.5px solid black;
 }
 
 .new-task > form input::placeholder,
@@ -1075,90 +1092,89 @@ li.project:hover > .delete-project-button {
 .new-project > form input::placeholder,
 .new-project > form select::placeholder,
 .new-project > form textarea::placeholder {
-    color: var(--input-placeholders-and-checkbox);
-    font-style: italic;
+  color: var(--input-placeholders-and-checkbox);
+  font-style: italic;
 }
 
 .new-task > form textarea,
 .edit-task > form textarea,
 .new-project > form textarea {
-    resize: none;
+  resize: none;
 }
 
 .project-color-field-div {
-    align-self: center;
+  align-self: center;
 }
 
 .new-project > form #project-color {
-    height: 40px;
-    width: 80px;
-    padding: 5px;
-    cursor: pointer;
+  height: 40px;
+  width: 80px;
+  padding: 5px;
+  cursor: pointer;
 }
 
 .new-project > form .input-container {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
 }
 
-
 .icon {
-    width: 15px;
-    height: 15px;
-    /* fill: red; */
-    display: flex;
-    justify-content: center;
+  width: 15px;
+  height: 15px;
+  /* fill: red; */
+  display: flex;
+  justify-content: center;
 }
 
 .no-tasks-filler {
-    color: var(--input-placeholders-and-checkbox);
-    font-style: italic;
+  color: var(--input-placeholders-and-checkbox);
+  font-style: italic;
 }
 
 #toggle-mode-button {
-    /* height: 100px; */
-    /* width: 100px; */
-    /* background-color: black; */
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    cursor: pointer;
-    z-index: 5;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE 10+ */
-    user-select: none; /* Standard syntax */
+  /* height: 100px; */
+  /* width: 100px; */
+  /* background-color: black; */
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  z-index: 5;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Standard syntax */
 }
 
 #toggle-mode-button span {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
-dialog.new-task, 
+dialog.new-task,
 dialog.edit-task {
-    height: 460px;
+  height: 460px;
 }
 
-dialog.new-task > form > button[type="submit"], 
+dialog.new-task > form > button[type="submit"],
 dialog.edit-task > form > button[type="submit"] {
-    margin-top: auto;
+  margin-top: auto;
 }
 
 dialog.new-project {
-    height: 250px;
+  height: 250px;
 }
 
 dialog.new-project > form > button[type="submit"] {
-    margin-top: auto;
+  margin-top: auto;
 }
 
 dialog.task-delete,
 dialog.project-delete {
-    height: 200px;
+  height: 200px;
 }
 
 dialog.task-delete > form > button,
 dialog.project-delete > form > button {
-    margin-top: auto;
+  margin-top: auto;
 }
