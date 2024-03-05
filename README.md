@@ -22,7 +22,7 @@ Nova Task reimagines the classic todo list app with a fresh perspective, offerin
 
 ## Demo
 
-You can view the project at [Nova Task Demo](https://sevleo.github.io/nova_task/).
+You can view the project at [Nova Task Demo](https://sevleo.github.io/TOP-NovaTask/).
 
 ![Home page screenshot](screenshot.png)
 
